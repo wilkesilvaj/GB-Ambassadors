@@ -1,0 +1,9 @@
+.hero-image {
+    background-image: url("../images/gbhero.jpeg"); /* The image used */
+    background-color: #00013d; /* Used if the image is unavailable */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */      
+    background-size: cover;
+    min-height: 89vh;
+    height: fit-content;
+  }
