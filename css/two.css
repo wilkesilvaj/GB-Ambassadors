@@ -4,7 +4,8 @@ body {
 }
 
 .background {
-    background-image: linear-gradient(rgba(0, 0, 0, 1), rgba(80, 80, 80, 0.6));
+    background-image: linear-gradient(to right,rgba(60,60, 60, 1),rgba(0,0,0,1), rgba(60,60,60,1));
+    
 }
 nav {
     background: black;
@@ -12,7 +13,7 @@ nav {
 
 ul {
     float:left;
-    width: 100%;
+    width: 100%;    
 }
 
 a {
@@ -44,8 +45,55 @@ h2, h3 {
     color: white;
 }
 
-.twotwo {
+h2.twotwo   {
+    margin: auto;
+    text-align: center; 
+    color: rgb(177, 0, 0)   ;
+}
+
+p.twotwo {
     width: 60%;
-    color: white;
+    color: #ffffff;  
+    margin:auto;  
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.flex-padding-top   {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.padding-top    {
+    padding-top:1rem;
+}
+
+.padding-bottom {
+    padding-bottom: 1rem;
+}
+
+.gbpacific {       
+    font-family: Oswald,-apple-system,BlinkMacSystemFont,
+    "Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-size: 2.2rem;   
+    color: black;               
+}
+
+img.gbwearlogo  {
+    height:  25%;
+    width:  25%;
+    padding-right: 1rem;
+}
+
+img.gbcompnet  {
+    height:  20%;
+    width:  20%;
+    padding-right: 1rem;
+}
+
+.center   {
+    text-align: center;
 }
 
