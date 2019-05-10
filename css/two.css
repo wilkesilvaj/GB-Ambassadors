@@ -1,0 +1,51 @@
+@import url(http://fonts.googleapis.com/css?family=Oswald:400,300,700);
+body {
+    font-family: 'Oswald', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.background {
+    background-image: linear-gradient(rgba(0, 0, 0, 1), rgba(80, 80, 80, 0.6));
+}
+nav {
+    background: black;
+}
+
+ul {
+    float:left;
+    width: 100%;
+}
+
+a {
+    color: rgb(177, 0, 0);
+    font-size: 150%; 
+}
+
+a:hover {
+    color: white;
+}
+
+.featurette-divider{
+    border: 1px solid white;
+}
+
+.ambassadorheading {
+    color: rgb(177, 0, 0);
+}
+
+/* .sponsors {
+    float:left; display:inline; width: 50;
+}
+*/
+#sponsortitle {
+    color: rgb(177, 0, 0);
+}
+
+h2, h3 {
+    color: white;
+}
+
+.twotwo {
+    width: 60%;
+    color: white;
+}
+
