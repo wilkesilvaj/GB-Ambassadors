@@ -15,13 +15,20 @@ section.hero {
 
 .menu{
     padding-left: 18%;   
-    background: #000000;
     background-size: 100%;    
 }
 
 .inline {
     display: inline-block; 
     margin-right: 8%;  
+}
+
+.form-center    {
+    text-align: center;
+}
+
+table{
+    text-align: center;
 }
 
 .menu-links {
@@ -36,31 +43,6 @@ section.hero {
     display: block;
 }
 
-.gbpacific {
-    text-align: center;
-    vertical-align: middle;    
-    font-family: Oswald,-apple-system,BlinkMacSystemFont,
-    "Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-    font-size: 2rem;   
-    color: #ffffff;               
-}
 
-.ambassadorheading  {   
-    text-align: center;
-    vertical-align: middle;    
-    font-family: Oswald,-apple-system,BlinkMacSystemFont,
-    "Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-    font-size: 3rem;   
-    color: #ff0000; 
-    margin-bottom: 1em;
-}
 
-.gbvideo  {
-    margin-top: 1em;
-    text-align: center;
-}
-
-form    {
-    size: 100%;
-}
 
