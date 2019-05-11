@@ -28,20 +28,20 @@ a:hover {
 #featurette1  {
     width: 100%;
     background: rgb(148, 0, 0);
-    transition: width 2s;
-    transition-timing-function: cubic-bezier(0.2, 0.7, 1.0, 0.4);
+    /*transition: width 2s;
+    transition-timing-function: cubic-bezier(0.2, 0.7, 1.0, 0.4);*/
 }
-
+/*
 #featurette1:hover {
     width: 80%;
-}
+}*/
 
 h2 {
     color: white;
 }
 
 .featurette-divider{
-    border: 1px solid white;
+    border: 2px solid rgb(148, 0, 0);
 }
 
 #description {
@@ -49,7 +49,11 @@ h2 {
 }
 
 .container {
-    border: 1px solid rgb(148, 0, 0);
+    border: 2px solid rgb(148, 0, 0);
+}
+
+.divider {
+    border: 0.5px solid rgb(148, 0, 0);
 }
 
 #formrow1 {
