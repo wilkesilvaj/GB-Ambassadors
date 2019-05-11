@@ -52,7 +52,7 @@ h2.twotwo   {
 }
 
 p.twotwo {
-    width: 60%;
+    width: 80%;
     color: #ffffff;  
     margin:auto;  
     text-align: center;
@@ -93,7 +93,25 @@ img.gbcompnet  {
     padding-right: 1rem;
 }
 
+img.gblogo  {  
+    height:  10%;
+    width:  10%;
+}
+
 .center   {
     text-align: center;
 }
 
+img.gbheroes {
+    height: 40%;
+    width: 40%;
+}
+
+div.first-section   {
+    background-image: url(../images/gradienthero.png);
+    background-position: 0% 50%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+    
+}
