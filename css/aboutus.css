@@ -58,11 +58,47 @@ h2 {
 }
 
 footer {
-    background: rgb(24, 24, 24);
-    height: 100%;
+    background: rgb(255, 255, 255);
+    /*height: 100%;*/
 }
 
 footer>p {
     color: rgb(141, 141, 141);
 }
 
+div.content-2   {
+    background: rgba(30,30,30,1);    
+}
+
+div.content-3   {
+    background: rgba(150,150,150,1);    
+}
+
+
+.padding-top    {
+    padding-top:1rem;
+}
+
+.padding-bottom {
+    padding-bottom: 1rem;
+}
+
+img.gblogo  {  
+    height:  10%;
+    width:  10%;
+}
+
+p.white {
+    color:white;
+}
+
+.center   {
+    text-align: center;
+}
+
+div.content-pane    {
+    min-height: 20em;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;    
+}

@@ -111,7 +111,6 @@ div.first-section   {
     background-image: url(../images/gradienthero.png);
     background-position: 0% 50%;
     background-size: contain;
-    background-repeat: no-repeat;
-    
-    
+    background-repeat: no-repeat;    
 }
+
