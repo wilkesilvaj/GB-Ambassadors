@@ -87,7 +87,7 @@ body    {
     /* background-image: linear-gradient(to right,rgba(0,0, 0, 1), rgba(70,70, 70, 1),
     rgba(255,255,255,1),rgba(70,70, 70, 1), rgba(0,0,0,1)); 
     background: rgb(24, 24, 24); */
-    background-image: linear-gradient(to bottom  right,rgba(24,24, 24, 1), rgba(70,70, 70, 1));
+    background-image: linear-gradient(to bottom  right,black, rgba(24,24, 24, 1), rgba(70,70, 70, 1));
     
 }
 
