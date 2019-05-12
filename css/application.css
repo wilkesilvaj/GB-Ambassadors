@@ -3,13 +3,14 @@ body {
     font-family: 'Oswald', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
-.background {
-    background-image: linear-gradient(to right,rgba(60,60, 60, 1),rgba(0,0,0,1), rgba(60,60,60,1));
-    
+.content {
+    background: rgb(24, 24, 24);
 }
+
 nav {
     background: black;
 }
+
 
 ul {
     float:left;
@@ -25,73 +26,68 @@ a:hover {
     color: white;
 }
 
+#featurette1  {
+    width: 100%;
+    background: rgb(148, 0, 0);
+    margin: auto;
+    /*transition: width 2s;
+    transition-timing-function: cubic-bezier(0.2, 0.7, 1.0, 0.4);*/
+}
+/*
+#featurette1:hover {
+    width: 80%;
+}*/
+
+h2 {
+    color: white;
+    margin: auto;
+}
+
 .featurette-divider{
-    border: 1px solid white;
+    border: 2px solid rgb(148, 0, 0);
 }
 
-.ambassadorheading {
-    color: rgb(177, 0, 0);
-}
-
-
-#sponsortitle {
-    color: rgb(177, 0, 0);
-}
-
-h2, h3 {
+#description {
     color: white;
 }
 
-h2.twotwo   {
-    margin: auto;
-    text-align: center; 
-    color: rgb(177, 0, 0)   ;
+.container {
+    border: 2px solid rgb(148, 0, 0);
 }
 
-p.twotwo {
-    width: 80%;
-    color: #000000;  
-    margin:auto;  
-    font-size: 1.2rem;
+.divider {
+    border: 0.5px solid rgb(148, 0, 0);
 }
 
-.flex-padding-top   {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
+#formrow1 {
+    padding-top: 5%;
 }
 
 .padding-top    {
     padding-top:1rem;
 }
 
-.padding-top-sm {
-    padding-top: 0.5rem;
+form{
+    background-color: white;
+    padding: unset;
 }
 
-
-.padding-bottom {
-    padding-bottom: 1rem;
+body    {
+    background-image: linear-gradient(to right,rgba(0,0, 0, 1), rgba(70,70, 70, 1),
+    rgba(255,255,255,1),rgba(70,70, 70, 1), rgba(0,0,0,1));    
 }
 
-.gbpacific {       
-    font-family: Oswald,-apple-system,BlinkMacSystemFont,
-    "Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-    font-size: 2.2rem;   
-    color: black;               
+.no-padding {
+    padding: unset;
 }
 
-img.gbwearlogo  {
-    height:  25%;
-    width:  25%;
-    padding-right: 1rem;
+.margin-top  {
+    margin-top: 1rem;
 }
 
-img.gbcompnet  {
-    height:  20%;
-    width:  20%;
-    padding-right: 1rem;
+.padding-sides   {
+    padding-right:  1rem;
+    padding-left:  1rem;
 }
 
 img.gblogo  {  
@@ -102,31 +98,3 @@ img.gblogo  {
 .center   {
     text-align: center;
 }
-
-img.gbheroes {
-    height: 40%;
-    width: 40%;
-}
-
-div.first-section   {
-    background-image: url(../images/gradienthero.png);
-    background-position: 0% 50%;
-    background-size: contain;
-    background-repeat: no-repeat;    
-}
-
-.text-right {
-    text-align:  right;
-}
-
-.text-left  {
-    text-align: left;
-}
-
-form{
-    border: 1px dashed black;
-}
-
-
-
-
