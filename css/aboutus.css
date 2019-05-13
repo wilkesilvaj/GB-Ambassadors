@@ -30,14 +30,17 @@ a:hover {
     background-color:  white;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: cover;
     position: relative;    
+    min-height: 30em;   
+
 }
 
 .box {
     display: grid;
     height: 100%;
-    background-image: linear-gradient(to bottom, rgba(255,255,255,1),rgba(255,255,255,0.5), rgba(255,255,255,0)); 
+    background-image: linear-gradient(to bottom, rgba(255,255,255,1),rgba(255,255,255,0.7), rgba(255,255,255,0));
+    min-height: inherit;
 }
 
 #hiddenImg {
@@ -47,8 +50,13 @@ a:hover {
 
 .headimgText {
     color: black;
-    position: absolute;
-    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    flex-direction: column; 
+}
+
+.center   {
+    text-align: center;
 }
 
 h2, h1 {
