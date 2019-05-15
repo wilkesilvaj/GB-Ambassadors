@@ -67,6 +67,11 @@ h2 {
     padding-top:1rem;
 }
 
+.padding-bottom    {
+    padding-bottom:1rem;
+}
+
+
 form{
     background-color: white;
     padding: unset;

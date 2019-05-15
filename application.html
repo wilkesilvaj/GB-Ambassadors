@@ -60,7 +60,7 @@
                 <div class="tab-pane fade show active" id="adults" role="tabpanel" aria-labelledby="home-tab">
                     <div class="container no-padding">
                             <!-- Beggining of the form-->
-                            <form class ="padding-sides" method = "POST" action = "#">
+                            <form class ="padding-sides padding-bottom" method = "POST" action = "#">
                                     <div class="alert alert-danger alert-dismissible fade show" role="alert" id="alert">
                                             <p id="errorMessage"></p>
                                             <button type="button" id="close" class="close" data-hide="alert" aria-label="Close">
@@ -200,16 +200,20 @@
             <div class="tab-pane fade" id="kids" role="tabpanel" aria-labelledby="profile-tab">
                     <div class="container no-padding">
                             <!-- Beggining of the form-->
-                            <form class ="padding-sides" method = "POST" action = "#">
+                            <form class ="padding-sides padding-bottom" method = "POST" action = "#">
                                 <!-- First row with First and Last Name fields-->
                                 <div class="form-row" id="formrow1">
                                     <div class="form-group col-md-6">
                                         <label for="firstName">First Name</label>
-                                        <input type="text" class="form-control" id="firstName" placeholder="Enter your First Name">
+                                        <input type="text" class="form-control" id="firstName" placeholder="Enter the child's First Name">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="lastName">Last Name</label>
-                                        <input type="text" class="form-control" id="lastName" placeholder="Enter your Last Name">
+                                        <input type="text" class="form-control" id="lastName" placeholder="Enter the child's Last Name">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="parentName">parent's Full Name</label>
+                                        <input type="text" class="form-control" id="parentName" placeholder="Enter the parent's Full Name">
                                     </div>
                                 </div>
                                 <!-- Second row with DOB and rdb fields-->
@@ -320,8 +324,7 @@
                                             <label for ="titles">Please list below your last titles since the IBJJF Worlds 2017:</label>
                                             <textarea id = "titles" rows = "4" cols = "50"></textarea>
                                         </div>
-                                </div>
-            
+                                </div>            
                             </form>
                     </div>
                 </div>

@@ -103,3 +103,7 @@ p  {
     font-size: calc(15px + 0.3vw);
     text-align: justify;
 }
+
+.padding-top    {
+    padding-top:1rem;
+}
