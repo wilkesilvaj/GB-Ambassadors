@@ -6,9 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    
     <!-- Customized css -->
     <link rel = "stylesheet" href= "css/application.css">
+
+    <!-- Form validation-->
+    <script type="text/javascript" src="js/formvalidation.js"></script>
 
     <title>GB Ambassadors Program Pacific Northwest</title>
   </head>
@@ -19,7 +22,7 @@
             <a class="navbar-brand" href="index.html">
                 <img src="images/gblogocrop.jpeg" alt = "Gracie Barra Ambassadors logo"  class="d-inline-block align-top">  
             </a>
-            <ul class="nav justify-content-center">
+            <ul class="nav justify-content-center" id="navhead">
             <li class="nav-item">
                     <a class="nav-link" href="index.html">Home</a>
             </li>
@@ -44,135 +47,285 @@
                 </div>               
         </div> 
 
-        <div class = "container background-faded margin-top no-padding">
-
-            <div class="container no-padding">
-                <!-- Beggining of the form-->
-                <form class ="padding-sides" method = "POST" action = "#">
-                    <!-- First row with First and Last Name fields-->
-                    <div class="form-row" id="formrow1">
-                        <div class="form-group col-md-6">
-                            <label for="firstName">First Name</label>
-                            <input type="text" class="form-control" id="firstName" placeholder="Enter your First Name">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="lastName">Last Name</label>
-                            <input type="text" class="form-control" id="lastName" placeholder="Enter your Last Name">
-                        </div>
-                    </div>
-                    <!-- Second row with DOB and rdb fields-->
-                    <div class="form-row">
-                        <div class="form-group col-md-4">
-                            <label for ="dateOfBirth">Date of Birth:</label>
-                            <input id = "dateOfBirth" type="date" name ="dateOfBirth" placeholder="yyyy-mm-dd" /><br />
-                        </div>
-                        <div class="form-group col-md-4">
-                            Gender:
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="rbdGender"  id="rdbMale" value="Male">
-                                <label class="form-check-label" for="inlineRadio1">Male</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="rbdGender"  id="rdbFemale" value="Female">
-                                <label class="form-check-label" for="inlineRadio2">Female</label>
-                            </div>
-                        </div>
-
-                        <div class="form-group col-md-4">
-                            Belt:
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="rdbBelt" id="rdbBlack" value="Black">
-                                <label class="form-check-label" for="rdbBlack">Black</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="rdbBelt" id="rdbBrown" value="Brown">
-                                <label class="form-check-label" for="rdbBrown">Brown</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="rdbBelt" id="rdbPurple" value="Purple">
-                                <label class="form-check-label" for="rdbPurple">Purple</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="rdbBelt" id="rdbBlue" value="Blue">
-                                <label class="form-check-label" for="rdbBlue">Blue</label>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Third row-->
-                    <div class="form-group">
-                        <label for="dateOfGraduation">Date of your last graduation(Belt):</label>
-                        <input type="date" class="form-control" id="dateOfGraduation" placeholder="yyyy-mm-dd">
-                    </div>
-                    <!-- Forth row-->
-                    <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="phoneNumber">Phone Number:</label>
-                                <input type="text" class="form-control" id="phoneNumber" placeholder="Enter your phone number">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="email">Email:</label>
-                                <input type="email" class="form-control" id="email" placeholder="example@graciebarra.ca">
-                            </div>
-                    </div>
-                    <!-- Fifth row-->
-                    <div class="form-row">
-                            <div class="form-group col-md-4">
-                                <label for="address">Address:</label>
-                                <input type="text" class="form-control" id="address" placeholder="1234 Example Street, Vancouver">
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="homeSchool">Home School:</label>
-                                <input type="text" class="form-control" id="homeSchool" placeholder="Gracie Barra Vancouver">
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="homeSchoolAddress">Home School Address:</label>
-                                <input type="text" class="form-control" id="homeSchoolAddress" placeholder="987 GB Avenue, Vancouver">
-                            </div>
-                    </div>
-                    <!-- Sixth row-->
-                    <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="icp6">ICP 6 is a requirement for applying to the GB Ambassadors Ambassadors Program. Did you complete the last ICP?:</label>
-                                <input id = "icp6" type="radio" name ="icp6" value = "yes" />Yes
-                                <input id = "icp6" type="radio" name ="icp6" value = "no" />No
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="icpUpToDate">Is the Head Instructor and all the Staff members of your Home School aligned and updated with the latest ICP?</label>
-                                <input id = "icpUpToDate" type="radio" name ="icpUpToDate" value = "yes" />Yes
-                                <input id = "icpUpToDate" type="radio" name ="icpUpToDate" value = "no" />No
-                            </div>
-                    </div>
-                    <hr class="divider">
-                    <!-- Seventh row-->
-                    <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="uniform">Wearing the Full Gracie Barra Uniform and wearing the latest Gracie Barra Red Competition Shirt is mandatory to apply for the GB Arizona Ambassadors Program. Are you willing to make that commitment?</label>
-                                <input id = "uniform" type="radio" name ="uniform" value = "yes" />Yes
-                                <input id = "uniform" type="radio" name ="uniform" value = "no" />No
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="attendance">In order to be a GB Ambassadors Arizona, it is required your attendance in at least 80% of our 3 times per week competition training, hosted at GB North Phoenix (Mon, Wed, Fri 12pm). Are you willing to make that commitment?</label>
-                                <input id = "attendance" type="radio" name ="attendance" value = "yes" />Yes
-                                <input id = "attendance" type="radio" name ="attendance" value = "no" />No
-                            </div>
-                    </div>
-                    <hr class="divider">
-                    <!-- Eigth row-->
-                    <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="results"> Our criteria to elect the athletes that will be granted support from the GB Ambassadors Pacific Northwest is based on the info collected on this form and the results in competitions throughout the Season. Are you willing to make the commitment to send the results you get in competitions to the GB Ambassadors Arizona Staff?</label>
-                                <input id = "results" type="radio" name ="results" value = "yes" />Yes
-                                <input id = "results" type="radio" name ="results" value = "no" />No
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for ="titles">Please list below your last titles since the IBJJF Worlds 2017:</label>
-                                <textarea id = "titles" rows = "4" cols = "50"></textarea>
-                            </div>
-                    </div>
-
-                </form>
+        <div class="container" id="holder">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#adults" role="tab" aria-controls="adults" aria-selected="true">Adults Form</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#kids" role="tab" aria-controls="kids" aria-selected="false">Kids Form</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="adults" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="container no-padding">
+                            <!-- Beggining of the form-->
+                            <form class ="padding-sides" method = "POST" action = "#">
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert" id="alert">
+                                            <p id="errorMessage"></p>
+                                            <button type="button" id="close" class="close" data-hide="alert" aria-label="Close">
+                                              <span aria-hidden="true">&times;</span>
+                                            </button>
+                                    </div>
+                                <!-- First row with First and Last Name fields-->
+                                <div class="form-row" id="formrow1">
+                                    <div class="form-group col-md-6">
+                                        <label for="firstName">First Name</label>
+                                        <input type="text" class="form-control" id="firstName" placeholder="Enter your First Name">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="lastName">Last Name</label>
+                                        <input type="text" class="form-control" id="lastName" placeholder="Enter your Last Name">
+                                    </div>
+                                </div>
+                                <!-- Second row with DOB and rdb fields-->
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label for ="dateOfBirth">Date of Birth:</label>
+                                        <input id = "dateOfBirth" type="date" name ="dateOfBirth" placeholder="yyyy-mm-dd" /><br />
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        Gender:
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="rbdGender"  id="rdbMale" value="Male">
+                                            <label class="form-check-label" for="inlineRadio1">Male</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="rbdGender"  id="rdbFemale" value="Female">
+                                            <label class="form-check-label" for="inlineRadio2">Female</label>
+                                        </div>
+                                    </div>
+            
+                                    <div class="form-group col-md-4">
+                                        Belt:
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="rdbBelt" id="rdbBlack" value="Black">
+                                            <label class="form-check-label" for="rdbBlack">Black</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="rdbBelt" id="rdbBrown" value="Brown">
+                                            <label class="form-check-label" for="rdbBrown">Brown</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="rdbBelt" id="rdbPurple" value="Purple">
+                                            <label class="form-check-label" for="rdbPurple">Purple</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="rdbBelt" id="rdbBlue" value="Blue">
+                                            <label class="form-check-label" for="rdbBlue">Blue</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Third row-->
+                                <div class="form-group">
+                                    <label for="dateOfGraduation">Date of your last graduation(Belt):</label>
+                                    <input type="date" class="form-control" id="dateOfGraduation" placeholder="yyyy-mm-dd">
+                                </div>
+                                <!-- Forth row-->
+                                <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="phoneNumber">Phone Number:</label>
+                                            <input type="text" class="form-control" id="phoneNumber" placeholder="Enter your phone number">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="email">Email:</label>
+                                            <input type="email" class="form-control" id="email" placeholder="example@graciebarra.ca" data-toggle="popover" data-trigger="hover"
+                                            data-content="My popover content.">
+                                        </div>
+                                </div>
+                                <!-- Fifth row-->
+                                <div class="form-row">
+                                        <div class="form-group col-md-4">
+                                            <label for="address">Address:</label>
+                                            <input type="text" class="form-control" id="address" placeholder="1234 Example Street, Vancouver">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="homeSchool">Home School:</label>
+                                            <input type="text" class="form-control" id="homeSchool" placeholder="Gracie Barra Vancouver">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="homeSchoolAddress">Home School Address:</label>
+                                            <input type="text" class="form-control" id="homeSchoolAddress" placeholder="987 GB Avenue, Vancouver">
+                                        </div>
+                                </div>
+                                <!-- Sixth row-->
+                                <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="icp6">ICP 6 is a requirement for applying to the GB Ambassadors Ambassadors Program. Did you complete the last ICP?:</label>
+                                            <input id = "icp6" type="radio" name ="icp6" value = "yes" />Yes
+                                            <input id = "icp6" type="radio" name ="icp6" value = "no" />No
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="icpUpToDate">Is the Head Instructor and all the Staff members of your Home School aligned and updated with the latest ICP?</label>
+                                            <input id = "icpUpToDate" type="radio" name ="icpUpToDate" value = "yes" />Yes
+                                            <input id = "icpUpToDate" type="radio" name ="icpUpToDate" value = "no" />No
+                                        </div>
+                                </div>
+                                <hr class="divider">
+                                <!-- Seventh row-->
+                                <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="uniform">Wearing the Full Gracie Barra Uniform and wearing the latest Gracie Barra Red Competition Shirt is mandatory to apply for the GB Arizona Ambassadors Program. Are you willing to make that commitment?</label>
+                                            <input id = "uniform" type="radio" name ="uniform" value = "yes" />Yes
+                                            <input id = "uniform" type="radio" name ="uniform" value = "no" />No
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="attendance">In order to be a GB Ambassadors Arizona, it is required your attendance in at least 80% of our 3 times per week competition training, hosted at GB North Phoenix (Mon, Wed, Fri 12pm). Are you willing to make that commitment?</label>
+                                            <input id = "attendance" type="radio" name ="attendance" value = "yes" />Yes
+                                            <input id = "attendance" type="radio" name ="attendance" value = "no" />No
+                                        </div>
+                                </div>
+                                <hr class="divider">
+                                <!-- Eigth row-->
+                                <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="results"> Our criteria to elect the athletes that will be granted support from the GB Ambassadors Pacific Northwest is based on the info collected on this form and the results in competitions throughout the Season. Are you willing to make the commitment to send the results you get in competitions to the GB Ambassadors Arizona Staff?</label>
+                                            <input id = "results" type="radio" name ="results" value = "yes" />Yes
+                                            <input id = "results" type="radio" name ="results" value = "no" />No
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for ="titles">Please list below your last titles since the IBJJF Worlds 2017:</label>
+                                            <textarea id = "titles" rows = "4" cols = "50"></textarea>
+                                        </div>
+                                </div>
+                                <div class="form-row" id="submitbutton">
+                                    <input type="button" id="validate" class="btn btn-danger" value="Validate" onclick="validateForm();"/>
+                                    <span id="span">&nbsp;</span><br>
+                                </div>
+            
+                            </form>
+                            </div> 
             </div>
-        </div>      
+            <!-- KIDS FORM (For now just a copy of the previous one)-->
+            <div class="tab-pane fade" id="kids" role="tabpanel" aria-labelledby="profile-tab">
+                    <div class="container no-padding">
+                            <!-- Beggining of the form-->
+                            <form class ="padding-sides" method = "POST" action = "#">
+                                <!-- First row with First and Last Name fields-->
+                                <div class="form-row" id="formrow1">
+                                    <div class="form-group col-md-6">
+                                        <label for="firstName">First Name</label>
+                                        <input type="text" class="form-control" id="firstName" placeholder="Enter your First Name">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="lastName">Last Name</label>
+                                        <input type="text" class="form-control" id="lastName" placeholder="Enter your Last Name">
+                                    </div>
+                                </div>
+                                <!-- Second row with DOB and rdb fields-->
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label for ="dateOfBirth">Date of Birth:</label>
+                                        <input id = "dateOfBirth" type="date" name ="dateOfBirth" placeholder="yyyy-mm-dd" /><br />
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        Gender:
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="rbdGender"  id="rdbMale" value="Male">
+                                            <label class="form-check-label" for="inlineRadio1">Male</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="rbdGender"  id="rdbFemale" value="Female">
+                                            <label class="form-check-label" for="inlineRadio2">Female</label>
+                                        </div>
+                                    </div>
+            
+                                    <div class="form-group col-md-4">
+                                        Belt:
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="rdbBelt" id="rdbBlack" value="Black">
+                                            <label class="form-check-label" for="rdbBlack">Black</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="rdbBelt" id="rdbBrown" value="Brown">
+                                            <label class="form-check-label" for="rdbBrown">Brown</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="rdbBelt" id="rdbPurple" value="Purple">
+                                            <label class="form-check-label" for="rdbPurple">Purple</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="rdbBelt" id="rdbBlue" value="Blue">
+                                            <label class="form-check-label" for="rdbBlue">Blue</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Third row-->
+                                <div class="form-group">
+                                    <label for="dateOfGraduation">Date of your last graduation(Belt):</label>
+                                    <input type="date" class="form-control" id="dateOfGraduation" placeholder="yyyy-mm-dd">
+                                </div>
+                                <!-- Forth row-->
+                                <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="phoneNumber">Phone Number:</label>
+                                            <input type="text" class="form-control" id="phoneNumber" placeholder="Enter your phone number">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="email">Email:</label>
+                                            <input type="email" class="form-control" id="email" placeholder="example@graciebarra.ca">
+                                        </div>
+                                </div>
+                                <!-- Fifth row-->
+                                <div class="form-row">
+                                        <div class="form-group col-md-4">
+                                            <label for="address">Address:</label>
+                                            <input type="text" class="form-control" id="address" placeholder="1234 Example Street, Vancouver">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="homeSchool">Home School:</label>
+                                            <input type="text" class="form-control" id="homeSchool" placeholder="Gracie Barra Vancouver">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="homeSchoolAddress">Home School Address:</label>
+                                            <input type="text" class="form-control" id="homeSchoolAddress" placeholder="987 GB Avenue, Vancouver">
+                                        </div>
+                                </div>
+                                <!-- Sixth row-->
+                                <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="icp6">ICP 6 is a requirement for applying to the GB Ambassadors Ambassadors Program. Did you complete the last ICP?:</label>
+                                            <input id = "icp6" type="radio" name ="icp6" value = "yes" />Yes
+                                            <input id = "icp6" type="radio" name ="icp6" value = "no" />No
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="icpUpToDate">Is the Head Instructor and all the Staff members of your Home School aligned and updated with the latest ICP?</label>
+                                            <input id = "icpUpToDate" type="radio" name ="icpUpToDate" value = "yes" />Yes
+                                            <input id = "icpUpToDate" type="radio" name ="icpUpToDate" value = "no" />No
+                                        </div>
+                                </div>
+                                <hr class="divider">
+                                <!-- Seventh row-->
+                                <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="uniform">Wearing the Full Gracie Barra Uniform and wearing the latest Gracie Barra Red Competition Shirt is mandatory to apply for the GB Arizona Ambassadors Program. Are you willing to make that commitment?</label>
+                                            <input id = "uniform" type="radio" name ="uniform" value = "yes" />Yes
+                                            <input id = "uniform" type="radio" name ="uniform" value = "no" />No
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="attendance">In order to be a GB Ambassadors Arizona, it is required your attendance in at least 80% of our 3 times per week competition training, hosted at GB North Phoenix (Mon, Wed, Fri 12pm). Are you willing to make that commitment?</label>
+                                            <input id = "attendance" type="radio" name ="attendance" value = "yes" />Yes
+                                            <input id = "attendance" type="radio" name ="attendance" value = "no" />No
+                                        </div>
+                                </div>
+                                <hr class="divider">
+                                <!-- Eigth row-->
+                                <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="results"> Our criteria to elect the athletes that will be granted support from the GB Ambassadors Pacific Northwest is based on the info collected on this form and the results in competitions throughout the Season. Are you willing to make the commitment to send the results you get in competitions to the GB Ambassadors Arizona Staff?</label>
+                                            <input id = "results" type="radio" name ="results" value = "yes" />Yes
+                                            <input id = "results" type="radio" name ="results" value = "no" />No
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for ="titles">Please list below your last titles since the IBJJF Worlds 2017:</label>
+                                            <textarea id = "titles" rows = "4" cols = "50"></textarea>
+                                        </div>
+                                </div>
+            
+                            </form>
+                    </div>
+                </div>
+        </div>   
 
     <!-- Footer at the end of the page-->
     <footer class="footer mt-auto center">

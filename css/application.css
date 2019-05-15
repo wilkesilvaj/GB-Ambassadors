@@ -11,11 +11,11 @@ nav {
     background: black;
 }
 
-
-ul {
+#navhead {
     float:left;
     width: 100%;    
 }
+
 
 a {
     color: rgb(177, 0, 0);
@@ -97,4 +97,17 @@ img.gblogo  {
 
 .center   {
     text-align: center;
+}
+
+#holder {
+    border: none;
+}
+
+#submitbutton {
+    display: flex;
+    justify-content: center;
+}
+
+#alert {
+    display: none;
 }
