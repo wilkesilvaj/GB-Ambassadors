@@ -32,8 +32,7 @@ a:hover {
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;    
-    min-height: 30em;   
-    background-attachment: fixed;
+    min-height: 30em;       
 }
 
 .box {
