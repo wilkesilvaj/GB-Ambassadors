@@ -26,19 +26,19 @@ a:hover {
 }
 
 .headimg {
-    background-image: url(../images/headimg.jpg);
+    background-image: url(../images/temporaryhead.jpg);
     background-color:  black;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;    
-    min-height: 30em;      
+    min-height: 30em;    
 }
 
 .box {
     display: grid;
     height: 100%;
-    background-image: linear-gradient(to bottom, rgba(0,0,0,1),rgba(0,0,0,0.7), rgba(0,0,0,0.5));
+    background-image: linear-gradient(to bottom, rgba(0,0,0,1),rgba(0,0,0,0.5), rgba(0,0,0,0));
     min-height: inherit;
 }
 
@@ -49,11 +49,6 @@ a:hover {
 
 .headimgText {
     color: white;
-   /* position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    */
     display: flex;
     justify-content: center;
     flex-direction: column; 
@@ -64,46 +59,20 @@ a:hover {
 }
 
 h1 {
-    color: rgb(148, 0, 0);
-}
-
-h2 {
-    color: rgb(148, 0, 0);
-}
-
-footer {
-    background: rgb(24, 24, 24);
-    height: 100%;
-}
-
-footer>p {
-    color: rgb(141, 141, 141);
-}
-
-.featurette-divider {
-    border: 1px solid rgb(148, 0, 0);
-}
-
-.card-body {
-    background: rgb(24, 24, 24);
     color: white;
 }
 
-.card-title {
-    text-align: center;
+h2 {
+    color: black;
 }
 
-em {
-    color: rgb(148, 0, 0);
-    font-style: normal;
-    font-size: 130%;
+.featurette-divider {
+    border: 1px solid rgb(99, 99, 99);
 }
 
-p  {
-    font-size: calc(15px + 0.3vw);
-    text-align: justify;
+#centerimg {
+    position: relative;
+    width: 80%;
+    height: auto;
 }
 
-.padding-top    {
-    padding-top:1rem;
-}
