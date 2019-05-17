@@ -116,3 +116,9 @@ img.gblogo  {
 #alert {
     display: none;
 }
+
+.valign {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}

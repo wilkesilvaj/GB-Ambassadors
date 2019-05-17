@@ -64,3 +64,16 @@ form    {
     size: 100%;
 }
 
+.valign {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.nomargin  {
+    margin-top: unset;
+    margin-bottom: unset;
+    margin-right: unset;
+    margin-left: unset;
+}
+

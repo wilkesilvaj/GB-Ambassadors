@@ -107,3 +107,9 @@ p  {
 .padding-top    {
     padding-top:1rem;
 }
+
+.valign {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
