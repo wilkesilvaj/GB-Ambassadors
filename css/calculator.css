@@ -1,0 +1,124 @@
+@import url(http://fonts.googleapis.com/css?family=Oswald:400,300,700);
+body {
+    font-family: 'Oswald', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.content {
+    background: rgb(24, 24, 24);
+}
+
+nav {
+    background: black;
+}
+
+#navhead {
+    float:left;
+    width: 100%;    
+}
+
+
+a {
+    color: rgb(177, 0, 0);
+    font-size: 150%; 
+}
+
+a:hover {
+    color: white;
+}
+
+#featurette1  {
+    width: 100%;
+    background: rgb(148, 0, 0);
+    margin: auto;
+    /*transition: width 2s;
+    transition-timing-function: cubic-bezier(0.2, 0.7, 1.0, 0.4);*/
+}
+/*
+#featurette1:hover {
+    width: 80%;
+}*/
+
+h2 {
+    color: white;
+    margin: auto;
+}
+
+.featurette-divider{
+    border: 2px solid rgb(148, 0, 0);
+}
+
+#description {
+    color: white;
+}
+
+.container {
+    border: 2px solid rgb(148, 0, 0);
+}
+
+.divider {
+    border: 0.5px solid rgb(148, 0, 0);
+}
+
+#formrow1 {
+    padding-top: 5%;
+}
+
+.padding-top    {
+    padding-top:1rem;
+}
+
+.padding-bottom    {
+    padding-bottom:1rem;
+}
+
+
+form{
+    background-color: white;
+    padding: unset;
+}
+
+body    {
+    background-image: linear-gradient(to right,rgba(0,0, 0, 1), rgba(70,70, 70, 1),
+    rgba(255,255,255,1),rgba(70,70, 70, 1), rgba(0,0,0,1));    
+}
+
+.no-padding {
+    padding: unset;
+}
+
+.margin-top  {
+    margin-top: 1rem;
+}
+
+.padding-sides   {
+    padding-right:  1rem;
+    padding-left:  1rem;
+}
+
+img.gblogo  {  
+    height:  10%;
+    width:  10%;
+}
+
+.center   {
+    text-align: center;
+}
+
+#holder {
+    border: none;
+}
+
+#submitbutton {
+    display: flex;
+    justify-content: center;
+}
+
+#alert {
+    display: none;
+}
+
+.valign {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
