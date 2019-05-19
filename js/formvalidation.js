@@ -22,7 +22,11 @@ function validateForm() {
     // THIS PATTERN CHECKS FOR dd.mm.yyyy 
     var birhDatePattern1 = /^\s*(3[01]|[12][0-9]|0?[1-9])\.(1[012]|0?[1-9])\.(19[0-9][0-9]|200[0-2])\s*$/; 
     // THIS ONE CHECKS FOR mm/dd/yyy
-    var birhDatePattern = /^(((0)[0-9])|((1)[0-2]))(\/)([0-2][0-9]|(3)[0-1])(\/)(19[0-9][0-9]|200[0-2])$/;
+    var birhDatePattern2 = /^(((0)[0-9])|((1)[0-2]))(\/)([0-2][0-9]|(3)[0-1])(\/)(19[0-9][0-9]|200[0-2])$/;
+    // THIS ONE CHECKS FOR yyyy-mm-dd
+    var birhDatePattern3 = /^(19[0-9][0-9]|200[0-2])(-)(((0)[0-9])|((1)[0-2]))(-)([0-2][0-9]|(3)[0-1])$/;
+    // OERALL BIRTH PATTERN
+    var birhDatePattern = /^((19[0-9][0-9]|200[0-2])(-)(((0)[0-9])|((1)[0-2]))(-)([0-2][0-9]|(3)[0-1]))|((((0)[0-9])|((1)[0-2]))(\/)([0-2][0-9]|(3)[0-1])(\/)(19[0-9][0-9]|200[0-2]))|(\s*(3[01]|[12][0-9]|0?[1-9])\.(1[012]|0?[1-9])\.(19[0-9][0-9]|200[0-2])\s)$/;
     var phonePattern = /^(1 )*\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})|(\d){3}(-)*(\d){4}$/;
     var emailPattern = /^[_a-zA-Z\\-]+(\.[_a-zA-Z0-9\\-]+)*@[a-zA-Z0-9\\-]+(\.[a-zA-Z0-9\\-]+)*(\.[a-z]{2,6})$/;
     
@@ -45,7 +49,7 @@ function validateForm() {
         errorMessage.innerHTML = "Please enter a valid first name";
         closeAlert();
     }
-    /*
+    
     //to check for date pf birth
     if (birhDatePattern.test(DOB) == false) {
         window.scrollTo(0, 0);
@@ -53,7 +57,7 @@ function validateForm() {
         errorMessage.innerHTML = "Please enter a valid date of birth";
         closeAlert();
     }
-    */
+    
 
     //to check for last name
     else if (namePattern.test(lastName) == false) {
