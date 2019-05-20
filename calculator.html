@@ -59,31 +59,140 @@
         
         <div class="container no-padding">
             <form id = "calculatorForm" name = "calculatorForm" class ="padding-sides padding-bottom" method = "POST" action = "#">
-                    <div class="form-row">
-                        <div class="form-group col-">
-                            Championships:
-                        </div>
-                        <div class="form-group col-">
-                            Weight 1st place
-                        </div>
-                        <div class="form-group col-">
-                            Weight 2nd place
-                        </div>
-                        <div class="form-group col-">
-                            Weight 3rd place
-                        </div>
-                        <div class="form-group col-">
-                            Open Class 1st place
-                        </div>
-                        <div class="form-group col-">
-                            Open Class 2nd place
-                        </div>
-                        <div class="form-group col-">
-                            Open Class 3rd place
-                        </div>                          
-                    </div>             
+                <div class="form-row">
+                    <div class="form-group col-">
+                        Championships:
+                    </div>
+                    <div class="form-group col-">
+                        Weight 1st place
+                    </div>
+                    <div class="form-group col-">
+                        Weight 2nd place
+                    </div>
+                    <div class="form-group col-">
+                        Weight 3rd place
+                    </div>
+                    <div class="form-group col-">
+                        Open Class 1st place
+                    </div>
+                    <div class="form-group col-">
+                        Open Class 2nd place
+                    </div>
+                    <div class="form-group col-">
+                        Open Class 3rd place
+                    </div>                          
+                </div>             
             </form>                      
         </div>   
+
+        <div class="container padding-top" style = "background: white;" >
+            <!--TOURNAMENTS TABLE-->
+            <table class = "center table table-hover table-striped">
+                <caption class = "table-header center">
+                    <h4>Gracie Barra Tournament Ranking</h4>
+                </caption>
+                <thead class = "table-header">                                      
+                    <tr>    
+                        <th>Event</th>
+                        <th>Stars (Weight)</th>
+                    </tr>
+                </thead>
+                <tbody>                    
+                    <tr>
+                        <td>IBJJF Worlds</td>
+                        <td>7</td>
+                    </tr>
+                    <tr>
+                        <td>IBJJF PANS</td>
+                        <td rowspan="4">6</td>
+                    </tr>
+                    <tr>
+                        <td>IBJJF EUROPEANS</td>                        
+                    </tr>
+                    <tr>
+                        <td>IBJJF BRAZILIAN NATIONALS</td>                        
+                    </tr>
+                    <tr>
+                        <td>UAE WORLD PRO</td>                        
+                    </tr>
+                    <!-- END OF ROWSPAN 4-->
+                    <tr>
+                        <td>UAE GRAND SLAM (LA)</td>
+                        <td rowspan="4">5</td>
+                    </tr>
+                    <tr>
+                        <td>GB COMPNET</td>                        
+                    </tr>
+                    <tr>
+                        <td>IBJJF AMERICAN NATIONALS</td>                        
+                    </tr>
+                    <tr>
+                        <td>IBJJF PRO</td>                        
+                    </tr>
+                    <!-- END OF ROWSPAN 4-->
+                    <tr>
+                        <td>IBJJF INTERNATIONAL OPEN</td>
+                        <td>4</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!--END OF TOURNAMENTS TABLE-->
+
+            <!--MEDALS TABLE-->
+            <table class = "table center">
+                <caption class = "center table-header">
+                    <h4>Medals Weightage</h4>
+                </caption>
+                <thead>
+                    <tr>
+                        <th class = "gold">Gold</th>
+                        <th class = "silver">Silver</th>
+                        <th class = "bronze">Bronze</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>9</td>
+                        <td>3</td>
+                        <td>1</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!--END OF MEDALS TABLE-->
+
+            <!--SEASONS TABLE-->
+            <table class = "table center flex">
+                <caption class = "center table-header">
+                    <h4>Seasons</h4>
+                </caption>
+                <thead class =  "table-header">
+                    <tr>
+                        <th>Season</th>
+                        <th>Duration</th>
+                        <th>Weightage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Season I</th>
+                        <td>May 1st, 2018 - May 1st, 2019</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <th>Season II</th>
+                        <td>May 2nd, 2019 - May 1st, 2020</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <th>Season III</th>
+                        <td>May 2nd, 2020 - May 1st, 2021</td>
+                        <td>3</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!--END OF SEASONS TABLE-->
+
+        </div>
 
     <!-- Footer at the end of the page-->
     <footer class="footer mt-auto center">

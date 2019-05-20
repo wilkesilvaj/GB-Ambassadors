@@ -24,9 +24,17 @@ var resultList  =   [
     "Open Class 3rd place"
 ];
 
+var seasonList = [
+    "Season I",
+    "Season II",
+    "Season III"
+];
+
 // Variables used to assign dynamic ids to <select> controllers
 var countChampionships = 0; 
-var selectID = "championships"; 
+var championshipID = "championships"; 
+var seasonID = "season";
+
 
 function getElements()  {
     calculatorForm = document.getElementById("calculatorForm");     
@@ -50,10 +58,11 @@ function addChampionship()  {
 
     // Creates the new <SELECT> for Championships and assigns an ID to it
     var championshipsComboBox = document.createElement("select");
-    championshipsComboBox.id = selectID + countChampionships;
+    championshipsComboBox.id = championshipID + countChampionships;
     
-    // Increment unique ID identifier of the <SELECT>
-    countChampionships++; 
+    // Creates the new <SELECT> for SEASONS and assigns an ID to it
+    var seasonComboBox = document.createElement("select");
+    seasonComboBox.id = seasonID + countChampionships;
 
     // Adds FIRST COLUMN to ROW
     formRow.appendChild(formCol);
@@ -70,10 +79,29 @@ function addChampionship()  {
         championshipsComboBox.appendChild(option);
     }    
 
+    // Resets the formCol <DIV> to insert SEASON SELECT
+    formCol = document.createElement("div");
+    formCol.className = "form-group col-"; 
+
+    // Adds SECOND COLUMN to ROW (SEASONS)
+    formRow.appendChild(formCol);
+
+    // Adds SEASON SELECT to the page
+    formCol.appendChild(seasonComboBox);
+
+    // Populates the new <SELECT> with the championships from the array
+    for (var i = 1; i <= seasonList.length; i++)   {    
+        // Creates new options
+        var option = document.createElement("option");
+        option.value = seasonList[i];
+        option.text = seasonList[i-1];
+        seasonComboBox.appendChild(option);
+    } 
+
     // Creates new checkboxes
     for (var x = 0; x < resultList.length; x++) {  
         
-        // Resets the formCol <DIV> as to insert new columns
+        // Resets the formCol <DIV> to insert new columns
         formCol = document.createElement("div");
         formCol.className = "form-group col-";  
 
@@ -104,7 +132,9 @@ function addChampionship()  {
     // Adds event handler to create more championships by clicking the icon
     icon.addEventListener("click", addChampionship, false);
 
-    
+
+    // Increments unique ID identifier of the <SELECT>
+    countChampionships++;     
 }
 
 

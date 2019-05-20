@@ -122,3 +122,35 @@ img.gblogo  {
     justify-content: center;
     flex-direction: column;
 }
+
+
+.table-header   {
+    background: rgb(148, 0, 0);
+    color: white;
+}
+
+caption{
+    caption-side: top;
+}
+
+th, tr, td{
+    border: 1px solid black; 
+    
+}
+
+th.gold {
+    background: gold;
+}
+
+th.silver {
+    background: silver;
+}
+
+th.bronze {
+    background: #cd7f32;
+}
+
+table   {
+    table-layout: fixed;
+    width: 100%;
+}
