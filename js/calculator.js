@@ -3,15 +3,15 @@ var calculatorForm; // Form used in the calculator
 var btnAddChampionship; // Button used to add new 
 // List of Championships
 var championshipList = [
-    "IBBJF Worlds 2018",
-    "IBBJF Pans",
+    "IBJJF Worlds 2018",
+    "IBJJF Pans",
     "IBJJF European 2019",
     "IBJJF Brazilian Nationals",
     "IBJJF American Nationals",
     "IBJJF Pro",
     "IBJJF International Open",
     "UAE World Pro",
-    "UAE Grand slam",
+    "UAE Grand Slam",
     "GB COMPNET"    
 ];
 
@@ -72,7 +72,8 @@ function addChampionship()  {
     for (var i = 0; i < championshipList.length; i++)   {
         // Creates new options
         var option = document.createElement("option");
-        option.value = championshipList[i];
+        //option.value = championshipList[i];
+        option.value = assignChampionshipValue(championshipList[i]);
         option.text = championshipList[i];
         championshipsComboBox.appendChild(option);
     }    
@@ -90,7 +91,7 @@ function addChampionship()  {
     // Populates the new <SELECT> with the championships from the array
     for (var i = 1; i <= seasonList.length; i++)   {    
         // Creates new options
-        var option = document.createElement("option");
+        var option = document.createElement("option");        
         option.value = seasonList[i];
         option.text = seasonList[i-1];
         seasonComboBox.appendChild(option);
@@ -144,7 +145,9 @@ function addCalculateButton()   {
     button = document.getElementById("btnCalculate");
     
     if (button != null) {
-        button.parentElement.removeChild(button);
+        var parentDiv = button.parentElement;
+        button.parentElement.removeChild(button);       
+        parentDiv.parentElement.removeChild(parentDiv);
     }
 
     // Creates the new <div> for the each new ROW of the form
@@ -166,11 +169,62 @@ function addCalculateButton()   {
     document.getElementById("btnCalculate").addEventListener("click", calculatePoints,false);
 }
 
-/**
- * TO BE FURTHER IMPLEMENTED
- */
+
+// NOT FULLY OPERATIONAL
 function calculatePoints()  {
     
+    // Initializes candidate's points
+    var totalPoints = 0;
+
+    // Gets all formRow <div> elements in the calculatorForm
+    var formRows = calculatorForm.children;
+
+    // Loops through each row in the form, excluding the first (header) and last (button)
+    
+    for (var i=1; i<(formRows.length-1); i++)  {
+        
+        // Gets all <select> tags in each formRow
+        var championshipSelect = formRows[i].querySelectorAll("select");       
+        
+        if(championshipSelect != null)  {            
+        
+            var checkboxes = formRows[i].querySelectorAll("input[type=checkbox]");
+            
+            for (var x=0; x < checkboxes.length; x++) {   
+                if (checkboxes[x].checked)  {                                        
+                    //totalPoints += (parseInt(checkboxes[x].value));
+                    totalPoints += parseInt(championshipSelect[0].value);
+                }        
+            }
+
+        }     
+
+    }
+  
+
+    alert(totalPoints);
+   
+}
+
+function assignChampionshipValue(championship)  {
+    
+    var value;
+    if (championship.includes("IBJJF Worlds"))  {
+        value = 7;
+    }
+    else if (championship.includes("IBJJF Pans") || championship.includes("IBJJF European")
+    || championship.includes("IBJJF European")|| championship.includes("UAE World Pro"))  {
+        value = 6;       
+    }
+    else if (championship.includes("UAE Grand Slam")|| championship.includes("GB COMPNET")
+    || championship.includes("IBJJF American Nationals") || championship.includes("IBJJF Pro"))     {
+        value = 5;
+    }
+    else if (championship.includes("IBJJF International Open"))  {
+        value = 4;
+    }
+    return value;
+
 }
 
 function assignCheckboxValue(ranking)  {
@@ -184,6 +238,7 @@ function assignCheckboxValue(ranking)  {
     else    {
         value = 1;
     }
+    
     return value;
 }
 
