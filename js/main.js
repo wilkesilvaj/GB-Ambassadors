@@ -15,8 +15,7 @@ function resizeMedia()  {
     else{
         first.classList.remove("bg-cover");
         first.classList.add("bg-contain");
-    }  
-    
+    }    
 }
 
 /**
