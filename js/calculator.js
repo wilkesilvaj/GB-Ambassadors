@@ -1,6 +1,7 @@
 /* Global Variables */
 var calculatorForm; // Form used in the calculator
 var btnAddChampionship; // Button used to add new 
+var calculatorResult; // Heading tag used to display user's calculator's results
 // List of Championships
 
 var medalWeight = [
@@ -44,7 +45,13 @@ var seasonID = "season";
 
 
 function getElements()  {
+    
+    // Initializes the calculator form
     calculatorForm = document.getElementById("calculatorForm");       
+
+    // Initializes the calculator result heading
+    calculatorResult = document.getElementById("calculatorResult");
+
     addChampionship();
 }
 
@@ -106,6 +113,7 @@ function addCalculateButton()   {
     button = document.createElement("button");
     button.name = "btnCalculate";
     button.id = "btnCalculate";
+    button.type = "button";
     button.innerHTML = "Calculate";
 
     // Adds button to form
@@ -279,8 +287,8 @@ function calculatePoints()  {
 
     }
   
-
-    alert(totalPoints);
+    calculatorResult.innerHTML = "Based on the results above, your total points would be: " + totalPoints;
+    
    
 }
 
