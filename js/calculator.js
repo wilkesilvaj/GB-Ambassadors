@@ -2,6 +2,13 @@
 var calculatorForm; // Form used in the calculator
 var btnAddChampionship; // Button used to add new 
 // List of Championships
+
+var medalWeight = [
+    9,
+    3,
+    1
+];
+
 var championshipList = [
     "IBJJF Worlds 2018",
     "IBJJF Pans",
@@ -25,9 +32,9 @@ var resultList  =   [
 ];
 
 var seasonList = [
-    "Season I",
-    "Season II",
-    "Season III"
+    "I",
+    "II",
+    "III"
 ];
 
 // Variables used to assign dynamic ids to <select> controllers
@@ -47,78 +54,17 @@ function addChampionship()  {
     var formRow = document.createElement("div");
     formRow.className = "form-row";
 
-    // Creates the new <div> for the each new COLUMN of the form
-    var formCol = document.createElement("div");
-    formCol.className = "form-group col-";
+    // Creates Championships <select>
+    createChampionshipSelect(formRow);
 
-    // Adds new ROW DIV to form
-    calculatorForm.appendChild(formRow);
-
-    // Creates the new <SELECT> for Championships and assigns an ID to it
-    var championshipsComboBox = document.createElement("select");
-    championshipsComboBox.id = championshipID + countChampionships;
+    // Creates Seasons <select>
+    createSeasonsSelect(formRow);
     
-    // Creates the new <SELECT> for SEASONS and assigns an ID to it
-    var seasonComboBox = document.createElement("select");
-    seasonComboBox.id = seasonID + countChampionships;
+    // Creates radio buttons
+    createRadioButtons(formRow);
 
-    // Adds FIRST COLUMN to ROW
-    formRow.appendChild(formCol);
-
-    // Adds select to the page
-    formCol.appendChild(championshipsComboBox);
-    
-    // Populates the new <SELECT> with the championships from the array
-    for (var i = 0; i < championshipList.length; i++)   {
-        // Creates new options
-        var option = document.createElement("option");
-        //option.value = championshipList[i];
-        option.value = assignChampionshipValue(championshipList[i]);
-        option.text = championshipList[i];
-        championshipsComboBox.appendChild(option);
-    }    
-
-    // Resets the formCol <DIV> to insert SEASON SELECT
-    formCol = document.createElement("div");
-    formCol.className = "form-group col-"; 
-
-    // Adds SECOND COLUMN to ROW (SEASONS)
-    formRow.appendChild(formCol);
-
-    // Adds SEASON SELECT to the page
-    formCol.appendChild(seasonComboBox);
-
-    // Populates the new <SELECT> with the championships from the array
-    for (var i = 1; i <= seasonList.length; i++)   {    
-        // Creates new options
-        var option = document.createElement("option");        
-        option.value = seasonList[i];
-        option.text = seasonList[i-1];
-        seasonComboBox.appendChild(option);
-    } 
-
-    // Creates new checkboxes
-    for (var x = 0; x < resultList.length; x++) {  
-                
-        // Resets the formCol <DIV> to insert new columns
-        formCol = document.createElement("div");
-        formCol.className = "form-group col-";  
-
-        // Adds the COLUMN to the current ROW
-        formRow.appendChild(formCol);
-
-        // Creates each checkbox
-        var checkbox = document.createElement("input");
-        checkbox.type = "checkbox";
-        checkbox.name = "titles";
-        checkbox.value = assignCheckboxValue(resultList[x]);       
-        
-        // Allows to display the value of the selected CHECKBOX by clicking it - CHECKBOXES ARE BUGGED
-        //checkbox.addEventListener("click", function (){alert(checkbox.value);},false);
-        
-        // Adds current CHECKBOX to current COLUMN
-        formCol.appendChild(checkbox);
-    }
+    // Old function to create checkboxes
+    //createCheckBoxes(formRow);
 
     // Creates the new icon to add new championships
     var icon = document.createElement("i");
@@ -169,6 +115,138 @@ function addCalculateButton()   {
     document.getElementById("btnCalculate").addEventListener("click", calculatePoints,false);
 }
 
+/**
+ * Function to dynamically create each row of radio buttons for each new competition added to the calculator
+ * @param {*} currentFormRow - the <div> which represents the current row of the calculator form
+ */
+function createRadioButtons(currentFormRow)   {
+
+    
+    for (var x = 0; x < medalWeight.length; x++)    {
+       
+        // Resets the formCol <DIV> to insert new columns
+        formCol = document.createElement("div");
+        formCol.className = "form-group col-";  
+
+        // Adds the COLUMN to the current ROW
+        currentFormRow.appendChild(formCol);
+
+        // Creates each radioButton
+
+        var radioButton = document.createElement("input");
+        radioButton.type = "radio";
+        radioButton.name = "titles" + countChampionships;
+        radioButton.value = medalWeight[x];
+        if (x == 0) {
+            radioButton.checked = true;
+        }
+
+
+        // Adds current CHECKBOX to current COLUMN
+        formCol.appendChild(radioButton);
+    }
+    
+          
+    
+    
+
+
+}
+
+/**
+ * Function to dynamically create each SEASONS <select> for each new competition added to the calculator
+ * @param {*} currentFormRow - the <div> which represents the current row of the calculator form
+ */
+function createSeasonsSelect(currentFormRow)  {
+
+    // Creates the new <SELECT> for SEASONS and assigns an ID to it
+    var seasonComboBox = document.createElement("select");
+    seasonComboBox.id = seasonID + countChampionships;
+
+    // Resets the formCol <DIV> to insert SEASON SELECT
+    formCol = document.createElement("div");
+    formCol.className = "form-group col-"; 
+
+    // Adds SECOND COLUMN to ROW (SEASONS)
+    currentFormRow.appendChild(formCol);
+
+    // Adds SEASON SELECT to the page
+    formCol.appendChild(seasonComboBox);
+
+    // Populates the new <SELECT> with the championships from the array
+    for (var i = 0; i < seasonList.length; i++)   {    
+        // Creates new options
+        var option = document.createElement("option");        
+        option.text = "Season " + seasonList[i];
+        option.value = assignSeasonValue(seasonList[i]);
+        seasonComboBox.appendChild(option);
+    } 
+  
+}
+
+/**
+ * Function to dynamically create each CHAMPIONSHIP <select> for each new competition added to the calculator
+ * @param {*} currentFormRow - the <div> which represents the current row of the calculator form
+ */
+function createChampionshipSelect(currentFormRow) {
+
+    // Creates the new <div> for the each new COLUMN of the form
+    var formCol = document.createElement("div");
+    formCol.className = "form-group col-";
+
+    // Adds new ROW DIV to form
+    calculatorForm.appendChild(currentFormRow);
+
+    // Creates the new <SELECT> for Championships and assigns an ID to it
+    var championshipsComboBox = document.createElement("select");
+    championshipsComboBox.id = championshipID + countChampionships;
+    
+    // Adds FIRST COLUMN to ROW
+    currentFormRow.appendChild(formCol);
+
+    // Adds select to the page
+    formCol.appendChild(championshipsComboBox);
+    
+    // Populates the new <SELECT> with the championships from the array
+    for (var i = 0; i < championshipList.length; i++)   {
+        // Creates new options
+        var option = document.createElement("option");
+        //option.value = championshipList[i];
+        option.value = assignChampionshipValue(championshipList[i]);
+        option.text = championshipList[i];
+        championshipsComboBox.appendChild(option);
+    }    
+
+}
+
+/** Creates checkboxes (first demo we had with the 6 checkboxes)
+ * @param {*} currentFormRow - the <div> which represents the current row of the calculator form
+ */
+ function createCheckBoxes(currentFormRow)    {
+
+    // Creates new checkboxes
+    for (var x = 0; x < resultList.length; x++) {  
+                
+        // Resets the formCol <DIV> to insert new columns
+        formCol = document.createElement("div");
+        formCol.className = "form-group col-";  
+
+        // Adds the COLUMN to the current ROW
+        currentFormRow.appendChild(formCol);
+
+        // Creates each checkbox
+        var checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.name = "titles";
+        checkbox.value = assignCheckboxValue(resultList[x]);       
+        
+        // Allows to display the value of the selected CHECKBOX by clicking it - CHECKBOXES ARE BUGGED
+        //checkbox.addEventListener("click", function (){alert(checkbox.value);},false);
+        
+        // Adds current CHECKBOX to current COLUMN
+        formCol.appendChild(checkbox);
+    }
+ }
 
 // NOT FULLY OPERATIONAL
 function calculatePoints()  {
@@ -206,14 +284,19 @@ function calculatePoints()  {
    
 }
 
+
+/** Function which assigns value to each <select> of championships
+ * @param championship - the string with the championship name which is used to assign its weight / number of stars
+ */
 function assignChampionshipValue(championship)  {
     
-    var value;
+    var value = 0;
     if (championship.includes("IBJJF Worlds"))  {
         value = 7;
     }
     else if (championship.includes("IBJJF Pans") || championship.includes("IBJJF European")
-    || championship.includes("IBJJF European")|| championship.includes("UAE World Pro"))  {
+    || championship.includes("IBJJF European") || championship.includes("UAE World Pro")
+    || championship.includes("IBJJF Brazilian"))  {
         value = 6;       
     }
     else if (championship.includes("UAE Grand Slam")|| championship.includes("GB COMPNET")
@@ -224,8 +307,8 @@ function assignChampionshipValue(championship)  {
         value = 4;
     }
     return value;
-
 }
+
 
 function assignCheckboxValue(ranking)  {
     var value;
@@ -237,8 +320,22 @@ function assignCheckboxValue(ranking)  {
     }
     else    {
         value = 1;
+    }    
+    return value;
+}
+
+function assignSeasonValue(season)  {
+
+    var value = 0;
+    if (season == "I")    {
+        value = 2;
     }
-    
+    else if (season == "II") {
+        value = 3;
+    }
+    else if (season == "III")    {
+        value = 4;
+    }
     return value;
 }
 
