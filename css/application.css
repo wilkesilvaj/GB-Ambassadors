@@ -108,12 +108,12 @@ img.gblogo  {
     border: none;
 }
 
-#submitbutton {
+#submitbutton, #chSubmitbutton {
     display: flex;
     justify-content: center;
 }
 
-#alert {
+#alert, #chAlert {
     display: none;
 }
 
