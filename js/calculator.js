@@ -2,8 +2,9 @@
 var calculatorForm; // Form used in the calculator
 var btnAddChampionship; // Button used to add new 
 var calculatorResult; // Heading tag used to display user's calculator's results
-// List of Championships
+var calculatorBody;
 
+// List of Championships
 var medalWeight = [
     9,
     3,
@@ -39,12 +40,12 @@ var seasonList = [
 ];
 
 // Variables used to assign dynamic ids to <select> controllers
-var countChampionships = 0; 
+var championshipIndex = 0; 
 var championshipID = "championships"; 
 var seasonID = "season";
 
 
-function getElements()  {
+function initializeComponents()  {
     
     // Initializes the calculator form
     calculatorForm = document.getElementById("calculatorForm");       
@@ -52,15 +53,17 @@ function getElements()  {
     // Initializes the calculator result heading
     calculatorResult = document.getElementById("calculatorResult");
 
+    // Initializes the calculator tbody element
+    calculatorBody = document.getElementById("calculatorBody");
+
     addChampionship();
 }
 
 function addChampionship()  {
     
     // Creates the new <div> for the each new ROW of the form
-    var formRow = document.createElement("div");
-    formRow.className = "form-row";
-
+    var formRow = document.createElement("tr");
+    
     // Creates Championships <select>
     createChampionshipSelect(formRow);
 
@@ -70,24 +73,50 @@ function addChampionship()  {
     // Creates radio buttons
     createRadioButtons(formRow);
 
-    // Old function to create checkboxes
-    //createCheckBoxes(formRow);
+    // Creates add and remove buttons
+    addButtons(formRow);
 
-    // Creates the new icon to add new championships
+    // Inserts new POPULATED <TR> element into tbody
+    calculatorBody.appendChild(formRow);
+
+    // Increments unique ID identifier of the <SELECT>
+    championshipIndex++;     
+    
+    addCalculateButton();
+}
+
+
+/**
+ * Function which adds the "Add another championship" and "remove current championship" icons / buttons
+ * @param {*} currentFormRow - the <div> which represents the current row of the calculator form
+ */
+function addButtons(currentFormRow)  {
+    
+    // Resets the formCol <DIV> to insert new columns
+    formCol = document.createElement("td");
+
+    // Inserts new <TD> into the current row
+    currentFormRow.appendChild(formCol);
+
+    // Creates the ADD icon to add new championships
     var icon = document.createElement("i");
     icon.className = "fas fa-plus-square";
-    
-    // Adds the icon to the form
-    formRow.appendChild(formCol);
-    formCol.appendChild(icon);
+    icon.name = "addChampionship" + championshipIndex;
+
+    formCol.appendChild(icon);    
 
     // Adds event handler to create more championships by clicking the icon
     icon.addEventListener("click", addChampionship, false);
 
-    // Increments unique ID identifier of the <SELECT>
-    countChampionships++;     
+    // Creates the MINUS icon to REMOVE current championship
+    var icon = document.createElement("i");
+    icon.className = "fas fa-minus-square";
+    icon.name = "deleteChampionship" + championshipIndex;
 
-    addCalculateButton();
+    formCol.appendChild(icon);    
+
+    // Adds event handler to create more championships by clicking the icon
+    icon.addEventListener("click", deleteCurrentChampionship, false);
 }
 
 function addCalculateButton()   {
@@ -98,16 +127,19 @@ function addCalculateButton()   {
     button = document.getElementById("btnCalculate");
     
     if (button != null) {
-        var parentDiv = button.parentElement;
-        button.parentElement.removeChild(button);       
-        parentDiv.parentElement.removeChild(parentDiv);
+        var parentTD = button.parentElement;
+        var parentTR = parentTD.parentElement;
+        button.parentElement.removeChild(button);     
+        parentTD.parentElement.removeChild(parentTD);  
+        parentTR.parentElement.removeChild(parentTR);
     }
 
-    // Creates the new <div> for the each new ROW of the form
-    var formRow = document.createElement("div");
-    formRow.className = "form-row";
-
-    calculatorForm.appendChild(formRow);
+    // Creates the new <TR> for the each new ROW of the form
+    var formRow = document.createElement("tr");
+    
+    // Creates new <TD> element
+    var formCol = document.createElement("td");
+    formCol.colSpan = 6;    
 
     // Creates new <button>
     button = document.createElement("button");
@@ -116,26 +148,31 @@ function addCalculateButton()   {
     button.type = "button";
     button.innerHTML = "Calculate";
 
-    // Adds button to form
-    formRow.appendChild(button);
+    // Adds button to <TD>
+    formCol.appendChild(button);
+
+    // INSERTS new column into the last ROW
+    formRow.appendChild(formCol);    
+
+    // INSERTS last ROW into the form
+    calculatorBody.appendChild(formRow);
 
     // Adds event handler
     document.getElementById("btnCalculate").addEventListener("click", calculatePoints,false);
 }
+
 
 /**
  * Function to dynamically create each row of radio buttons for each new competition added to the calculator
  * @param {*} currentFormRow - the <div> which represents the current row of the calculator form
  */
 function createRadioButtons(currentFormRow)   {
-
     
     for (var x = 0; x < medalWeight.length; x++)    {
        
         // Resets the formCol <DIV> to insert new columns
-        formCol = document.createElement("div");
-        formCol.className = "form-group col-";  
-
+        formCol = document.createElement("td");
+        
         // Adds the COLUMN to the current ROW
         currentFormRow.appendChild(formCol);
 
@@ -143,22 +180,15 @@ function createRadioButtons(currentFormRow)   {
 
         var radioButton = document.createElement("input");
         radioButton.type = "radio";
-        radioButton.name = "titles" + countChampionships;
+        radioButton.name = "titles" + championshipIndex;
         radioButton.value = medalWeight[x];
         if (x == 0) {
             radioButton.checked = true;
         }
 
-
         // Adds current CHECKBOX to current COLUMN
         formCol.appendChild(radioButton);
     }
-    
-          
-    
-    
-
-
 }
 
 /**
@@ -169,12 +199,11 @@ function createSeasonsSelect(currentFormRow)  {
 
     // Creates the new <SELECT> for SEASONS and assigns an ID to it
     var seasonComboBox = document.createElement("select");
-    seasonComboBox.id = seasonID + countChampionships;
+    seasonComboBox.id = seasonID + championshipIndex;
 
     // Resets the formCol <DIV> to insert SEASON SELECT
-    formCol = document.createElement("div");
-    formCol.className = "form-group col-"; 
-
+    formCol = document.createElement("td");
+    
     // Adds SECOND COLUMN to ROW (SEASONS)
     currentFormRow.appendChild(formCol);
 
@@ -199,15 +228,15 @@ function createSeasonsSelect(currentFormRow)  {
 function createChampionshipSelect(currentFormRow) {
 
     // Creates the new <div> for the each new COLUMN of the form
-    var formCol = document.createElement("div");
-    formCol.className = "form-group col-";
+    var formCol = document.createElement("td");
+    
 
     // Adds new ROW DIV to form
     calculatorForm.appendChild(currentFormRow);
 
     // Creates the new <SELECT> for Championships and assigns an ID to it
     var championshipsComboBox = document.createElement("select");
-    championshipsComboBox.id = championshipID + countChampionships;
+    championshipsComboBox.id = championshipID + championshipIndex;
     
     // Adds FIRST COLUMN to ROW
     currentFormRow.appendChild(formCol);
@@ -236,9 +265,8 @@ function createChampionshipSelect(currentFormRow) {
     for (var x = 0; x < resultList.length; x++) {  
                 
         // Resets the formCol <DIV> to insert new columns
-        formCol = document.createElement("div");
-        formCol.className = "form-group col-";  
-
+        formCol = document.createElement("td");
+        
         // Adds the COLUMN to the current ROW
         currentFormRow.appendChild(formCol);
 
@@ -262,34 +290,32 @@ function calculatePoints()  {
     // Initializes candidate's points
     var totalPoints = 0;
 
-    // Gets all formRow <div> elements in the calculatorForm
-    var formRows = calculatorForm.children;
+    // Gets all formRow <tr> elements in the calculatorForm
+    var formRows = calculatorBody.children;
 
-    // Loops through each row in the form, excluding the first (header) and last (button)
-    
-    for (var i=1; i<(formRows.length-1); i++)  {
-        
+    //alert("Number of championships in TBODY:  " + (formRows.length-1));
+
+    // Loops through each row in the form, excluding the first (header) and last (button)    
+    for (var i=0; i<(formRows.length-1); i++)  {
+
+        var rowMultiplier = 1;
         // Gets all <select> tags in each formRow
         var championshipSelect = formRows[i].querySelectorAll("select");       
-        
-        if(championshipSelect != null)  {            
-        
-            var checkboxes = formRows[i].querySelectorAll("input[type=checkbox]");
-            
-            for (var x=0; x < checkboxes.length; x++) {   
-                if (checkboxes[x].checked)  {                                        
-                    //totalPoints += (parseInt(checkboxes[x].value));
-                    totalPoints += parseInt(championshipSelect[0].value);
-                }        
-            }
-
-        }     
-
-    }
-  
-    calculatorResult.innerHTML = "Based on the results above, your total points would be: " + totalPoints;
     
-   
+        // Multiplies the value (weight) of the championship and season for the CURRENT for of the form
+        for (var x = 0; x < championshipSelect.length; x++)  {
+            rowMultiplier *= parseInt(championshipSelect[x].value);
+        }        
+       
+        // Gets the value of the selected radio button
+        var radioButton = formRows[i].querySelectorAll("input[type=radio]:checked");
+        
+        // Adds the ranking multiplied by the championship and season's values to the totalPoints
+        totalPoints += rowMultiplier * radioButton[0].value;
+    }  
+    
+    calculatorResult.innerHTML = "Based on the results above, your total points would be: " + totalPoints;
+       
 }
 
 
@@ -347,4 +373,25 @@ function assignSeasonValue(season)  {
     return value;
 }
 
-window.addEventListener("load", getElements, false);
+function deleteCurrentChampionship(removeChampionshipIcon)    {
+    
+    var deleteIcon = this;
+
+    // Checks if there are AT LEAST two championships in the form before deleting the current one
+    if (calculatorBody.children.length > 2) {
+        var parentTD = deleteIcon.parentElement;
+        var parentTR = parentTD.parentElement;
+        deleteIcon.parentElement.removeChild(deleteIcon);     
+        parentTD.parentElement.removeChild(parentTD);  
+        parentTR.parentElement.removeChild(parentTR);
+    }
+    else{
+        alert("You cannot delete all championships from the calculator.");
+    }
+
+    
+    
+}
+
+
+window.addEventListener("load", initializeComponents, false);
