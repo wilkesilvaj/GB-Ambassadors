@@ -39,19 +39,21 @@ var seasonID = "season";
 
 var emptyList = true;
 
-var listItemIndx = 0;
-
-function addElements(listItemIndx) {
+function addElements() {
     if (emptyList) {
         document.getElementById("calc").deleteRow(0);
     }
     var tblCalc = document.getElementById("calc");
     var calcRow = document.createElement("tr");
-    calcRow.setAttribute("id", listItemIndx);
+    calcRow.setAttribute("id", countChampionships);
 
     var tdChampionship = document.createElement("td");
     var tdSeason = document.createElement("td");
-    var tdRdb = document.createElement("td");
+    var tdRdb1 = document.createElement("td");
+    tdRdb1.setAttribute("colspan", "3");
+    var rdbDiv =  document.createElement("div");
+    rdbDiv.setAttribute("class", "rdbDiv");
+
 
     // Creates the new <SELECT> for Championships and assigns an ID to it
     var championshipsComboBox = document.createElement("select");
@@ -64,10 +66,7 @@ function addElements(listItemIndx) {
         option.value = assignChampionshipValue(championshipList[i]);
         option.text = championshipList[i];
         championshipsComboBox.appendChild(option);
-    }  
-
-    var txt1 = document.createTextNode("Just a Test");
-
+    }
     
     // Creates the new <SELECT> for SEASONS and assigns an ID to it
     var seasonComboBox = document.createElement("select");
@@ -80,17 +79,31 @@ function addElements(listItemIndx) {
         option.value = assignSeasonValue(seasonList[i]);
         seasonComboBox.appendChild(option);
     }
-    
 
+    for (var x = 0; x < medalWeight.length; x++)    {
+        // Creates each radioButton
+        var radioButton = document.createElement("input");
+        radioButton.type = "radio";
+        radioButton.name = "titles" + countChampionships;
+        radioButton.value = medalWeight[x];
+        radioButton.setAttribute("class", "inline");
+        if (x == 0) {
+            radioButton.checked = true;
+        }
+        rdbDiv.appendChild(radioButton);
+    } 
+    
     tdChampionship.appendChild(championshipsComboBox);
     tdSeason.appendChild(seasonComboBox);
+    tdRdb1.appendChild(rdbDiv);
 
     calcRow.appendChild(tdChampionship);
     calcRow.appendChild(tdSeason);
+    calcRow.appendChild(tdRdb1);
 
     tblCalc.appendChild(calcRow);
 
-    listItemIndx++;
+    countChampionships++;
     emptyList = false;    
 }
 

@@ -158,3 +158,12 @@ table   {
 select {
     width: 100%;
 }
+
+.rdbDiv {
+    display: table;
+    width: 100%;
+}
+
+.inline {
+    width: 30%;
+}
