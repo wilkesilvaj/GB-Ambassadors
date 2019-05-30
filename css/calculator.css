@@ -11,11 +11,10 @@ nav {
     background: black;
 }
 
-#navhead {
+ul {
     float:left;
     width: 100%;    
 }
-
 
 a {
     color: rgb(177, 0, 0);
@@ -24,6 +23,7 @@ a {
 
 a:hover {
     color: white;
+ 
 }
 
 #featurette1  {
