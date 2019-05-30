@@ -30,13 +30,9 @@ a:hover {
     width: 100%;
     background: rgb(148, 0, 0);
     margin: auto;
-    /*transition: width 2s;
-    transition-timing-function: cubic-bezier(0.2, 0.7, 1.0, 0.4);*/
+   
 }
-/*
-#featurette1:hover {
-    width: 80%;
-}*/
+
 
 h2 {
     color: white;
