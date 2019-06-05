@@ -33,10 +33,6 @@ a:hover {
     /*transition: width 2s;
     transition-timing-function: cubic-bezier(0.2, 0.7, 1.0, 0.4);*/
 }
-/*
-#featurette1:hover {
-    width: 80%;
-}*/
 
 h2 {
     color: white;
@@ -70,7 +66,6 @@ h2 {
 .padding-bottom    {
     padding-bottom:1rem;
 }
-
 
 form{
     background-color: white;
@@ -135,7 +130,7 @@ caption{
 
 th, tr, td{
     border: 1px solid black; 
-    
+  
 }
 
 th.gold {
@@ -170,4 +165,16 @@ select {
 
 .no-margin  {
     margin: unset;
+}
+
+tr.grey {
+    background: silver;
+}
+
+tr.white    {
+    background: white;
+}
+
+.table tbody tr td{
+    vertical-align: middle;
 }
