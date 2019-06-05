@@ -85,6 +85,10 @@ body    {
     margin-top: 1rem;
 }
 
+.margin-bottom  {
+    margin-bottom: 1rem;
+}
+
 .padding-sides   {
     padding-right:  1rem;
     padding-left:  1rem;
@@ -177,4 +181,12 @@ tr.white    {
 
 .table tbody tr td{
     vertical-align: middle;
+}
+
+i.red{
+    color:  red;
+}
+
+button:hover, i:hover{
+    cursor: pointer;
 }

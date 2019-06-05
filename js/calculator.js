@@ -74,7 +74,7 @@ function addChampionship()  {
     createRadioButtons(formRow);
 
     // Creates add and remove buttons
-    addButtons(formRow);
+    createRemoveChampionshipButton(formRow);
 
     // Inserts new POPULATED <TR> element into tbody
     calculatorBody.appendChild(formRow);
@@ -82,7 +82,7 @@ function addChampionship()  {
     // Increments unique ID identifier of the <SELECT>
     championshipIndex++;     
     
-    addCalculateButton();
+    createAddButton();
 }
 
 
@@ -90,7 +90,7 @@ function addChampionship()  {
  * Function which adds the "Add another championship" and "remove current championship" icons / buttons
  * @param {*} currentFormRow - the <div> which represents the current row of the calculator form
  */
-function addButtons(currentFormRow)  {
+function createRemoveChampionshipButton(currentFormRow)  {
     
     // Resets the formCol <DIV> to insert new columns
     formCol = document.createElement("td");
@@ -119,7 +119,7 @@ function addButtons(currentFormRow)  {
     icon.addEventListener("click", deleteCurrentChampionship, false);
 }
 
-function addCalculateButton()   {
+function createAddButton()   {
    
     var button;
 

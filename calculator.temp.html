@@ -16,20 +16,20 @@
     <script type="text/javascript" src="js/formvalidation.js"></script>
 
     <!-- Form dynamic creation-->
+    <!--<script type="text/javascript" src="js/calculator.js"></script>-->
     <script type="text/javascript" src="js/calculator.temp.js"></script>
 
     <title>GB Ambassadors Program Pacific Northwest</title>
-  </head>
-
-  <body>
-       <!-- Nav Bar with the logo-->
-       <nav class="navbar navbar-expand-lg ">
+    </head>
+    <body>
+        <!-- Nav Bar with the logo-->
+        <nav class="navbar navbar-expand-lg ">
             <a class="navbar-brand no-margin"  href="index.html">
                 <img src="images/gblogocrop.jpeg" alt = "Gracie Barra Ambassadors logo"  class="d-inline-block align-top">                 
             </a>
             <!-- Inserted a canadian flag, as per Rodrigo's request-->
             <img src="images/canada.jpg" alt = "Canadian flag"  class="d-inline-block valign">  
-            <ul class="nav justify-content-center" id="navhead">
+            <ul class="nav justify-content-center">
                 <li class="nav-item active">
                         <a class="nav-link" href="index.html">Home<span class="sr-only"></span></a>
                 </li>
@@ -43,11 +43,12 @@
                         <a class="nav-link" href="calculator.html">Points Calculator</a>
                 </li>
                 <li class="nav-item">
-                   <a class="nav-link" href="sponsors.html">Sponsors</a>
+                <a class="nav-link" href="sponsors.html">Sponsors</a>
                 </li>
             </ul>
         </nav>
-    
+        <!-- END OF NAV BAR-->
+        
         <!-- Title with the descritption-->
         <div class="content">
                 <div class="row featurette" id="featurette1">
@@ -58,32 +59,28 @@
         </div> 
         
         <div class="container no-padding">
-            <table id="calForm"  class = "center">
-                <form action="">
+            <form id = "calculatorForm" name = "calculatorForm" class ="padding-sides padding-top padding-bottom center" method = "POST" action = "#">
+                <table class = "center">
                     <thead>
                         <tr>
+                            <th colspan="6"><h3>GB AMBASSADORS POINTS CALCULATOR</h3></th>
+                        </tr>
+                        <tr>
                             <th>Championships</th>
-                            <th>Season</th>
+                            <th>Seasons</th>
                             <th>1st place</th>
-                            <th>2st place</th>
-                            <th>3st place</th>
+                            <th>2nd place</th>
+                            <th>3rd place</th>
+                            <td><!--ICONS--></td>
                         </tr>
                     </thead>
-                    <tbody id="calc">
-                        <tr>
+                    <tbody id = "calculatorBody">
 
-                        </tr>
                     </tbody>
-
-                </form>
-
-            </table>
-            <input type="button" id="addRow" value="Temp Button To add Rows" />                    
+                </table>
+                <button class = "margin-top" id = "btnCalculate" name = "btnCalculate" type = "button" >Calculate</button>
+            </form>            
         </div>   
-
-        <script>
-            document.getElementById("addRow").onclick = function () { addElements(); }
-        </script>
 
         <div class = "container">
             <h3 id = "calculatorResult" ></h3>
@@ -91,7 +88,7 @@
 
         <div class="container padding-top" style = "background: white;" >
             <!--TOURNAMENTS TABLE-->
-            <table class = "center table table-hover table-striped">
+            <table class = "center table">
                 <caption class = "table-header center">
                     <h4>Gracie Barra Tournament Ranking</h4>
                 </caption>
@@ -102,10 +99,11 @@
                     </tr>
                 </thead>
                 <tbody>                    
-                    <tr>
+                    <tr class ="grey">
                         <td>IBJJF Worlds</td>
                         <td>7</td>
                     </tr>
+                    <!--SECOND ROW OF CHAMPIONSHIPS-->
                     <tr>
                         <td>IBJJF PANS</td>
                         <td rowspan="4">6</td>
@@ -119,18 +117,18 @@
                     <tr>
                         <td>UAE WORLD PRO</td>                        
                     </tr>
-                    <!-- END OF ROWSPAN 4-->
-                    <tr>
+                    <!-- END OF SECOND ROW OF CHAMPIONSHIPS-->
+                    <tr class ="grey">
                         <td>UAE GRAND SLAM (LA)</td>
                         <td rowspan="4">5</td>
                     </tr>
-                    <tr>
+                    <tr class ="grey">
                         <td>GB COMPNET</td>                        
                     </tr>
-                    <tr>
+                    <tr class ="grey">
                         <td>IBJJF AMERICAN NATIONALS</td>                        
                     </tr>
-                    <tr>
+                    <tr class ="grey">
                         <td>IBJJF PRO</td>                        
                     </tr>
                     <!-- END OF ROWSPAN 4-->
@@ -180,17 +178,17 @@
                     <tr>
                         <th>Season I</th>
                         <td>May 1st, 2018 - May 1st, 2019</td>
-                        <td>1</td>
+                        <td>2</td>
                     </tr>
-                    <tr>
+                    <tr class ="grey">
                         <th>Season II</th>
                         <td>May 2nd, 2019 - May 1st, 2020</td>
-                        <td>2</td>
+                        <td>3</td>
                     </tr>
                     <tr>
                         <th>Season III</th>
                         <td>May 2nd, 2020 - May 1st, 2021</td>
-                        <td>3</td>
+                        <td>4</td>
                     </tr>
                 </tbody>
             </table>
