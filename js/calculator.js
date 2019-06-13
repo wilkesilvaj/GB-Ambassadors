@@ -56,6 +56,9 @@ function initializeComponents()  {
     // Initializes the calculator tbody element
     calculatorBody = document.getElementById("calculatorBody");
 
+    // Adds event handler to the Calculate button
+    document.getElementById("btnCalculate").addEventListener("click", calculatePoints,false);
+
     addChampionship();
 }
 
@@ -96,21 +99,11 @@ function createRemoveChampionshipButton(currentFormRow)  {
     formCol = document.createElement("td");
 
     // Inserts new <TD> into the current row
-    currentFormRow.appendChild(formCol);
-
-    // Creates the ADD icon to add new championships
-    var icon = document.createElement("i");
-    icon.className = "fas fa-plus-square";
-    icon.name = "addChampionship" + championshipIndex;
-
-    formCol.appendChild(icon);    
-
-    // Adds event handler to create more championships by clicking the icon
-    icon.addEventListener("click", addChampionship, false);
+    currentFormRow.appendChild(formCol);    
 
     // Creates the MINUS icon to REMOVE current championship
     var icon = document.createElement("i");
-    icon.className = "fas fa-minus-square";
+    icon.className = "far fa-times-circle red";
     icon.name = "deleteChampionship" + championshipIndex;
 
     formCol.appendChild(icon);    
@@ -119,12 +112,17 @@ function createRemoveChampionshipButton(currentFormRow)  {
     icon.addEventListener("click", deleteCurrentChampionship, false);
 }
 
+
+
+/**
+ * Function to create the Calculate button
+ */
 function createAddButton()   {
    
     var button;
 
     // Verifies if button already exists, and if so, deletes its previous instance to re-create it at the end of the form
-    button = document.getElementById("btnCalculate");
+    button = document.getElementById("btnAddChampionship");
     
     if (button != null) {
         var parentTD = button.parentElement;
@@ -143,10 +141,12 @@ function createAddButton()   {
 
     // Creates new <button>
     button = document.createElement("button");
-    button.name = "btnCalculate";
-    button.id = "btnCalculate";
+    button.name = "btnAddChampionship";
+    button.id = "btnAddChampionship";
+    button.className = "margin-top margin-bottom";
     button.type = "button";
-    button.innerHTML = "Calculate";
+    button.innerHTML = "Add another championship";
+    
 
     // Adds button to <TD>
     formCol.appendChild(button);
@@ -157,8 +157,8 @@ function createAddButton()   {
     // INSERTS last ROW into the form
     calculatorBody.appendChild(formRow);
 
-    // Adds event handler
-    document.getElementById("btnCalculate").addEventListener("click", calculatePoints,false);
+    // Adds event handler  
+    document.getElementById("btnAddChampionship").addEventListener("click", addChampionship,false);
 }
 
 

@@ -122,3 +122,7 @@ img.gblogo  {
 .no-margin  {
     margin: unset;
 }
+
+span.warning    {
+    color: red;
+}

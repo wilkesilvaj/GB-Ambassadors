@@ -1,7 +1,9 @@
-<?php
+<?php    
     $errors = [];
-    $missing = [];
+    $missing = [];      
 
+
+    // If the user has clicked on the submit button of the "Adults Form"
     if (isset($_POST['submit']))    {
         $expected = ['firstName','lastName', 'dateOfbirth',
     'gender', 'belt', 'address', 'homeSchool', 'homeSchoolAddress',
@@ -9,14 +11,26 @@
 
     $required = ['firstName','lastName', 'dateOfbirth',
     'gender', 'belt', 'address', 'homeSchool', 'homeSchoolAddress',
-    'icp6', 'icpUpToDate', 'uniform', 'attendance', 'result'  ];
+    'icp6', 'icpUpToDate', 'uniform', 'attendance', 'results'  ]; 
 
+    require './includes/process_mail.php';
     }
+    // If the user has clicked on the submit button of the "Kids Form"
     else if (isset($_POST['chSubmit'])) {
-        $expected = ['firstName','lastName', 'dateOfbirth',
-    'gender', 'belt', 'address', 'homeSchool', 'homeSchoolAddress',
-    'icp6', 'icpUpToDate', 'uniform', 'attendance', 'result'  ];
+        $expected = ['chFirstName','chLastName', 'chDateOfBirth',
+    'chGender', 'chBelt', 'chAddress', 'chHomeSchool', 'chHomeSchoolAddress',
+    'chIcp6', 'chIcpUpToDate', 'chUniform', 'chAttendance', 'chResults'  ];
+
+        $required = ['chFirstName','chLastName', 'chDateOfBirth',
+    'chGender', 'chBelt', 'chAddress', 'chHomeSchool', 'chHomeSchoolAddress',
+    'chIcp6', 'chIcpUpToDate', 'chUniform', 'chAttendance', 'chResults'  ];
+ 
+
+    require './includes/process_mail.php';
+   
     }
+
+    
 
 ?>
 <!doctype html>
@@ -89,15 +103,11 @@
                         <!-- Beggining of the form-->                        
                         <form class = "padding-sides padding-bottom" method = "POST" action = "<?= $_SERVER['PHP_SELF']; ?>">
                             <div class = "alert alert-danger alert-dismissible fade show" role = "alert" id = "alert">
-                                <p id = "errorMessage">
-                                    <?php
-                                        if ($errors || $missing) : ?>      
-                                    <p>Please fix the item(s) indicated</p>
-                                    <?php endif; ?>
-                                </p>
-                                <button type = "button" id = "close" class = "close" data-hide = "alert" aria-label = "Close">
-                                    <span aria-hidden = "true">&times;</span>
-                                </button>
+                                <?php                               
+                                    if ($errors || $missing) : ?>                                 
+                                <p id = "errorMessage" class = "warning">Please fix the item(s) indicated</p>
+                                <?php endif; ?>                               
+                             
                             </div>
                             <!-- First row with First and Last Name fields-->
                             <div class = "form-row" id = "formrow1">
@@ -274,7 +284,7 @@
                             </div>
                             <div class = "form-row" id = "submitbutton">
                                 <!-- <input type = "button" id = "validate" class = "btn btn-danger" value = "Validate" onclick = "validateForm();"/> -->
-                                <input type = "submit" id = "submit"  class = "btn btn-danger" value = "Submit"/>
+                                <input type = "submit" name = "submit" id = "submit"  class = "btn btn-danger" value = "Submit"/>
                                 <span id = "span">&nbsp;</span><br>
                             </div>
         
@@ -296,14 +306,23 @@
                                 <div class = "form-row" id = "formrow1">
                                     <div class = "form-group col-md-6">
                                         <label for = "chFirstName">First Name</label>
+                                        <?php if ($missing && in_array('chFirstName', $missing)) : ?>
+                                            <span class = "warning">Please enter your first name</span>
+                                        <?php endif; ?>
                                         <input type = "text" class = "form-control" name = "chFirstName" id = "chFirstName" placeholder = "Enter the child's First Name">
                                     </div>
                                     <div class = "form-group col-md-6">
                                         <label for = "chLastName">Last Name</label>
+                                        <?php if ($missing && in_array('chLastName', $missing)) : ?>
+                                            <span class = "warning">Please enter your last name</span>
+                                        <?php endif; ?>
                                         <input type = "text" class = "form-control" name = "chLastName" id = "chLastName" placeholder = "Enter the child's Last Name">
                                     </div>
                                     <div class = "form-group col-md-4">
                                         <label for = "chParentName">Parent's Full Name</label>
+                                        <?php if ($missing && in_array('chParentName', $missing)) : ?>
+                                            <span class = "warning">Please enter one of your parent's full name</span>
+                                        <?php endif; ?>
                                         <input type = "text" class = "form-control" name = "chParentName" id = "chParentName" placeholder = "Enter the parent's Full Name">
                                     </div>
                                 </div>
@@ -311,10 +330,16 @@
                                 <div class = "form-row">
                                     <div class = "form-group col-md-4">
                                         <label for = "chDateOfBirth">Date of Birth:</label>
+                                        <?php if ($missing && in_array('firstName', $missing)) : ?>
+                                            <span class = "warning">Please enter your date of birth</span>
+                                        <?php endif; ?>
                                         <input type = "date" name = "chDateOfBirth" id = "chDateOfBirth" placeholder = "yyyy-mm-dd" /><br />
                                     </div>
                                     <div class = "form-group col-md-4">
                                         Gender:
+                                        <?php if ($missing && in_array('chGender', $missing)) : ?>
+                                            <span class = "warning">Please select your gender</span>
+                                        <?php endif; ?>
                                         <div class = "form-check form-check-inline">
                                             <input class = "form-check-input" type = "radio" name = "chGender"  id = "chRdbMale" value = "Male">
                                             <label class = "form-check-label" for = "inlineRadio1">Male</label>
@@ -327,6 +352,9 @@
             
                                     <div class = "form-group col-md-4">
                                         Belt:
+                                        <?php if ($missing && in_array('chBelt', $missing)) : ?>
+                                            <span class = "warning">Please select your belt</span>
+                                        <?php endif; ?>
                                         <div class = "form-check form-check-inline">
                                             <input class = "form-check-input" type = "radio" name = "chBelt" id = "chRdbBlack" value = "Black">
                                             <label class = "form-check-label" for = "rdbBlack">Black</label>
@@ -352,87 +380,117 @@
                                 <!-- Third row-->
                                 <div class = "form-group">
                                     <label for = "chDateOfGraduation">Date of your last graduation(Belt):</label>
+                                    <?php if ($missing && in_array('chDateOfGraduation', $missing)) : ?>
+                                            <span class = "warning">Please enter the date of your alst graduation</span>
+                                    <?php endif; ?>
                                     <input type = "date" class = "form-control" name = "chDateOfGraduation" id = "chDateOfGraduation" placeholder = "yyyy-mm-dd">
                                 </div>
                                 <!-- Forth row-->
                                 <div class = "form-row">
-                                        <div class = "form-group col-md-6">
-                                            <label for = "chPhoneNumber">Phone Number:</label>
-                                            <input type = "text" class = "form-control" name = "chPhoneNumber" id = "chPhoneNumber" placeholder = "Enter your phone number">
-                                        </div>
-                                        <div class = "form-group col-md-6">
-                                            <label for = "chEmail">Email:</label>
-                                            <input type = "email" class = "form-control" name = "chEmail" id = "chEmail" placeholder = "example@hotmail.com">
-                                        </div>
+                                    <div class = "form-group col-md-6">
+                                        <label for = "chPhoneNumber">Phone Number:</label>
+                                        <?php if ($missing && in_array('chPhoneNumber', $missing)) : ?>
+                                            <span class = "warning">Please enter your phone number</span>
+                                        <?php endif; ?>
+                                        <input type = "text" class = "form-control" name = "chPhoneNumber" id = "chPhoneNumber" placeholder = "Enter your phone number">
+                                    </div>
+                                    <div class = "form-group col-md-6">
+                                        <label for = "chEmail">Email:</label>
+                                        <?php if ($missing && in_array('chEmail', $missing)) : ?>
+                                            <span class = "warning">Please enter your email address</span>
+                                        <?php endif; ?>
+                                        <input type = "email" class = "form-control" name = "chEmail" id = "chEmail" placeholder = "example@hotmail.com">
+                                    </div>
                                 </div>
                                 <!-- Fifth row-->
                                 <div class = "form-row">
-                                        <div class = "form-group col-md-4">
-                                            <label for = "chAddress">Address:</label>
-                                            <input type = "text" class = "form-control" name = "chAddress" id = "chAddress" placeholder = "1234 Example Street, Vancouver">
-                                        </div>
-                                        <div class = "form-group col-md-4">
-                                            <label for = "chHomeSchool">Home School:</label>
-                                            <input type = "text" class = "form-control" name = "chHomeSchool" id = "chHomeSchool" placeholder = "Gracie Barra Vancouver">
-                                        </div>
-                                        <div class = "form-group col-md-4">
-                                            <label for = "chHomeSchoolAddress">Home School Address:</label>
-                                            <input type = "text" class = "form-control" name = "chHomeSchoolAddress" id = "chHomeSchoolAddress" placeholder = "987 GB Avenue, Vancouver">
-                                        </div>
+                                    <div class = "form-group col-md-4">
+                                        <label for = "chAddress">Address:</label>
+                                        <?php if ($missing && in_array('chAddress', $missing)) : ?>
+                                            <span class = "warning">Please enter your address</span>
+                                        <?php endif; ?>
+                                        <input type = "text" class = "form-control" name = "chAddress" id = "chAddress" placeholder = "1234 Example Street, Vancouver">
+                                    </div>
+                                    <div class = "form-group col-md-4">
+                                        <label for = "chHomeSchool">Home School:</label>
+                                        <?php if ($missing && in_array('firstName', $missing)) : ?>
+                                            <span class = "warning">Please enter your home school</span>
+                                        <?php endif; ?>
+                                        <input type = "text" class = "form-control" name = "chHomeSchool" id = "chHomeSchool" placeholder = "Gracie Barra Vancouver">
+                                    </div>
+                                    <div class = "form-group col-md-4">
+                                        <label for = "chHomeSchoolAddress">Home School Address:</label>
+                                        <?php if ($missing && in_array('firstName', $missing)) : ?>
+                                            <span class = "warning">Please enter your home school's address</span>
+                                        <?php endif; ?>
+                                        <input type = "text" class = "form-control" name = "chHomeSchoolAddress" id = "chHomeSchoolAddress" placeholder = "987 GB Avenue, Vancouver">
+                                    </div>
                                 </div>
                                 <!-- Sixth row-->
                                 <div class = "form-row">
-                                        <div class = "form-group col-md-6">
-                                            <label for = "chIcp6">ICP 6 is a requirement for applying to the GB Ambassadors Ambassadors Program. Did you complete the last ICP?:</label>
-                                            <input type = "radio" name = "chIcp6" id = "chIcp6Yes" value = "yes" />Yes
-                                            <input type = "radio" name = "chIcp6" id = "chIcp6No" value = "no" />No
-                                        </div>
-                                        <div class = "form-group col-md-6">
-                                            <label for = "chIcpUpToDate">Is the Head Instructor and all the Staff members of your Home School aligned and updated with the latest ICP?</label>
-                                            <input type = "radio" name = "chIcpUpToDate" id = "chIcpUpToDateYes" value = "yes" />Yes
-                                            <input type = "radio" name = "chIcpUpToDate" id = "chIcpUpToDateNo" value = "no" />No
-                                        </div>
+                                    <div class = "form-group col-md-6">
+                                        <label for = "chIcp6">ICP 6 is a requirement for applying to the GB Ambassadors Ambassadors Program. Did you complete the last ICP?:</label>
+                                        <?php if ($missing && in_array('chIcp6', $missing)) : ?>
+                                            <span class = "warning">Please specify if you comply with the ICP6 requirement</span>
+                                        <?php endif; ?>
+                                        <input type = "radio" name = "chIcp6" id = "chIcp6Yes" value = "yes" />Yes
+                                        <input type = "radio" name = "chIcp6" id = "chIcp6No" value = "no" />No
+                                    </div>
+                                    <div class = "form-group col-md-6">
+                                        <label for = "chIcpUpToDate">Is the Head Instructor and all the Staff members of your Home School aligned and updated with the latest ICP?</label>
+                                        <?php if ($missing && in_array('chIcpUpToDate', $missing)) : ?>
+                                            <span class = "warning">Please specify if your home school is aligned with the latest ICP</span>
+                                        <?php endif; ?>
+                                        <input type = "radio" name = "chIcpUpToDate" id = "chIcpUpToDateYes" value = "yes" />Yes
+                                        <input type = "radio" name = "chIcpUpToDate" id = "chIcpUpToDateNo" value = "no" />No
+                                    </div>
                                 </div>
                                 <hr class = "divider">
                                 <!-- Seventh row-->
                                 <div class = "form-row">
-                                        <div class = "form-group col-md-6">
-                                            <label for = "chUniform">Wearing the Full Gracie Barra Uniform and wearing the latest Gracie Barra Red Competition Shirt is mandatory to apply for the GB Arizona Ambassadors Program. Are you willing to make that commitment?</label>
-                                            <input type = "radio" name = "chUniform" id = "chUniformYes" value = "yes" />Yes
-                                            <input type = "radio" name = "chUniform" id = "chUniformNo" value = "no" />No
-                                        </div>
-                                        <div class = "form-group col-md-6">
-                                            <label for = "chAttendance">In order to be a GB Ambassadors Arizona, it is required your attendance in at least 80% of our 3 times per week competition training, hosted at GB North Phoenix (Mon, Wed, Fri 12pm). Are you willing to make that commitment?</label>
-                                            <input type = "radio" name = "chAttendance" id = "chAttendanceYes" value = "yes" />Yes
-                                            <input type = "radio" name = "chAttendance" id = "chAttendanceNo" value = "no" />No
-                                        </div>
+                                    <div class = "form-group col-md-6">
+                                        <label for = "chUniform">Wearing the Full Gracie Barra Uniform and wearing the latest Gracie Barra Red Competition Shirt is mandatory to apply for the GB Pacific Northwest Ambassadors Program. Are you willing to make that commitment?</label>
+                                        <?php if ($missing && in_array('chUniform', $missing)) : ?>
+                                            <span class = "warning">Please specify if you comply with the uniform requirements</span>
+                                        <?php endif; ?>
+                                        <input type = "radio" name = "chUniform" id = "chUniformYes" value = "yes" />Yes
+                                        <input type = "radio" name = "chUniform" id = "chUniformNo" value = "no" />No
+                                    </div>
+                                    <div class = "form-group col-md-6">
+                                        <label for = "chAttendance">In order to be a GB Ambassadors Pacific Northwest, it is required your attendance in at least 80% of our 3 times per week competition training, hosted at GB North Phoenix (Mon, Wed, Fri 12pm). Are you willing to make that commitment?</label>
+                                        <?php if ($missing && in_array('chAttendance', $missing)) : ?>
+                                            <span class = "warning">Please specify if you comply with the attendance requirements</span>
+                                        <?php endif; ?>
+                                        <input type = "radio" name = "chAttendance" id = "chAttendanceYes" value = "yes" />Yes
+                                        <input type = "radio" name = "chAttendance" id = "chAttendanceNo" value = "no" />No
+                                    </div>
                                 </div>
                                 <hr class = "divider">
                                 <!-- Eigth row-->
                                 <div class = "form-row">
-                                        <div class = "form-group col-md-6">
-                                            <label for = "chResults"> Our criteria to elect the athletes that will be granted support from the GB Ambassadors Pacific Northwest is based on the info collected on this form and the results in competitions throughout the Season. Are you willing to make the commitment to send the results you get in competitions to the GB Ambassadors Arizona Staff?</label>
-                                            <input type = "radio" name = "chResults" id = "chResultsYes" value = "yes" />Yes
-                                            <input type = "radio" name = "chResults" id = "chResultsNo" value = "no" />No
-                                        </div>
-                                        <div class = "form-group col-md-6">
-                                            <label for = "titles">Please list below your last titles since the IBJJF Worlds 2017:</label>
-                                            <textarea id = "titles" rows = "4" cols = "50"></textarea>
-                                        </div>
+                                    <div class = "form-group col-md-6">
+                                        <label for = "chResults"> Our criteria to elect the athletes that will be granted support from the GB Ambassadors Pacific Northwest is based on the info collected on this form and the results in competitions throughout the Season. Are you willing to make the commitment to send the results you get in competitions to the GB Ambassadors Arizona Staff?</label>
+                                        <?php if ($missing && in_array('chResults', $missing)) : ?>
+                                            <span class = "warning">Please specify if you comply with the competition results requirements</span>
+                                        <?php endif; ?>
+                                        <input type = "radio" name = "chResults" id = "chResultsYes" value = "yes" />Yes
+                                        <input type = "radio" name = "chResults" id = "chResultsNo" value = "no" />No
+                                    </div>
+                                    <div class = "form-group col-md-6">
+                                        <label for = "titles">Please list below your last titles since the IBJJF Worlds 2017:</label>
+                                        <textarea id = "titles" rows = "4" cols = "50"></textarea>
+                                    </div>
                                 </div>
                                 <div class = "form-row" id = "chSubmitbutton">
                                     <!-- <input type = "button" id = "chValidate" class = "btn btn-danger" value = "Validate" onclick = "chValidateForm();"/> -->
-                                    <input type = "submit" id = "chSubmit"  class = "btn btn-danger" value = "Submit"/>
+                                    <input type = "submit" name = "chSubmit" id = "chSubmit"  class = "btn btn-danger" value = "Submit"/>
                                     <span id = "chSpan">&nbsp;</span><br>
                                 </div>            
                             </form>
                     </div>
                 </div>
         </div>      
-
-        <h2>
-            <?php print_r($_POST); ?>
-        </h3>
+       
 
     <!-- Footer at the end of the page-->
     <footer class = "footer mt-auto center">
