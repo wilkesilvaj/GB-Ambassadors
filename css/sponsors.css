@@ -31,6 +31,7 @@ a:hover {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: 0% 50%;
     position: relative;    
     min-height: 30em;    
 }
