@@ -2,6 +2,8 @@
     $errors = [];
     $missing = [];      
 
+    require_once("./includes/process_mail.php");
+
 
     // If the user has clicked on the submit button of the "Adults Form"
     if (isset($_POST['submit']))    {
@@ -13,7 +15,12 @@
     'gender', 'belt', 'address', 'homeSchool', 'homeSchoolAddress',
     'icp6', 'icpUpToDate', 'uniform', 'attendance', 'results'  ]; 
 
-    require './includes/process_mail.php';
+    // Gets all the missing fields based on its fields
+    $missing = checkMissingFields($required);
+
+    // Gets error messages for missing fields, if any
+    $errors = validateAdultsForm($missing);
+    
     }
     // If the user has clicked on the submit button of the "Kids Form"
     else if (isset($_POST['chSubmit'])) {
@@ -25,8 +32,9 @@
     'chGender', 'chBelt', 'chAddress', 'chHomeSchool', 'chHomeSchoolAddress',
     'chIcp6', 'chIcpUpToDate', 'chUniform', 'chAttendance', 'chResults'  ];
  
-
-    require './includes/process_mail.php';
+    // Gets all the missing fields based on its fields
+    $missing = checkMissingFields($required);
+    
    
     }
 
@@ -250,7 +258,7 @@
                             <!-- Seventh row-->
                             <div class = "form-row">
                                     <div class = "form-group col-md-6">
-                                        <label for = "uniform">Wearing the Full Gracie Barra Uniform and wearing the latest Gracie Barra Red Competition Shirt is mandatory to apply for the GB Arizona Ambassadors Program. Are you willing to make that commitment?</label>
+                                        <label for = "uniform">Wearing the Full Gracie Barra Uniform and wearing the latest Gracie Barra Red Competition Shirt is mandatory to apply for the GB Pacific Northwest Ambassadors Program. Are you willing to make that commitment?</label>
                                         <?php if ($missing && in_array('uniform', $missing)) : ?>
                                             <span class = "warning">Please specify if you comply with the uniform requirements</span>
                                         <?php endif; ?>
@@ -258,7 +266,7 @@
                                         <input id = "uniformNo" type = "radio" name = "uniform" value = "no" />No
                                     </div>
                                     <div class = "form-group col-md-6">
-                                        <label for = "attendance">In order to be a GB Ambassadors Arizona, it is required your attendance in at least 80% of our 3 times per week competition training, hosted at GB North Phoenix (Mon, Wed, Fri 12pm). Are you willing to make that commitment?</label>
+                                        <label for = "attendance">In order to be a GB Ambassadors Pacific Northwest, it is required your attendance in at least 80% of our 3 times per week competition training, hosted at GB Vancouver (Mon, Wed, Fri 12pm). Are you willing to make that commitment?</label>
                                         <?php if ($missing && in_array('attendance', $missing)) : ?>
                                             <span class = "warning">Please specify if you have the minimum required attendance</span>
                                         <?php endif; ?>
@@ -457,7 +465,7 @@
                                         <input type = "radio" name = "chUniform" id = "chUniformNo" value = "no" />No
                                     </div>
                                     <div class = "form-group col-md-6">
-                                        <label for = "chAttendance">In order to be a GB Ambassadors Pacific Northwest, it is required your attendance in at least 80% of our 3 times per week competition training, hosted at GB North Phoenix (Mon, Wed, Fri 12pm). Are you willing to make that commitment?</label>
+                                        <label for = "chAttendance">In order to be a GB Ambassadors Pacific Northwest, it is required your attendance in at least 80% of our 3 times per week competition training, hosted at GB Vancouver (Mon, Wed, Fri 12pm). Are you willing to make that commitment?</label>
                                         <?php if ($missing && in_array('chAttendance', $missing)) : ?>
                                             <span class = "warning">Please specify if you comply with the attendance requirements</span>
                                         <?php endif; ?>
@@ -469,7 +477,7 @@
                                 <!-- Eigth row-->
                                 <div class = "form-row">
                                     <div class = "form-group col-md-6">
-                                        <label for = "chResults"> Our criteria to elect the athletes that will be granted support from the GB Ambassadors Pacific Northwest is based on the info collected on this form and the results in competitions throughout the Season. Are you willing to make the commitment to send the results you get in competitions to the GB Ambassadors Arizona Staff?</label>
+                                        <label for = "chResults"> Our criteria to elect the athletes that will be granted support from the GB Ambassadors Pacific Northwest is based on the info collected on this form and the results in competitions throughout the Season. Are you willing to make the commitment to send the results you get in competitions to the GB Ambassadors Pacific Northwest Staff?</label>
                                         <?php if ($missing && in_array('chResults', $missing)) : ?>
                                             <span class = "warning">Please specify if you comply with the competition results requirements</span>
                                         <?php endif; ?>
