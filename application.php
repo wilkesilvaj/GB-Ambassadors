@@ -1,7 +1,19 @@
 <?php    
+
     $errors = [];
     $missing = [];      
 
+    /*Mail variables */
+    $to = 'João Wilke <wilke.joao@gmail.com>';
+    $subject = 'GB Pacific Northwest Ambassadors Program Application';
+    
+    $headers = [];
+    $headers[] = 'From: wilke.joao@gmail.com';
+    $headers[] = 'Cc: ';
+    $headers[] = 'Content-type: text/plain; charset=utf-8';
+    // $authorized = null;
+
+    // Includes other files
     require("./includes/process_mail.php");
    
     // If the user has clicked on the submit button of the "Adults Form"
@@ -17,8 +29,6 @@
     // Gets all the missing fields based on its fields
     $missing = checkMissingFields($required);
 
-    // Gets error messages for missing fields, if any
-    $errors = validateAdultsForm($missing);
     
     }
     // If the user has clicked on the submit button of the "Kids Form"
@@ -33,10 +43,9 @@
  
     // Gets all the missing fields based on its fields
     $missing = checkMissingFields($required);
-    
-  
    
     }
+
   
 ?>
 <!doctype html>
@@ -108,16 +117,16 @@
                     <div class = "container no-padding">
                         <!-- Beggining of the form-->                        
                         <form class = "padding-sides padding-bottom" method = "POST" action = "<?= $_SERVER['PHP_SELF']; ?>">
-                            <!-- First row with First and Last Name fields-->
+                        <!-- Checks if there is any suspicious data in the form -->
+                        <?php  if ($_POST && $suspect) : ?>
+                            <div class = "form-row">
+                                <p class = "warning">Sorry, your mail couldn't be sent!</p>
+                            </div>
+                        <?php endif; ?>    
+                        
+                        <!-- First row with First and Last Name fields-->
                             <div class = "form-row padding-top" >
-                                <div class = "form-group col-md-6">
-                                    <!-- Checks if there is any suspicious data in the form -->
-                                    <?php  if ($_POST && $suspect) :
-                                        echo "<script type='text/javascript'> 
-                                        alert('Your mail couldnt be sent!');
-                                        </script>";
-                                    endif; ?>
-
+                                <div class = "form-group col-md-6">                     
                                     <label for = "firstName">First Name</label>
                                     <?php if ($missing && in_array('firstName', $missing)) : ?>
                                         <span class = "warning">Please enter your first name</span>
@@ -269,6 +278,8 @@
                                     <label for = "email">Email:</label>
                                     <?php if ($missing && in_array('email', $missing)) : ?>
                                         <span class = "warning">Please enter your email address</span>
+                                    <?php elseif (isset($errors['email'])) : ?>
+                                        <span class = "warning">Invalid email address</span>
                                     <?php endif; ?>
                                     <input type = "email" class = "form-control" name = "email" id = "email" placeholder = "example@hotmail.com" data-toggle = "popover" data-trigger = "hover"
                                     data-content = "My popover content."
@@ -441,6 +452,12 @@
                     <div class = "container no-padding">
                             <!-- Beggining of the form-->
                             <form class = "padding-sides padding-bottom" method = "POST" action = "<?= $_SERVER['PHP_SELF']; ?>">
+                                <!-- Checks if there is any suspicious data in the form -->
+                                <?php  if ($_POST && $suspect) : ?>
+                                    <div class = "form-row">
+                                        <p class = "warning">Sorry, your mail couldn't be sent!</p>
+                                    </div>
+                                <?php endif; ?> 
                                 <!-- First row with First and Last Name fields-->
                                 <div class = "form-row padding-top">
                                     <div class = "form-group col-md-6">
@@ -608,6 +625,8 @@
                                         <label for = "chEmail">Email:</label>
                                         <?php if ($missing && in_array('chEmail', $missing)) : ?>
                                             <span class = "warning">Please enter your email address</span>
+                                        <?php elseif (isset($errors['chEmail'])) : ?>
+                                            <span class = "warning">Invalid email address</span>                                        
                                         <?php endif; ?>
                                         <input type = "email" class = "form-control" name = "chEmail" id = "chEmail" placeholder = "example@hotmail.com"
                                             <?php

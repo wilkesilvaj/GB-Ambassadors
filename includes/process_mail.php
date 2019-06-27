@@ -1,8 +1,11 @@
 <?php   
 
-    // Variables used to check for suspicious phrases / email headers
+    // Assume that initially the input contains nothing suspect
     $suspect = false;
 
+    /** Recurssive function that checks for suspect phrases
+     *  $suspect is passed by reference
+     */
     function isSuspect($value, $pattern, &$suspect) {
         if (is_array($value))   {
             foreach ($value as $item)   {
@@ -22,19 +25,23 @@
 
     function checkMissingFields(&$required) {
         
+       
         global $suspect;
+        global $errors;
+        global $headers;
         
-        //Looks for Content-type: OR Bcc: OR Cc: AND ITS CASE INSENSITIVE
+        // Regular expression to search for suspect phrases
         $pattern = '/Content-type:|Bcc:|Cc:/i';
         
         $missing = [];
         
+        // Checks the $_POST array for suspect phrases
         isSuspect($_POST, $pattern, $suspect);
       
-    
+        // Process the form only if no suspect phrases are found
         if (!$suspect):           
 
-            /** Loops through the form's data (checks if the data sent from the form contains empty values)
+            /** Check that required fields have been filled in
              *  IMPORTANT: THIS FOREACH WILL ONLY LOOP THROUGH FIELDS THAT MIGHT HAVE SENT EMPTY STRINGS AS DATA
              *  BELOW THE FOREACH WE MUST VALIDATE IF ALL THE REQUIRED FIELDS HAVE BEEN SET OR NOT
              *  */
@@ -45,7 +52,7 @@
                 // Verifies if $value is empty and if it is a required field. If both are true, it adds that key to the $missing array
                 if (empty($value) && in_array($key, $required)) {
                     $missing[] = $key;
-                    $$key = '';
+                    $$key = '';                
                 }                       
             }
 
@@ -56,7 +63,33 @@
                 if (!isset($_POST[$field])) {
                     $missing[] = $field;
                 }
+            }     
+            
+            // Validate user's email
+            if (!$missing && !empty($_POST['email'])) {
+                $validemail = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+                if ($validemail)    {
+                    $header[] = "Reply-to: $validemail";
+                }
+                else{
+                    $errors['email'] = true;
+                }
             }
+            else if (!$missing && !empty($_POST['chEmail'])) {
+                $validemail = filter_input(INPUT_POST, 'chEmail', FILTER_VALIDATE_EMAIL);
+                if ($validemail)    {
+                    $header[] = "Reply-to: $validemail";
+                }
+                else{
+                    $errors['chEmail'] = true;
+                }
+            }
+            // if no errors, create headers and message body
+            if (!$errors && !$missing):
+                $headers = implode("\r\n", $headers);
+            endif;      
+
+
         endif;
             return $missing;
     }
