@@ -1,34 +1,64 @@
-<?php    
+<?php   
 
-    // print_r($_POST);
+    // Variables used to check for suspicious phrases / email headers
+    $suspect = false;
+
+    function isSuspect($value, $pattern, &$suspect) {
+        if (is_array($value))   {
+            foreach ($value as $item)   {
+                isSuspect($item, $pattern, $suspect);
+            }
+        }   else{     
+           
+            if (preg_match($pattern, $value))   {
+                $suspect = true;
+            }           
+        }
+    }
+
+
+
+    //  print_r($_POST);
 
     function checkMissingFields(&$required) {
         
-        /** Loops through the form's data (checks if the data sent from the form contains empty values)
-         *  IMPORTANT: THIS FOREACH WILL ONLY LOOP THROUGH FIELDS THAT MIGHT HAVE SENT EMPTY STRINGS AS DATA
-         *  BELOW THE FOREACH WE MUST VALIDATE IF ALL THE REQUIRED FIELDS HAVE BEEN SET OR NOT
-         *  */
-        foreach($_POST as $key => $value)   {
-            // Verifies if the value is an array. If it isn't its value is trimmed to ignore whitespaces
-            $value = is_array($value) ? $value : trim($value);
-
-            // Verifies if $value is empty and if it is a required field. If both are true, it adds that key to the $missing array
-            if (empty($value) && in_array($key, $required)) {
-                $missing[] = $key;
-                $$key = '';
-            }                       
-        }
-
-        /** Loops through the required fields and checks if data has been submitted for each
-         *  required field
-         */
-        foreach ($required as $field)  {
-            if (!isset($_POST[$field])) {
-                $missing[] = $field;
-            }
-        }
+        global $suspect;
+        
+        //Looks for Content-type: OR Bcc: OR Cc: AND ITS CASE INSENSITIVE
+        $pattern = '/Content-type:|Bcc:|Cc:/i';
+        
+        $missing = [];
+        
+        isSuspect($_POST, $pattern, $suspect);
       
-        return $missing;
+    
+        if (!$suspect):           
+
+            /** Loops through the form's data (checks if the data sent from the form contains empty values)
+             *  IMPORTANT: THIS FOREACH WILL ONLY LOOP THROUGH FIELDS THAT MIGHT HAVE SENT EMPTY STRINGS AS DATA
+             *  BELOW THE FOREACH WE MUST VALIDATE IF ALL THE REQUIRED FIELDS HAVE BEEN SET OR NOT
+             *  */
+            foreach($_POST as $key => $value)   {
+                // Verifies if the value is an array. If it isn't its value is trimmed to ignore whitespaces
+                $value = is_array($value) ? $value : trim($value);
+
+                // Verifies if $value is empty and if it is a required field. If both are true, it adds that key to the $missing array
+                if (empty($value) && in_array($key, $required)) {
+                    $missing[] = $key;
+                    $$key = '';
+                }                       
+            }
+
+            /** Loops through the required fields and checks if data has been submitted for each
+             *  required field
+             */
+            foreach ($required as $field)  {
+                if (!isset($_POST[$field])) {
+                    $missing[] = $field;
+                }
+            }
+        endif;
+            return $missing;
     }
 
     function maintainSubmittedData($fieldName)    {

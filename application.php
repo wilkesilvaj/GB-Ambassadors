@@ -2,7 +2,7 @@
     $errors = [];
     $missing = [];      
 
-    require_once("./includes/process_mail.php");
+    require("./includes/process_mail.php");
    
     // If the user has clicked on the submit button of the "Adults Form"
     if (isset($_POST['submit']))    {
@@ -111,6 +111,13 @@
                             <!-- First row with First and Last Name fields-->
                             <div class = "form-row padding-top" >
                                 <div class = "form-group col-md-6">
+                                    <!-- Checks if there is any suspicious data in the form -->
+                                    <?php  if ($_POST && $suspect) :
+                                        echo "<script type='text/javascript'> 
+                                        alert('Your mail couldnt be sent!');
+                                        </script>";
+                                    endif; ?>
+
                                     <label for = "firstName">First Name</label>
                                     <?php if ($missing && in_array('firstName', $missing)) : ?>
                                         <span class = "warning">Please enter your first name</span>
