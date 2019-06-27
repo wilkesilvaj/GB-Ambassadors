@@ -107,9 +107,15 @@
                     if (is_array($val)) {
                         $val = implode(',',$val);
                     }
-                    // Replace underscores in the field names with spaces
+                    
+                    // Insert an empty space ' ' before each capital letter
                     $field = preg_replace('/(?<!\ )[A-Z]/', ' $0', $field);
-                    // $field = str_replace('_',' ',$field);
+
+                    // IF structuring data from a child's form, replaces ch with Child in the message body
+                    if (strpos($field, 'ch') !== false)                 {
+                        $field = str_replace('ch ','Child ', $field);                        
+                    }            
+                    
                     $message .= ucfirst($field). ":". $val . "\r\n\r\n";
                 endforeach;  
                 /* Wraps message content (by default, each line on an email message)
@@ -118,8 +124,7 @@
                 $mailSent = true;               
             endif;
         endif;
-      
-        echo htmlentities($message);
+        var_dump($mailSent);
        
             return $missing;
     }
@@ -135,15 +140,10 @@
     function maintainSubmittedRadioData($fieldName, $fieldId)    {
         // Checks if any data has been submitted for a particular field
         if (isset($_POST[$fieldName]))  {
-                   
-        
-
+                         
+            // Verifies if the input value matches the current fieldId, if it does, makes that radio button checked.
             if (strpos($fieldId,$_POST[$fieldName]))   {    
-                
-                // echo "<script type='text/javascript'> 
-                // alert('Your ".$fieldName." is ".$_POST[$fieldName]. "');
-                // </script>";  
-                
+                           
                 echo "<script type='text/javascript'> 
                 var radioButton = document.getElementById('".$fieldId."');
                 radioButton.checked = true; 

@@ -1,12 +1,12 @@
 <?php    
 
     $errors = [];
-    $missing = [];      
+    $missing = [];   
+    
 
     /*Mail variables */
     $to = 'João Wilke <wilke.joao@gmail.com>';
-    $subject = 'GB Pacific Northwest Ambassadors Program Application';
-    
+    $subject = 'GB Pacific Northwest Ambassadors Program Application';    
     $headers = [];
     $headers[] = 'From: wilke.joao@gmail.com';
     $headers[] = 'Cc: empty7empty@gmail.com';
@@ -29,7 +29,7 @@
     // Gets all the missing fields based on its fields
     $missing = checkMissingFields($required);
 
-    var_dump($mailSent);
+  
     }
     // If the user has clicked on the submit button of the "Kids Form"
     else if (isset($_POST['chSubmit'])) {
@@ -43,7 +43,7 @@
  
     // Gets all the missing fields based on its fields
     $missing = checkMissingFields($required);
-    var_dump($mailSent);
+    
     }
 
   
