@@ -121,7 +121,7 @@
                         <!-- Beggining of the form-->                        
                         <form class = "padding-sides padding-bottom" method = "POST" action = "<?= $_SERVER['PHP_SELF']; ?>">
                         <!-- Checks if there is any suspicious data in the form -->
-                        <?php  if ($_POST && $suspect) : ?>
+                        <?php  if ($_POST && ($suspect || isset($errors['mailfail']))) : ?>
                             <div class = "form-row">
                                 <p class = "warning">Sorry, your mail couldn't be sent!</p>
                             </div>
@@ -810,9 +810,12 @@
     <script src = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity = "sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin = "aNonymous"></script>  
    <pre>
    <?php
-  
-         echo htmlentities($message);
-         echo htmlentities($headers);
+        if ($_POST && $mailSent)    {
+            echo htmlentities($message);
+            echo htmlentities($headers);
+
+        }
+         
    ?>
    </pre>
 </body>

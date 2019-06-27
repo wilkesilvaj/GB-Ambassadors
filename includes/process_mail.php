@@ -35,6 +35,9 @@
         global $errors;
         global $headers;
         global $expected;
+        global $to;
+        global $subject;
+        global $authorized;
         
         // Regular expression to search for suspect phrases
         $pattern = '/Content-type:|Bcc:|Cc:/i';
@@ -126,7 +129,11 @@
                 $message = wordwrap($message, 70);
                 // References global variable
                 global $mailSent;
-                $mailSent = true;               
+                //$mailSent = true;
+                $mailSent = mail($to, $subject, $message, $headers, $authorized);  
+                if (!$mailSent) {
+                    $errors['mailfail'] = true;
+                }             
             endif;
         endif;        
            
