@@ -2,6 +2,9 @@
     // Assume that initially the email message hasn't been sent
     $mailSent = false;
 
+    // Message variable
+    $message ='';
+
     // Assume that initially the input contains nothing suspect
     $suspect = false;
 
@@ -94,7 +97,7 @@
             if (!$errors && !$missing):
                 $headers = implode("\r\n", $headers);
                 // Initializing message
-                $message = '';
+                global $message;
                 foreach ($expected as $field)   :
                     if (isset($$field) && !empty($$field))  {
                         $val = $$field;
@@ -123,8 +126,7 @@
                 $message = wordwrap($message, 70);
                 $mailSent = true;               
             endif;
-        endif;
-        var_dump($mailSent);
+        endif;        
        
             return $missing;
     }
