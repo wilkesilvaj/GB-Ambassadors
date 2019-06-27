@@ -96,7 +96,7 @@
             // if no errors, create headers and message body
             if (!$errors && !$missing):
                 $headers = implode("\r\n", $headers);
-                // Initializing message
+                // Initializing message (reference the global variable)
                 global $message;
                 foreach ($expected as $field)   :
                     if (isset($$field) && !empty($$field))  {
@@ -124,10 +124,12 @@
                 /* Wraps message content (by default, each line on an email message)
                     should only be 70 characters long.*/
                 $message = wordwrap($message, 70);
+                // References global variable
+                global $mailSent;
                 $mailSent = true;               
             endif;
         endif;        
-       
+           
             return $missing;
     }
 
