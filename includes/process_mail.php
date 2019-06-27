@@ -1,6 +1,6 @@
 <?php    
 
-    print_r($_POST);
+    // print_r($_POST);
 
     function checkMissingFields(&$required) {
         
@@ -32,10 +32,33 @@
     }
 
     function maintainSubmittedData($fieldName)    {
+        // Checks if any data has been submitted for a particular field
         if (isset($_POST[$fieldName]))  {
+            
             echo 'value="' . htmlentities($_POST[$fieldName]) . '"';
         }         
     }
+
+    function maintainSubmittedRadioData($fieldName, $fieldId)    {
+        // Checks if any data has been submitted for a particular field
+        if (isset($_POST[$fieldName]))  {
+                   
+        
+
+            if (strpos($fieldId,$_POST[$fieldName]))   {    
+                
+                // echo "<script type='text/javascript'> 
+                // alert('Your ".$fieldName." is ".$_POST[$fieldName]. "');
+                // </script>";  
+                
+                echo "<script type='text/javascript'> 
+                var radioButton = document.getElementById('".$fieldId."');
+                radioButton.checked = true; 
+                </script>";     
+            }              
+        }         
+    }
+
 
 
     function validateAdultsForm(&$missing)   {

@@ -44,9 +44,9 @@
   <head>
     <!-- Required meta tags -->
     <meta charset = "utf-8">
-    <meta name = "viewport" content = "width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1, shrink-to-fit=No">
     <!-- Bootstrap CSS -->
-    <link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity = "sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin = "anonymous">
+    <link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity = "sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin = "aNonymous">
     
     <!-- Customized css -->
     <link rel = "stylesheet" href= "css/application.css">
@@ -59,7 +59,7 @@
     <body>
         <!-- Nav Bar with the logo-->
         <nav class = "navbar navbar-expand-lg ">
-            <a class = "navbar-brand no-margin"  href = "index.html">
+            <a class = "navbar-brand No-margin"  href = "index.html">
                 <img src = "images/gblogocrop.jpeg" alt = "Gracie Barra Ambassadors logo"  class = "d-inline-block align-top">                 
             </a>
             <!-- Inserted a canadian flag, as per Rodrigo's request-->
@@ -159,10 +159,20 @@
                                     <?php endif; ?>
                                     <div class = "form-check form-check-inline">
                                         <input class = "form-check-input" type = "radio" name = "gender"  id = "rdbMale" value = "Male">
+                                        <?php
+                                        if ($errors || $missing)    {
+                                            maintainSubmittedRadioData('gender', 'rdbMale');
+                                        } 
+                                        ?>                                        
                                         <label class = "form-check-label" for = "inlineRadio1">Male</label>
                                     </div>
                                     <div class = "form-check form-check-inline">
                                         <input class = "form-check-input" type = "radio" name = "gender"  id = "rdbFemale" value = "Female">
+                                        <?php
+                                        if ($errors || $missing)    {
+                                            maintainSubmittedRadioData('gender', 'rdbFemale');
+                                        } 
+                                        ?>                                        
                                         <label class = "form-check-label" for = "inlineRadio2">Female</label>
                                     </div>
                                 </div>
@@ -174,22 +184,47 @@
                                     <?php endif; ?>
                                     <div class = "form-check form-check-inline">
                                         <input class = "form-check-input" type = "radio" name = "belt" id = "rdbBlack" value = "Black">
+                                        <?php
+                                        if ($errors || $missing)    {
+                                            maintainSubmittedRadioData('belt', 'rdbBlack');
+                                        } 
+                                        ?> 
                                         <label class = "form-check-label" for = "rdbBlack">Black</label>
                                     </div>
                                     <div class = "form-check form-check-inline">
                                         <input class = "form-check-input" type = "radio" name = "belt" id = "rdbBrown" value = "Brown">
+                                        <?php
+                                        if ($errors || $missing)    {
+                                            maintainSubmittedRadioData('belt', 'rdbBrown');
+                                        } 
+                                        ?> 
                                         <label class = "form-check-label" for = "rdbBrown">Brown</label>
                                     </div>
                                     <div class = "form-check form-check-inline">
                                         <input class = "form-check-input" type = "radio" name = "belt" id = "rdbPurple" value = "Purple">
+                                        <?php
+                                        if ($errors || $missing)    {
+                                            maintainSubmittedRadioData('belt', 'rdbPurple');
+                                        } 
+                                        ?> 
                                         <label class = "form-check-label" for = "rdbPurple">Purple</label>
                                     </div>
                                     <div class = "form-check form-check-inline">
                                         <input class = "form-check-input" type = "radio" name = "belt" id = "rdbBlue" value = "Blue">
+                                        <?php
+                                        if ($errors || $missing)    {
+                                            maintainSubmittedRadioData('belt', 'rdbBlue');
+                                        } 
+                                        ?> 
                                         <label class = "form-check-label" for = "rdbBlue">Blue</label>
                                     </div>
                                     <div class = "form-check form-check-inline">
                                         <input class = "form-check-input" type = "radio" name = "belt" id = "rdbWhite" value = "White">
+                                        <?php
+                                        if ($errors || $missing)    {
+                                            maintainSubmittedRadioData('belt', 'rdbWhite');
+                                        } 
+                                        ?> 
                                         <label class = "form-check-label" for = "rdbWhite">White</label>
                                     </div>
                                 </div>
@@ -247,9 +282,9 @@
                                          <?php endif; ?>
                                         <input type = "text" class = "form-control" name = "address" id = "address" placeholder = "1234 Example Street, Vancouver"
                                             <?php
-                                            if ($errors || $missing)    {
-                                                maintainSubmittedData('address');
-                                            } 
+                                                if ($errors || $missing)    {
+                                                    maintainSubmittedData('address');
+                                                } 
                                             ?>
                                         >
                                     </div>
@@ -260,9 +295,9 @@
                                         <?php endif; ?>
                                         <input type = "text" class = "form-control" name = "homeSchool" id = "homeSchool" placeholder = "Gracie Barra Vancouver"
                                             <?php
-                                            if ($errors || $missing)    {
-                                                maintainSubmittedData('homeSchool');
-                                            } 
+                                                if ($errors || $missing)    {
+                                                    maintainSubmittedData('homeSchool');
+                                                } 
                                             ?>
                                         >
                                     </div>
@@ -273,9 +308,9 @@
                                         <?php endif; ?>
                                         <input type = "text" class = "form-control" name = "homeSchoolAddress" id = "homeSchoolAddress" placeholder = "987 GB Avenue, Vancouver"
                                             <?php
-                                            if ($errors || $missing)    {
-                                                maintainSubmittedData('homeSchoolAddress');
-                                            } 
+                                                if ($errors || $missing)    {
+                                                    maintainSubmittedData('homeSchoolAddress');
+                                                } 
                                             ?>
                                         >
                                     </div>
@@ -287,16 +322,36 @@
                                         <?php if ($missing && in_array('icp6', $missing)) : ?>
                                             <span class = "warning">Please specify if you have completed the last ICP</span>
                                         <?php endif; ?>
-                                        <input id = "icp6Yes" type = "radio" name = "icp6" value = "yes" />Yes
-                                        <input id = "icp6No" type = "radio" name = "icp6" value = "no" />No
+                                        <input type = "radio" name = "icp6" id = "icp6Yes" value = "Yes" />Yes
+                                            <?php
+                                                if ($errors || $missing)    {
+                                                    maintainSubmittedRadioData('icp6', 'icp6Yes');
+                                                } 
+                                            ?> 
+                                        <input type = "radio" name = "icp6" id = "icp6No" value = "No" />No
+                                            <?php
+                                                if ($errors || $missing)    {
+                                                    maintainSubmittedRadioData('icp6', 'icp6No');
+                                                } 
+                                            ?> 
                                     </div>
                                     <div class = "form-group col-md-6">
                                         <label for = "icpUpToDate">Is the Head Instructor and all the Staff members of your Home School aligned and updated with the latest ICP?</label>
                                         <?php if ($missing && in_array('icpUpToDate', $missing)) : ?>
                                             <span class = "warning">Please specify if your home school is updated with the latest ICP</span>
                                         <?php endif; ?>
-                                        <input id = "icpUpToDateYes" type = "radio" name = "icpUpToDate" value = "yes" />Yes
-                                        <input id = "icpUpToDateNo" type = "radio" name = "icpUpToDate" value = "no" />No
+                                        <input type = "radio" name = "icpUpToDate" id = "icpUpToDateYes"  value = "Yes" />Yes
+                                            <?php
+                                                if ($errors || $missing)    {
+                                                    maintainSubmittedRadioData('icpUpToDate', 'icpUpToDateYes');
+                                                } 
+                                            ?> 
+                                        <input type = "radio" name = "icpUpToDate" id = "icpUpToDateNo" value = "No" />No
+                                            <?php
+                                                if ($errors || $missing)    {
+                                                    maintainSubmittedRadioData('icpUpToDate', 'icpUpToDateNo');
+                                                } 
+                                            ?> 
                                     </div>
                             </div>
                             <hr class = "divider">
@@ -307,16 +362,36 @@
                                         <?php if ($missing && in_array('uniform', $missing)) : ?>
                                             <span class = "warning">Please specify if you comply with the uniform requirements</span>
                                         <?php endif; ?>
-                                        <input id = "uniformYes" type = "radio" name = "uniform" value = "yes" />Yes
-                                        <input id = "uniformNo" type = "radio" name = "uniform" value = "no" />No
+                                        <input  type = "radio" name = "uniform" id = "uniformYes" value = "Yes" />Yes
+                                            <?php
+                                                if ($errors || $missing)    {
+                                                    maintainSubmittedRadioData('uniform', 'uniformYes');
+                                                } 
+                                            ?> 
+                                        <input  type = "radio" name = "uniform" id = "uniformNo" value = "No" />No
+                                            <?php
+                                                if ($errors || $missing)    {
+                                                    maintainSubmittedRadioData('uniform', 'uniformNo');
+                                                } 
+                                            ?> 
                                     </div>
                                     <div class = "form-group col-md-6">
                                         <label for = "attendance">In order to be a GB Ambassadors Pacific Northwest, it is required your attendance in at least 80% of our 3 times per week competition training, hosted at GB Vancouver (Mon, Wed, Fri 12pm). Are you willing to make that commitment?</label>
                                         <?php if ($missing && in_array('attendance', $missing)) : ?>
                                             <span class = "warning">Please specify if you have the minimum required attendance</span>
                                         <?php endif; ?>
-                                        <input id = "attendanceYes" type = "radio" name = "attendance" value = "yes" />Yes
-                                        <input id = "attendanceNo" type = "radio" name = "attendance" value = "no" />No
+                                        <input type = "radio" name = "attendance" id = "attendanceYes" value = "Yes" />Yes
+                                            <?php
+                                                if ($errors || $missing)    {
+                                                    maintainSubmittedRadioData('attendance', 'attendanceYes');
+                                                } 
+                                            ?> 
+                                        <input type = "radio" name = "attendance" id = "attendanceNo" value = "No" />No
+                                            <?php
+                                                if ($errors || $missing)    {
+                                                    maintainSubmittedRadioData('attendance', 'attendanceNo');
+                                                } 
+                                            ?> 
                                     </div>
                             </div>
                             <hr class = "divider">
@@ -327,8 +402,18 @@
                                         <?php if ($missing && in_array('results', $missing)) : ?>
                                             <span class = "warning">Please comply with the results requirements</span>
                                         <?php endif; ?>
-                                        <input id = "resultsYes" type = "radio" name = "results" value = "yes" />Yes
-                                        <input id = "resultsNo" type = "radio" name = "results" value = "no" />No
+                                        <input  type = "radio" name = "results" id = "resultsYes" value = "Yes" />Yes
+                                            <?php
+                                                if ($errors || $missing)    {
+                                                    maintainSubmittedRadioData('results', 'resultsYes');
+                                                } 
+                                            ?>
+                                        <input type = "radio" name = "results" id = "resultsNo" value = "No" />No
+                                            <?php
+                                                if ($errors || $missing)    {
+                                                    maintainSubmittedRadioData('results', 'resultsNo');
+                                                } 
+                                            ?>
                                     </div>
                                     <div class = "form-group col-md-6">
                                         <label for = "titles">Please list below your last titles since the IBJJF Worlds 2017:</label>                                        
@@ -413,10 +498,20 @@
                                         <?php endif; ?>
                                         <div class = "form-check form-check-inline">
                                             <input class = "form-check-input" type = "radio" name = "chGender"  id = "chRdbMale" value = "Male">
+                                            <?php
+                                                if ($errors || $missing)    {
+                                                    maintainSubmittedRadioData('chGender', 'chRdbMale');
+                                                } 
+                                            ?> 
                                             <label class = "form-check-label" for = "inlineRadio1">Male</label>
                                         </div>
                                         <div class = "form-check form-check-inline">
                                             <input class = "form-check-input" type = "radio" name = "chGender"  id = "chRdbFemale" value = "Female">
+                                            <?php
+                                                if ($errors || $missing)    {
+                                                    maintainSubmittedRadioData('chGender', 'chRdbFemale');
+                                                } 
+                                            ?> 
                                             <label class = "form-check-label" for = "inlineRadio2">Female</label>
                                         </div>
                                     </div>
@@ -429,22 +524,47 @@
                                         <div class = "form-check form-check-inline">
                                             <input class = "form-check-input" type = "radio" name = "chBelt" id = "chRdbBlack" value = "Black">
                                             <label class = "form-check-label" for = "rdbBlack">Black</label>
+                                            <?php
+                                                if ($errors || $missing)    {
+                                                    maintainSubmittedRadioData('chBelt', 'chRdbBlack');
+                                                } 
+                                            ?> 
                                         </div>
                                         <div class = "form-check form-check-inline">
                                             <input class = "form-check-input" type = "radio" name = "chBelt" id = "chRdbBrown" value = "Brown">
                                             <label class = "form-check-label" for = "rdbBrown">Brown</label>
+                                            <?php
+                                                if ($errors || $missing)    {
+                                                    maintainSubmittedRadioData('chBelt', 'chRdbBrown');
+                                                } 
+                                            ?> 
                                         </div>
                                         <div class = "form-check form-check-inline">
                                             <input class = "form-check-input" type = "radio" name = "chBelt" id = "chRdbPurple" value = "Purple">
                                             <label class = "form-check-label" for = "rdbPurple">Purple</label>
+                                            <?php
+                                                if ($errors || $missing)    {
+                                                    maintainSubmittedRadioData('chBelt', 'chRdbPurple');
+                                                } 
+                                            ?> 
                                         </div>
                                         <div class = "form-check form-check-inline">
                                             <input class = "form-check-input" type = "radio" name = "chBelt" id = "chRdbBlue" value = "Blue">
                                             <label class = "form-check-label" for = "rdbBlue">Blue</label>
+                                            <?php
+                                                if ($errors || $missing)    {
+                                                    maintainSubmittedRadioData('chBelt', 'chRdbBlue');
+                                                } 
+                                            ?> 
                                         </div>
                                         <div class = "form-check form-check-inline">
-                                            <input class = "form-check-input" type = "radio" name = "belt" id = "rdbWhite" value = "White">
-                                            <label class = "form-check-label" for = "rdbWhite">White</label>
+                                            <input class = "form-check-input" type = "radio" name = "belt" id = "chRdbWhite" value = "White">
+                                            <label class = "form-check-label" for = "chRdbWhite">White</label>
+                                            <?php
+                                                if ($errors || $missing)    {
+                                                    maintainSubmittedRadioData('chBelt', 'chRdbWhite');
+                                                } 
+                                            ?> 
                                         </div>
                                     </div>
                                 </div>
@@ -471,9 +591,9 @@
                                         <?php endif; ?>
                                         <input type = "text" class = "form-control" name = "chPhoneNumber" id = "chPhoneNumber" placeholder = "Enter your phone number"
                                             <?php
-                                            if ($errors || $missing)    {
-                                                maintainSubmittedData('chPhoneNumber');
-                                            } 
+                                                if ($errors || $missing)    {
+                                                    maintainSubmittedData('chPhoneNumber');
+                                                } 
                                             ?>
                                         >
                                     </div>
@@ -484,9 +604,9 @@
                                         <?php endif; ?>
                                         <input type = "email" class = "form-control" name = "chEmail" id = "chEmail" placeholder = "example@hotmail.com"
                                             <?php
-                                            if ($errors || $missing)    {
-                                                maintainSubmittedData('chEmail');
-                                            } 
+                                                if ($errors || $missing)    {
+                                                    maintainSubmittedData('chEmail');
+                                                } 
                                             ?>
                                         >
                                     </div>
@@ -500,9 +620,9 @@
                                         <?php endif; ?>
                                         <input type = "text" class = "form-control" name = "chAddress" id = "chAddress" placeholder = "1234 Example Street, Vancouver"
                                             <?php
-                                            if ($errors || $missing)    {
-                                                maintainSubmittedData('chAddress');
-                                            } 
+                                                if ($errors || $missing)    {
+                                                    maintainSubmittedData('chAddress');
+                                                } 
                                             ?>                                        
                                         >
                                     </div>
@@ -513,9 +633,9 @@
                                         <?php endif; ?>
                                         <input type = "text" class = "form-control" name = "chHomeSchool" id = "chHomeSchool" placeholder = "Gracie Barra Vancouver"
                                             <?php
-                                            if ($errors || $missing)    {
-                                                maintainSubmittedData('chHomeSchool');
-                                            } 
+                                                if ($errors || $missing)    {
+                                                    maintainSubmittedData('chHomeSchool');
+                                                } 
                                             ?>
                                         >
                                     </div>
@@ -526,9 +646,9 @@
                                         <?php endif; ?>
                                         <input type = "text" class = "form-control" name = "chHomeSchoolAddress" id = "chHomeSchoolAddress" placeholder = "987 GB Avenue, Vancouver"
                                             <?php
-                                            if ($errors || $missing)    {
-                                                maintainSubmittedData('chHomeSchoolAddress');
-                                            } 
+                                                if ($errors || $missing)    {
+                                                    maintainSubmittedData('chHomeSchoolAddress');
+                                                } 
                                             ?>
                                         >
                                     </div>
@@ -540,16 +660,36 @@
                                         <?php if ($missing && in_array('chIcp6', $missing)) : ?>
                                             <span class = "warning">Please specify if you comply with the ICP6 requirement</span>
                                         <?php endif; ?>
-                                        <input type = "radio" name = "chIcp6" id = "chIcp6Yes" value = "yes" />Yes
-                                        <input type = "radio" name = "chIcp6" id = "chIcp6No" value = "no" />No
+                                        <input type = "radio" name = "chIcp6" id = "chIcp6Yes" value = "Yes" />Yes
+                                            <?php
+                                                if ($errors || $missing)    {
+                                                    maintainSubmittedRadioData('chIcp6', 'chIcp6Yes');
+                                                } 
+                                            ?>
+                                        <input type = "radio" name = "chIcp6" id = "chIcp6No" value = "No" />No
+                                            <?php
+                                                if ($errors || $missing)    {
+                                                    maintainSubmittedRadioData('chIcp6', 'chIcp6No');
+                                                } 
+                                            ?>
                                     </div>
                                     <div class = "form-group col-md-6">
                                         <label for = "chIcpUpToDate">Is the Head Instructor and all the Staff members of your Home School aligned and updated with the latest ICP?</label>
                                         <?php if ($missing && in_array('chIcpUpToDate', $missing)) : ?>
                                             <span class = "warning">Please specify if your home school is aligned with the latest ICP</span>
                                         <?php endif; ?>
-                                        <input type = "radio" name = "chIcpUpToDate" id = "chIcpUpToDateYes" value = "yes" />Yes
-                                        <input type = "radio" name = "chIcpUpToDate" id = "chIcpUpToDateNo" value = "no" />No
+                                        <input type = "radio" name = "chIcpUpToDate" id = "chIcpUpToDateYes" value = "Yes" />Yes
+                                            <?php
+                                                if ($errors || $missing)    {
+                                                    maintainSubmittedRadioData('chIcpUpToDate', 'chIcpUpToDateYes');
+                                                } 
+                                            ?>
+                                        <input type = "radio" name = "chIcpUpToDate" id = "chIcpUpToDateNo" value = "No" />No
+                                            <?php
+                                                if ($errors || $missing)    {
+                                                    maintainSubmittedRadioData('chIcpUpToDate', 'chIcpUpToDateNo');
+                                                } 
+                                            ?>
                                     </div>
                                 </div>
                                 <hr class = "divider">
@@ -560,16 +700,36 @@
                                         <?php if ($missing && in_array('chUniform', $missing)) : ?>
                                             <span class = "warning">Please specify if you comply with the uniform requirements</span>
                                         <?php endif; ?>
-                                        <input type = "radio" name = "chUniform" id = "chUniformYes" value = "yes" />Yes
-                                        <input type = "radio" name = "chUniform" id = "chUniformNo" value = "no" />No
+                                        <input type = "radio" name = "chUniform" id = "chUniformYes" value = "Yes" />Yes
+                                            <?php
+                                                if ($errors || $missing)    {
+                                                    maintainSubmittedRadioData('chUniform', 'chUniformYes');
+                                                } 
+                                            ?>
+                                        <input type = "radio" name = "chUniform" id = "chUniformNo" value = "No" />No
+                                            <?php
+                                                if ($errors || $missing)    {
+                                                    maintainSubmittedRadioData('chUniform', 'chUniformNo');
+                                                } 
+                                            ?>
                                     </div>
                                     <div class = "form-group col-md-6">
                                         <label for = "chAttendance">In order to be a GB Ambassadors Pacific Northwest, it is required your attendance in at least 80% of our 3 times per week competition training, hosted at GB Vancouver (Mon, Wed, Fri 12pm). Are you willing to make that commitment?</label>
                                         <?php if ($missing && in_array('chAttendance', $missing)) : ?>
                                             <span class = "warning">Please specify if you comply with the attendance requirements</span>
                                         <?php endif; ?>
-                                        <input type = "radio" name = "chAttendance" id = "chAttendanceYes" value = "yes" />Yes
-                                        <input type = "radio" name = "chAttendance" id = "chAttendanceNo" value = "no" />No
+                                        <input type = "radio" name = "chAttendance" id = "chAttendanceYes" value = "Yes" />Yes
+                                            <?php
+                                                if ($errors || $missing)    {
+                                                    maintainSubmittedRadioData('chAttendance', 'chAttendanceYes');
+                                                } 
+                                            ?>
+                                        <input type = "radio" name = "chAttendance" id = "chAttendanceNo" value = "No" />No
+                                            <?php
+                                                if ($errors || $missing)    {
+                                                    maintainSubmittedRadioData('chAttendance', 'chAttendanceNo');
+                                                } 
+                                            ?>
                                     </div>
                                 </div>
                                 <hr class = "divider">
@@ -580,8 +740,18 @@
                                         <?php if ($missing && in_array('chResults', $missing)) : ?>
                                             <span class = "warning">Please specify if you comply with the competition results requirements</span>
                                         <?php endif; ?>
-                                        <input type = "radio" name = "chResults" id = "chResultsYes" value = "yes" />Yes
-                                        <input type = "radio" name = "chResults" id = "chResultsNo" value = "no" />No
+                                        <input type = "radio" name = "chResults" id = "chResultsYes" value = "Yes" />Yes
+                                            <?php
+                                                if ($errors || $missing)    {
+                                                    maintainSubmittedRadioData('chResults', 'chResultsYes');
+                                                } 
+                                            ?>
+                                        <input type = "radio" name = "chResults" id = "chResultsNo" value = "No" />No
+                                            <?php
+                                                if ($errors || $missing)    {
+                                                    maintainSubmittedRadioData('chResults', 'chResultsNo');
+                                                } 
+                                            ?>
                                     </div>
                                     <div class = "form-group col-md-6">
                                         <label for = "titles">Please list below your last titles since the IBJJF Worlds 2017:</label>
@@ -600,14 +770,14 @@
 
     <!-- Footer at the end of the page-->
     <footer class = "footer mt-auto center">
-        <img class = "gblogo" src = "images/gblogonoback.png">
+        <img class = "gblogo" src = "images/gblogoNoback.png">
         <p class = "text-center">GB Ambassadors Program Pacific Northwest</p>
     </footer>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src = "https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity = "sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin = "anonymous"></script>
-    <script src = "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity = "sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin = "anonymous"></script>
-    <script src = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity = "sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin = "anonymous"></script>  
+    <script src = "https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity = "sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin = "aNonymous"></script>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity = "sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin = "aNonymous"></script>
+    <script src = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity = "sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin = "aNonymous"></script>  
   </body>
 </html>
