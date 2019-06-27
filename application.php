@@ -115,14 +115,26 @@
                                     <?php if ($missing && in_array('firstName', $missing)) : ?>
                                         <span class = "warning">Please enter your first name</span>
                                     <?php endif; ?>
-                                    <input type = "text" class = "form-control" name = "firstName" id = "firstName" placeholder = "Enter your First Name">
+                                    <input type = "text" class = "form-control" name = "firstName" id = "firstName" placeholder = "Enter your First Name"
+                                    <?php
+                                        if ($errors || $missing)    {
+                                            maintainSubmittedData('firstName');
+                                        } 
+                                    ?>
+                                    >
                                 </div>
                                 <div class = "form-group col-md-6">
                                     <label for = "lastName">Last Name</label>
                                     <?php if ($missing && in_array('lastName', $missing)) : ?>
                                         <span class = "warning">Please enter your last name</span>
                                     <?php endif; ?>
-                                    <input type = "text" class = "form-control" name = "lastName" id = "lastName" placeholder = "Enter your Last Name">
+                                    <input type = "text" class = "form-control" name = "lastName" id = "lastName" placeholder = "Enter your Last Name"
+                                    <?php
+                                        if ($errors || $missing)    {
+                                            maintainSubmittedData('lastName');
+                                        } 
+                                    ?>
+                                    >
                                 </div>
                             </div>
                             <!-- Second row with DOB and rdb fields-->
@@ -132,7 +144,13 @@
                                     <?php if ($missing && in_array('dateOfBirth', $missing)) : ?>
                                         <span class = "warning">Please enter your date of birth</span>
                                     <?php endif; ?>
-                                    <input type = "date" name = "dateOfBirth" id = "dateOfBirth" placeholder = "yyyy-mm-dd" /><br />
+                                    <input type = "date" name = "dateOfBirth" id = "dateOfBirth" placeholder = "yyyy-mm-dd" 
+                                    <?php
+                                        if ($errors || $missing)    {
+                                            maintainSubmittedData('dateOfBirth');
+                                        } 
+                                    ?>
+                                    ><br />
                                 </div>
                                 <div class = "form-group col-md-4">
                                     Gender:
@@ -182,7 +200,13 @@
                                 <?php if ($missing && in_array('dateOfGraduation', $missing)) : ?>
                                         <span class = "warning">Please enter the date of your last graduation</span>
                                 <?php endif; ?>
-                                <input type = "date" class = "form-control" id = "dateOfGraduation" placeholder = "yyyy-mm-dd">
+                                <input type = "date" class = "form-control" name = "dateOfGraduation" id = "dateOfGraduation" placeholder = "yyyy-mm-dd"
+                                    <?php
+                                        if ($errors || $missing)    {
+                                            maintainSubmittedData('dateOfGraduation');
+                                        } 
+                                    ?>
+                                >
                             </div>
                             <!-- Forth row-->
                             <div class = "form-row">
@@ -191,15 +215,27 @@
                                     <?php if ($missing && in_array('phoneNumber', $missing)) : ?>
                                         <span class = "warning">Please enter your phone number</span>
                                     <?php endif; ?>
-                                    <input type = "text" class = "form-control" id = "phoneNumber" placeholder = "Enter your phone number">
+                                    <input type = "text" class = "form-control" name = "phoneNumber" id = "phoneNumber" placeholder = "Enter your phone number"
+                                        <?php
+                                            if ($errors || $missing)    {
+                                                maintainSubmittedData('phoneNumber');
+                                            } 
+                                        ?>
+                                    >
                                 </div>
                                 <div class = "form-group col-md-6">
                                     <label for = "email">Email:</label>
                                     <?php if ($missing && in_array('email', $missing)) : ?>
                                         <span class = "warning">Please enter your email address</span>
                                     <?php endif; ?>
-                                    <input type = "email" class = "form-control" id = "email" placeholder = "example@hotmail.com" data-toggle = "popover" data-trigger = "hover"
-                                    data-content = "My popover content.">
+                                    <input type = "email" class = "form-control" name = "email" id = "email" placeholder = "example@hotmail.com" data-toggle = "popover" data-trigger = "hover"
+                                    data-content = "My popover content."
+                                        <?php
+                                            if ($errors || $missing)    {
+                                                maintainSubmittedData('email');
+                                            } 
+                                        ?>
+                                    >
                                 </div>
                             </div>
                             <!-- Fifth row-->
@@ -209,21 +245,39 @@
                                         <?php if ($missing && in_array('address', $missing)) : ?>
                                             <span class = "warning">Please enter your address</span>
                                          <?php endif; ?>
-                                        <input type = "text" class = "form-control" name = "address" id = "address" placeholder = "1234 Example Street, Vancouver">
+                                        <input type = "text" class = "form-control" name = "address" id = "address" placeholder = "1234 Example Street, Vancouver"
+                                            <?php
+                                            if ($errors || $missing)    {
+                                                maintainSubmittedData('address');
+                                            } 
+                                            ?>
+                                        >
                                     </div>
                                     <div class = "form-group col-md-4">
                                         <label for = "homeSchool">Home School:</label>
                                         <?php if ($missing && in_array('homeSchool', $missing)) : ?>
                                             <span class = "warning">Please enter your home school</span>
                                         <?php endif; ?>
-                                        <input type = "text" class = "form-control" name = "homeSchool" id = "homeSchool" placeholder = "Gracie Barra Vancouver">
+                                        <input type = "text" class = "form-control" name = "homeSchool" id = "homeSchool" placeholder = "Gracie Barra Vancouver"
+                                            <?php
+                                            if ($errors || $missing)    {
+                                                maintainSubmittedData('homeSchool');
+                                            } 
+                                            ?>
+                                        >
                                     </div>
                                     <div class = "form-group col-md-4">
                                         <label for = "homeSchoolAddress">Home School Address:</label>
                                         <?php if ($missing && in_array('homeSchoolAddress', $missing)) : ?>
                                             <span class = "warning">Please enter your first name</span>
                                         <?php endif; ?>
-                                        <input type = "text" class = "form-control" name = "homeSchoolAddress" id = "homeSchoolAddress" placeholder = "987 GB Avenue, Vancouver">
+                                        <input type = "text" class = "form-control" name = "homeSchoolAddress" id = "homeSchoolAddress" placeholder = "987 GB Avenue, Vancouver"
+                                            <?php
+                                            if ($errors || $missing)    {
+                                                maintainSubmittedData('homeSchoolAddress');
+                                            } 
+                                            ?>
+                                        >
                                     </div>
                             </div>
                             <!-- Sixth row-->
@@ -302,21 +356,39 @@
                                         <?php if ($missing && in_array('chFirstName', $missing)) : ?>
                                             <span class = "warning">Please enter your first name</span>
                                         <?php endif; ?>
-                                        <input type = "text" class = "form-control" name = "chFirstName" id = "chFirstName" placeholder = "Enter the child's First Name">
+                                        <input type = "text" class = "form-control" name = "chFirstName" id = "chFirstName" placeholder = "Enter the child's First Name"
+                                        <?php
+                                        if ($errors || $missing)    {
+                                            maintainSubmittedData('chFirstName');
+                                        } 
+                                        ?>
+                                        >
                                     </div>
                                     <div class = "form-group col-md-6">
                                         <label for = "chLastName">Last Name</label>
                                         <?php if ($missing && in_array('chLastName', $missing)) : ?>
                                             <span class = "warning">Please enter your last name</span>
                                         <?php endif; ?>
-                                        <input type = "text" class = "form-control" name = "chLastName" id = "chLastName" placeholder = "Enter the child's Last Name">
+                                        <input type = "text" class = "form-control" name = "chLastName" id = "chLastName" placeholder = "Enter the child's Last Name"
+                                            <?php
+                                            if ($errors || $missing)    {
+                                                maintainSubmittedData('chLastName');
+                                            } 
+                                            ?>
+                                        >
                                     </div>
                                     <div class = "form-group col-md-4">
                                         <label for = "chParentName">Parent's Full Name</label>
                                         <?php if ($missing && in_array('chParentName', $missing)) : ?>
                                             <span class = "warning">Please enter one of your parent's full name</span>
                                         <?php endif; ?>
-                                        <input type = "text" class = "form-control" name = "chParentName" id = "chParentName" placeholder = "Enter the parent's Full Name">
+                                        <input type = "text" class = "form-control" name = "chParentName" id = "chParentName" placeholder = "Enter the parent's Full Name"
+                                            <?php
+                                            if ($errors || $missing)    {
+                                                maintainSubmittedData('chParentName');
+                                            } 
+                                            ?>
+                                        >
                                     </div>
                                 </div>
                                 <!-- Second row with DOB and rdb fields-->
@@ -326,7 +398,13 @@
                                         <?php if ($missing && in_array('chDateOfBirth', $missing)) : ?>
                                             <span class = "warning">Please enter your date of birth</span>
                                         <?php endif; ?>
-                                        <input type = "date" name = "chDateOfBirth" id = "chDateOfBirth" placeholder = "yyyy-mm-dd" /><br />
+                                        <input type = "date" name = "chDateOfBirth" id = "chDateOfBirth" placeholder = "yyyy-mm-dd" 
+                                            <?php
+                                            if ($errors || $missing)    {
+                                                maintainSubmittedData('chDateOfBirth');
+                                            } 
+                                            ?>
+                                        ><br />
                                     </div>
                                     <div class = "form-group col-md-4">
                                         Gender:
@@ -376,7 +454,13 @@
                                     <?php if ($missing && in_array('chDateOfGraduation', $missing)) : ?>
                                             <span class = "warning">Please enter the date of your alst graduation</span>
                                     <?php endif; ?>
-                                    <input type = "date" class = "form-control" name = "chDateOfGraduation" id = "chDateOfGraduation" placeholder = "yyyy-mm-dd">
+                                    <input type = "date" class = "form-control" name = "chDateOfGraduation" id = "chDateOfGraduation" placeholder = "yyyy-mm-dd"
+                                        <?php
+                                            if ($errors || $missing)    {
+                                                maintainSubmittedData('chDateOfGraduation');
+                                            } 
+                                        ?>
+                                    >
                                 </div>
                                 <!-- Forth row-->
                                 <div class = "form-row">
@@ -385,14 +469,26 @@
                                         <?php if ($missing && in_array('chPhoneNumber', $missing)) : ?>
                                             <span class = "warning">Please enter your phone number</span>
                                         <?php endif; ?>
-                                        <input type = "text" class = "form-control" name = "chPhoneNumber" id = "chPhoneNumber" placeholder = "Enter your phone number">
+                                        <input type = "text" class = "form-control" name = "chPhoneNumber" id = "chPhoneNumber" placeholder = "Enter your phone number"
+                                            <?php
+                                            if ($errors || $missing)    {
+                                                maintainSubmittedData('chPhoneNumber');
+                                            } 
+                                            ?>
+                                        >
                                     </div>
                                     <div class = "form-group col-md-6">
                                         <label for = "chEmail">Email:</label>
                                         <?php if ($missing && in_array('chEmail', $missing)) : ?>
                                             <span class = "warning">Please enter your email address</span>
                                         <?php endif; ?>
-                                        <input type = "email" class = "form-control" name = "chEmail" id = "chEmail" placeholder = "example@hotmail.com">
+                                        <input type = "email" class = "form-control" name = "chEmail" id = "chEmail" placeholder = "example@hotmail.com"
+                                            <?php
+                                            if ($errors || $missing)    {
+                                                maintainSubmittedData('chEmail');
+                                            } 
+                                            ?>
+                                        >
                                     </div>
                                 </div>
                                 <!-- Fifth row-->
@@ -402,21 +498,39 @@
                                         <?php if ($missing && in_array('chAddress', $missing)) : ?>
                                             <span class = "warning">Please enter your address</span>
                                         <?php endif; ?>
-                                        <input type = "text" class = "form-control" name = "chAddress" id = "chAddress" placeholder = "1234 Example Street, Vancouver">
+                                        <input type = "text" class = "form-control" name = "chAddress" id = "chAddress" placeholder = "1234 Example Street, Vancouver"
+                                            <?php
+                                            if ($errors || $missing)    {
+                                                maintainSubmittedData('chAddress');
+                                            } 
+                                            ?>                                        
+                                        >
                                     </div>
                                     <div class = "form-group col-md-4">
                                         <label for = "chHomeSchool">Home School:</label>
                                         <?php if ($missing && in_array('chHomeSchool', $missing)) : ?>
                                             <span class = "warning">Please enter your home school</span>
                                         <?php endif; ?>
-                                        <input type = "text" class = "form-control" name = "chHomeSchool" id = "chHomeSchool" placeholder = "Gracie Barra Vancouver">
+                                        <input type = "text" class = "form-control" name = "chHomeSchool" id = "chHomeSchool" placeholder = "Gracie Barra Vancouver"
+                                            <?php
+                                            if ($errors || $missing)    {
+                                                maintainSubmittedData('chHomeSchool');
+                                            } 
+                                            ?>
+                                        >
                                     </div>
                                     <div class = "form-group col-md-4">
                                         <label for = "chHomeSchoolAddress">Home School Address:</label>
                                         <?php if ($missing && in_array('chHomeSchoolAddress', $missing)) : ?>
                                             <span class = "warning">Please enter your home school's address</span>
                                         <?php endif; ?>
-                                        <input type = "text" class = "form-control" name = "chHomeSchoolAddress" id = "chHomeSchoolAddress" placeholder = "987 GB Avenue, Vancouver">
+                                        <input type = "text" class = "form-control" name = "chHomeSchoolAddress" id = "chHomeSchoolAddress" placeholder = "987 GB Avenue, Vancouver"
+                                            <?php
+                                            if ($errors || $missing)    {
+                                                maintainSubmittedData('chHomeSchoolAddress');
+                                            } 
+                                            ?>
+                                        >
                                     </div>
                                 </div>
                                 <!-- Sixth row-->

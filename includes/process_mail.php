@@ -1,8 +1,8 @@
 <?php    
 
+    print_r($_POST);
+
     function checkMissingFields(&$required) {
-
-
         
         /** Loops through the form's data (checks if the data sent from the form contains empty values)
          *  IMPORTANT: THIS FOREACH WILL ONLY LOOP THROUGH FIELDS THAT MIGHT HAVE SENT EMPTY STRINGS AS DATA
@@ -29,7 +29,12 @@
         }
       
         return $missing;
+    }
 
+    function maintainSubmittedData($fieldName)    {
+        if (isset($_POST[$fieldName]))  {
+            echo 'value="' . htmlentities($_POST[$fieldName]) . '"';
+        }         
     }
 
 
