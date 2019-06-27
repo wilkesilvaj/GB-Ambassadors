@@ -9,7 +9,7 @@
     
     $headers = [];
     $headers[] = 'From: wilke.joao@gmail.com';
-    $headers[] = 'Cc: ';
+    $headers[] = 'Cc: empty7empty@gmail.com';
     $headers[] = 'Content-type: text/plain; charset=utf-8';
     // $authorized = null;
 
@@ -18,9 +18,9 @@
    
     // If the user has clicked on the submit button of the "Adults Form"
     if (isset($_POST['submit']))    {
-        $expected = ['firstName','lastName', 'dateOfBirth',
-    'gender', 'belt', 'address', 'homeSchool', 'homeSchoolAddress',
-    'icp6', 'icpUpToDate', 'uniform', 'attendance', 'results'  ];
+        $expected = ['firstName','lastName', 'dateOfBirth', 
+        'gender', 'belt', 'dateOfGraduation', 'phoneNumber', 'email', 'address', 'homeSchool', 'homeSchoolAddress',
+        'icp6', 'icpUpToDate', 'uniform', 'attendance', 'results'  ]; 
 
     $required = ['firstName','lastName', 'dateOfBirth', 
     'gender', 'belt', 'dateOfGraduation', 'phoneNumber', 'email', 'address', 'homeSchool', 'homeSchoolAddress',
@@ -29,13 +29,13 @@
     // Gets all the missing fields based on its fields
     $missing = checkMissingFields($required);
 
-    
+    var_dump($mailSent);
     }
     // If the user has clicked on the submit button of the "Kids Form"
     else if (isset($_POST['chSubmit'])) {
-        $expected = ['chFirstName','chLastName', 'chDateOfBirth',
-    'chGender', 'chBelt', 'chDateOfGraduation', 'chPhoneNumber', 'chEmail', 'chAddress', 'chHomeSchool', 'chHomeSchoolAddress',
-    'chIcp6', 'chIcpUpToDate', 'chUniform', 'chAttendance', 'chResults'  ];
+        $expected = ['chFirstName','chLastName', 'chParentName', 'chDateOfBirth',
+        'chGender', 'chBelt', 'chDateOfGraduation', 'chPhoneNumber', 'chEmail', 'chAddress', 'chHomeSchool', 'chHomeSchoolAddress',
+        'chIcp6', 'chIcpUpToDate', 'chUniform', 'chAttendance', 'chResults'  ];
 
         $required = ['chFirstName','chLastName', 'chParentName', 'chDateOfBirth',
         'chGender', 'chBelt', 'chDateOfGraduation', 'chPhoneNumber', 'chEmail', 'chAddress', 'chHomeSchool', 'chHomeSchoolAddress',
@@ -43,7 +43,7 @@
  
     // Gets all the missing fields based on its fields
     $missing = checkMissingFields($required);
-   
+    var_dump($mailSent);
     }
 
   
@@ -805,5 +805,6 @@
     <script src = "https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity = "sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin = "aNonymous"></script>
     <script src = "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity = "sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin = "aNonymous"></script>
     <script src = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity = "sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin = "aNonymous"></script>  
-  </body>
+   
+</body>
 </html>

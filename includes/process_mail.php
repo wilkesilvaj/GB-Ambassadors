@@ -1,4 +1,6 @@
 <?php   
+    // Assume that initially the email message hasn't been sent
+    $mailSent = false;
 
     // Assume that initially the input contains nothing suspect
     $suspect = false;
@@ -29,6 +31,7 @@
         global $suspect;
         global $errors;
         global $headers;
+        global $expected;
         
         // Regular expression to search for suspect phrases
         $pattern = '/Content-type:|Bcc:|Cc:/i';
@@ -53,7 +56,10 @@
                 if (empty($value) && in_array($key, $required)) {
                     $missing[] = $key;
                     $$key = '';                
-                }                       
+                }
+                elseif (in_array($key, $expected))  {
+                    $$key = $value;
+                }                     
             }
 
             /** Loops through the required fields and checks if data has been submitted for each
@@ -87,10 +93,34 @@
             // if no errors, create headers and message body
             if (!$errors && !$missing):
                 $headers = implode("\r\n", $headers);
-            endif;      
-
-
+                // Initializing message
+                $message = '';
+                foreach ($expected as $field)   :
+                    if (isset($$field) && !empty($$field))  {
+                        $val = $$field;
+                    }
+                    else{
+                        $val = 'Not selected';
+                    }
+                  
+                    // If an array, expand to a comma-separated string
+                    if (is_array($val)) {
+                        $val = implode(',',$val);
+                    }
+                    // Replace underscores in the field names with spaces
+                    $field = preg_replace('/(?<!\ )[A-Z]/', ' $0', $field);
+                    // $field = str_replace('_',' ',$field);
+                    $message .= ucfirst($field). ":". $val . "\r\n\r\n";
+                endforeach;  
+                /* Wraps message content (by default, each line on an email message)
+                    should only be 70 characters long.*/
+                $message = wordwrap($message, 70);
+                $mailSent = true;               
+            endif;
         endif;
+      
+        echo htmlentities($message);
+       
             return $missing;
     }
 
@@ -124,34 +154,6 @@
 
 
 
-    function validateAdultsForm(&$missing)   {
-        $errors = [];
-        if ($missing && in_array('firstName', $missing)) {
-            $errors[] = "Please enter your first name<br />";   }
-        if ($missing && in_array('lastName', $missing)) {
-            $errors[] = "Please enter your lastName name<br />";    }
-        if ($missing && in_array('dateOfBirth', $missing)) {
-            $errors[] = "Please enter your date of birth<br />";    }    
-        if ($missing && in_array('belt', $missing)) {
-            $errors[] = "Please select your belt<br />";    }
-        if ($missing && in_array('dateOfGraduation', $missing)) {
-            $errors[] = "Please enter the date of your last graduation<br />";    }
-        if ($missing && in_array('phoneNumber', $missing)) {
-            $errors[] = "Please enter of your phone number<br />";    }
-        if ($missing && in_array('email', $missing)) {
-            $errors[] = "Please enter your email address<br />";    }
-        if ($missing && in_array('address', $missing)) {
-            $errors[] = "Please enter your address<br />";    }
-        if ($missing && in_array('homeSchool', $missing)) {
-            $errors[] = "Please enter your home school's name<br />";    }
-        if ($missing && in_array('homeSchoolAddress', $missing)) {
-            $errors[] = "Please enter your home school's address<br />";    }
-
-        return $errors;
-    }
-
-    function validateKidsForm(&$missing) {
-    }
 
  ?>  
 
