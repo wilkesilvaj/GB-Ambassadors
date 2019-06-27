@@ -3,16 +3,15 @@
     $missing = [];      
 
     require_once("./includes/process_mail.php");
-
-
+   
     // If the user has clicked on the submit button of the "Adults Form"
     if (isset($_POST['submit']))    {
-        $expected = ['firstName','lastName', 'dateOfbirth',
+        $expected = ['firstName','lastName', 'dateOfBirth',
     'gender', 'belt', 'address', 'homeSchool', 'homeSchoolAddress',
-    'icp6', 'icpUpToDate', 'uniform', 'attendance', 'result'  ];
+    'icp6', 'icpUpToDate', 'uniform', 'attendance', 'results'  ];
 
-    $required = ['firstName','lastName', 'dateOfbirth',
-    'gender', 'belt', 'address', 'homeSchool', 'homeSchoolAddress',
+    $required = ['firstName','lastName', 'dateOfBirth', 
+    'gender', 'belt', 'dateOfGraduation', 'phoneNumber', 'email', 'address', 'homeSchool', 'homeSchoolAddress',
     'icp6', 'icpUpToDate', 'uniform', 'attendance', 'results'  ]; 
 
     // Gets all the missing fields based on its fields
@@ -25,21 +24,20 @@
     // If the user has clicked on the submit button of the "Kids Form"
     else if (isset($_POST['chSubmit'])) {
         $expected = ['chFirstName','chLastName', 'chDateOfBirth',
-    'chGender', 'chBelt', 'chAddress', 'chHomeSchool', 'chHomeSchoolAddress',
+    'chGender', 'chBelt', 'chDateOfGraduation', 'chPhoneNumber', 'chEmail', 'chAddress', 'chHomeSchool', 'chHomeSchoolAddress',
     'chIcp6', 'chIcpUpToDate', 'chUniform', 'chAttendance', 'chResults'  ];
 
-        $required = ['chFirstName','chLastName', 'chDateOfBirth',
-    'chGender', 'chBelt', 'chAddress', 'chHomeSchool', 'chHomeSchoolAddress',
-    'chIcp6', 'chIcpUpToDate', 'chUniform', 'chAttendance', 'chResults'  ];
+        $required = ['chFirstName','chLastName', 'chParentName', 'chDateOfBirth',
+        'chGender', 'chBelt', 'chDateOfGraduation', 'chPhoneNumber', 'chEmail', 'chAddress', 'chHomeSchool', 'chHomeSchoolAddress',
+        'chIcp6', 'chIcpUpToDate', 'chUniform', 'chAttendance', 'chResults'  ];
  
     // Gets all the missing fields based on its fields
     $missing = checkMissingFields($required);
     
+  
    
     }
-
-    
-
+  
 ?>
 <!doctype html>
 <html lang = "en">
@@ -110,15 +108,8 @@
                     <div class = "container no-padding">
                         <!-- Beggining of the form-->                        
                         <form class = "padding-sides padding-bottom" method = "POST" action = "<?= $_SERVER['PHP_SELF']; ?>">
-                            <div class = "alert alert-danger alert-dismissible fade show" role = "alert" id = "alert">
-                                <?php                               
-                                    if ($errors || $missing) : ?>                                 
-                                <p id = "errorMessage" class = "warning">Please fix the item(s) indicated</p>
-                                <?php endif; ?>                               
-                             
-                            </div>
                             <!-- First row with First and Last Name fields-->
-                            <div class = "form-row" id = "formrow1">
+                            <div class = "form-row padding-top" >
                                 <div class = "form-group col-md-6">
                                     <label for = "firstName">First Name</label>
                                     <?php if ($missing && in_array('firstName', $missing)) : ?>
@@ -293,25 +284,19 @@
                             <div class = "form-row" id = "submitbutton">
                                 <!-- <input type = "button" id = "validate" class = "btn btn-danger" value = "Validate" onclick = "validateForm();"/> -->
                                 <input type = "submit" name = "submit" id = "submit"  class = "btn btn-danger" value = "Submit"/>
-                                <span id = "span">&nbsp;</span><br>
+                               
                             </div>
         
                         </form>
             </div> 
             </div>
-            <!-- KIDS FORM (For now just a copy of the previous one)-->
+            <!-- KIDS FORM-->
             <div class = "tab-pane fade" id = "kids" role = "tabpanel" aria-labelledby = "profile-tab">
                     <div class = "container no-padding">
                             <!-- Beggining of the form-->
                             <form class = "padding-sides padding-bottom" method = "POST" action = "<?= $_SERVER['PHP_SELF']; ?>">
-                                <div class = "alert alert-danger alert-dismissible fade show" role = "alert" id = "chAlert">
-                                        <p id = "chErrorMessage"></p>
-                                        <button type = "button" id = "close" class = "close" data-hide = "alert" aria-label = "Close">
-                                            <span aria-hidden = "true">&times;</span>
-                                        </button>
-                                </div>
                                 <!-- First row with First and Last Name fields-->
-                                <div class = "form-row" id = "formrow1">
+                                <div class = "form-row padding-top">
                                     <div class = "form-group col-md-6">
                                         <label for = "chFirstName">First Name</label>
                                         <?php if ($missing && in_array('chFirstName', $missing)) : ?>
@@ -338,7 +323,7 @@
                                 <div class = "form-row">
                                     <div class = "form-group col-md-4">
                                         <label for = "chDateOfBirth">Date of Birth:</label>
-                                        <?php if ($missing && in_array('firstName', $missing)) : ?>
+                                        <?php if ($missing && in_array('chDateOfBirth', $missing)) : ?>
                                             <span class = "warning">Please enter your date of birth</span>
                                         <?php endif; ?>
                                         <input type = "date" name = "chDateOfBirth" id = "chDateOfBirth" placeholder = "yyyy-mm-dd" /><br />
@@ -421,14 +406,14 @@
                                     </div>
                                     <div class = "form-group col-md-4">
                                         <label for = "chHomeSchool">Home School:</label>
-                                        <?php if ($missing && in_array('firstName', $missing)) : ?>
+                                        <?php if ($missing && in_array('chHomeSchool', $missing)) : ?>
                                             <span class = "warning">Please enter your home school</span>
                                         <?php endif; ?>
                                         <input type = "text" class = "form-control" name = "chHomeSchool" id = "chHomeSchool" placeholder = "Gracie Barra Vancouver">
                                     </div>
                                     <div class = "form-group col-md-4">
                                         <label for = "chHomeSchoolAddress">Home School Address:</label>
-                                        <?php if ($missing && in_array('firstName', $missing)) : ?>
+                                        <?php if ($missing && in_array('chHomeSchoolAddress', $missing)) : ?>
                                             <span class = "warning">Please enter your home school's address</span>
                                         <?php endif; ?>
                                         <input type = "text" class = "form-control" name = "chHomeSchoolAddress" id = "chHomeSchoolAddress" placeholder = "987 GB Avenue, Vancouver">
@@ -492,7 +477,6 @@
                                 <div class = "form-row" id = "chSubmitbutton">
                                     <!-- <input type = "button" id = "chValidate" class = "btn btn-danger" value = "Validate" onclick = "chValidateForm();"/> -->
                                     <input type = "submit" name = "chSubmit" id = "chSubmit"  class = "btn btn-danger" value = "Submit"/>
-                                    <span id = "chSpan">&nbsp;</span><br>
                                 </div>            
                             </form>
                     </div>
@@ -510,6 +494,6 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src = "https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity = "sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin = "anonymous"></script>
     <script src = "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity = "sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin = "anonymous"></script>
-    <script src = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity = "sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin = "anonymous"></script>
+    <script src = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity = "sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin = "anonymous"></script>  
   </body>
 </html>
