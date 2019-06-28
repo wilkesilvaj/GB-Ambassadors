@@ -8,10 +8,11 @@
     $to = 'João Wilke <wilke.joao@gmail.com>';
     $subject = 'GB Pacific Northwest Ambassadors Program Application';    
     $headers = [];
-    $headers[] = 'From: wilke.joao@gmail.com';
+    $headers[] = 'From: wilke.joao.test@gmail.com';
     $headers[] = 'Cc: empty7empty@gmail.com';
     $headers[] = 'Content-type: text/plain; charset=utf-8';
-    $authorized = null;
+    // $authorized = null;
+    $authorized = '-fwilke.joao.test@gmail.com';
 
     // Includes other files
     require("./includes/process_mail.php");
@@ -30,8 +31,6 @@
     $missing = checkMissingFields($required);
 
    
-
-  
     }
     // If the user has clicked on the submit button of the "Kids Form"
     else if (isset($_POST['chSubmit'])) {
@@ -44,11 +43,15 @@
         'chIcp6', 'chIcpUpToDate', 'chUniform', 'chAttendance', 'chResults'  ];
  
     // Gets all the missing fields based on its fields
-    $missing = checkMissingFields($required);
-  
+    $missing = checkMissingFields($required); 
     
     }
 
+    if ($mailSent)  {
+        echo "<script type='text/javascript'> ";
+        echo "alert('Mail was sent!')";
+        echo "</script>";  
+    }
   
 ?>
 <!doctype html>
