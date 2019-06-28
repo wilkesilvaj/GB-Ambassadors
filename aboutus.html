@@ -141,12 +141,151 @@
                             within GB to flourish and be nurtured to create a stronger, more successful and bigger team 
                             than ever before. Here are some thoughts from our Head Instructor on the GB Ambassadors Program</p>
                     </div>
-                </div>              
+                </div>    
+                <hr class="featurette-divider">       
+                <h2>OUR AMBASSADORS</h2>   
             </div>
+
+            <!-- Ambassadors section -->
+            <!--
+            <div class="row no-gutters">
+                <div class="col ambassadors_row ">
+                <a class="photo" href="#">
+                    <img class="img-fluid" src="images/Catherine 004.jpg" alt="" />
+                </a>
+                </div>
+                <div class="col ambassadors_row">
+                <a class="photo" href="#">
+                    <img class="img-fluid" src="images/Chad 003.jpg" alt="" />
+                </a>
+                </div>
+                <div class="col ambassadors_row">
+                <a class="photo" href="#">
+                    <img class="img-fluid" src="images/Luis 004.jpg" alt="" />
+                </a>
+                </div>
+                <div class="col ambassadors_row">
+                <a class="photo" href="#">
+                    <img class="img-fluid" src="images/Marco 004.jpg" alt="" />
+                </a>
+                </div>
+                <div class="col ambassadors_row">
+                <a class="photo" href="#">
+                    <img class="img-fluid" src="images/Silas 003.jpg" alt="" />
+                </a>
+                </div>
+            </div>
+        -->
+         <style>
+            .amb_row {
+                position: relative;
+                width: 50%;
+            }
+            
+            .amb_image {
+                opacity: 1;
+                display: block;
+                width: 100%;
+                height: auto;
+                transition: .5s ease;
+                backface-visibility: hidden;
+            }
+            
+            .middle {
+                transition: .5s ease;
+                opacity: 0;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%);
+                text-align: center;
+            }
+            
+            .amb_row:hover .amb_image {
+                opacity: 0.3;
+            }
+            
+            .amb_row:hover .middle {
+                opacity: 1;
+            }
+            
+            .text {
+                /* background-color: rgb(24, 24, 24); */
+                color: rgb(24, 24, 24);
+                font-size: 120%;
+                padding: 16px 32px;
+            }
+
+            .blockquote {
+                text-align: right;
+            }
+        </style>
+         
+         <div class="row no-gutters">
+                <div class="col amb_row">
+                    <img class="img-fluid amb_image" src="images/Catherine 004.jpg" alt="Catherine" />
+                    <div class="middle">
+                        <div class="text">Catherine</div>
+                    </div>
+                </div>
+                <div class="col amb_row" id="amb_row1">
+                    <img id="amb_image1" class="img-fluid amb_image" src="images/Chad 003.jpg" alt="Chad" />
+                    <div class="middle">
+                        <div class="text">Chad</div>
+                    </div>
+                </div>
+                <div class="col amb_row" id="amb_row1">
+                    <img id="amb_image1" class="img-fluid amb_image" src="images/Luis 004.jpg" alt="Luis" />
+                    <div class="middle">
+                        <div class="text">Luis</div>
+                    </div>
+                </div>
+                <div class="col amb_row" id="amb_row1">
+                    <img id="amb_image1" class="img-fluid amb_image" src="images/Marco 004.jpg" alt="Marco" />
+                    <div class="middle">
+                        <div class="text">Marko</div>
+                    </div>
+                </div>
+                <div class="col amb_row" id="amb_row1">
+                    <img id="amb_image1" class="img-fluid amb_image" src="images/Silas 003.jpg" alt="Silas" />
+                    <div class="middle">
+                        <div class="text">Silas</div>
+                    </div>
+                </div>
+            </div>
+            <!--
+                We can make the quotes dynamic and dispaly only one at time depending on what image a user will click. Or we can simply 
+                put the whole text in the jumbotron. 
+            -->
+            <div class="jumbotron jumbotron-fluid">
+                    <div class="container">
+                        <h2 id="jumbotronhead">Some Text</h1>
+                        <blockquote class="blockquote mb-0">
+                            <p>Some Text as a quote from Catherine.</p>
+                            <footer class="blockquote-footer">Catherine <cite title="Source Title">2019</cite></footer>
+                        </blockquote>
+                        <blockquote class="blockquote mb-0">
+                            <p>Some Text as a quote from Chad.</p>
+                            <footer class="blockquote-footer">Chad <cite title="Source Title">2019</cite></footer>
+                        </blockquote>
+                    </div>
+                </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="space" data-my="60px" style="margin-top: 60px;"></div>
+            </div>
+        </div>
+
+        <div class="container">
+            
+        </div>
+
 
 
         <!-- Footer at the end of the page-->
-        <footer class="footer mt-auto center">
+        <footer class="footer mt-auto center" id="footer">
                 <p class="text-center">GB Ambassadors Program Pacific Northwest</p>
         </footer>
 

@@ -49,11 +49,6 @@ a:hover {
 
 .headimgText {
     color: white;
-   /* position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    */
     display: flex;
     justify-content: center;
     flex-direction: column; 
@@ -71,12 +66,12 @@ h2 {
     color: rgb(148, 0, 0);
 }
 
-footer {
+#footer {
     background: rgb(24, 24, 24);
     height: 100%;
 }
 
-footer>p {
+#footer>p {
     color: rgb(141, 141, 141);
 }
 
@@ -117,3 +112,48 @@ p  {
 .no-margin  {
     margin: unset;
 }
+
+.amb_row {
+    position: relative;
+    width: 50%;
+}
+
+.amb_image {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+
+.middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.amb_row:hover .amb_image {
+    opacity: 0.3;
+}
+
+.amb_row:hover .middle {
+    opacity: 1;
+}
+
+.text {
+    /* background-color: rgb(24, 24, 24); */
+    color: rgb(24, 24, 24);
+    font-size: 120%;
+    padding: 16px 32px;
+}
+
+.blockquote {
+    text-align: right;
+}
+
