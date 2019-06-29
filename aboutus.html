@@ -145,130 +145,330 @@
                 <hr class="featurette-divider">       
                 <h2>OUR AMBASSADORS</h2>   
             </div>
-
-            <!-- Ambassadors section -->
-            <!--
-            <div class="row no-gutters">
-                <div class="col ambassadors_row ">
-                <a class="photo" href="#">
-                    <img class="img-fluid" src="images/Catherine 004.jpg" alt="" />
-                </a>
-                </div>
-                <div class="col ambassadors_row">
-                <a class="photo" href="#">
-                    <img class="img-fluid" src="images/Chad 003.jpg" alt="" />
-                </a>
-                </div>
-                <div class="col ambassadors_row">
-                <a class="photo" href="#">
-                    <img class="img-fluid" src="images/Luis 004.jpg" alt="" />
-                </a>
-                </div>
-                <div class="col ambassadors_row">
-                <a class="photo" href="#">
-                    <img class="img-fluid" src="images/Marco 004.jpg" alt="" />
-                </a>
-                </div>
-                <div class="col ambassadors_row">
-                <a class="photo" href="#">
-                    <img class="img-fluid" src="images/Silas 003.jpg" alt="" />
-                </a>
-                </div>
-            </div>
-        -->
-         <style>
-            .amb_row {
-                position: relative;
-                width: 50%;
-            }
-            
-            .amb_image {
-                opacity: 1;
-                display: block;
-                width: 100%;
-                height: auto;
-                transition: .5s ease;
-                backface-visibility: hidden;
-            }
-            
-            .middle {
-                transition: .5s ease;
-                opacity: 0;
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                -ms-transform: translate(-50%, -50%);
-                text-align: center;
-            }
-            
-            .amb_row:hover .amb_image {
-                opacity: 0.3;
-            }
-            
-            .amb_row:hover .middle {
-                opacity: 1;
-            }
-            
-            .text {
-                /* background-color: rgb(24, 24, 24); */
-                color: rgb(24, 24, 24);
-                font-size: 120%;
-                padding: 16px 32px;
-            }
-
-            .blockquote {
-                text-align: right;
-            }
-        </style>
-         
-         <div class="row no-gutters">
-                <div class="col amb_row">
-                    <img class="img-fluid amb_image" src="images/Catherine 004.jpg" alt="Catherine" />
-                    <div class="middle">
-                        <div class="text">Catherine</div>
+            <!-- Ambassadors' Photos -->
+            <ul class="nav nav-tabs row no-gutters" id="myTab" role="tablist">
+                    <li class="nav-item col amb_row">
+                        <a id="first_amb"  class="active" data-toggle="tab" href="#fisrt" role="tab" aria-controls="first" aria-selected="true">
+                            <img class="img-fluid amb_image" src="images/Catherine 004.jpg" alt="Catherine" />
+                            <div class="middle">
+                                <div class="text">Catherine</div>
+                            </div>
+                        </a>
+                    </li>
+                
+                    <li class="nav-item col amb_row">
+                        <a id="second_amb" data-toggle="tab"href="#second" role="tab" aria-controls="second" aria-selected="false">
+                            <img id="amb_image1" class="img-fluid amb_image" src="images/Chad 003.jpg" alt="Chad" />
+                            <div class="middle">
+                                <div class="text">Chad</div>
+                            </div>
+                        </a>
+                    </li>
+                
+                    <li class="nav-item col amb_row">
+                        <a id="third-tab" data-toggle="tab" href="#third" role="tab" aria-controls="third" aria-selected="false">
+                            <img id="amb_image1" class="img-fluid amb_image" src="images/Luis 004.jpg" alt="Luis" />
+                            <div class="middle">
+                                <div class="text">Luis</div>
+                            </div>
+                        </a>
+                    </li>
+                
+                    <li class="nav-item col amb_row">
+                        <a id="fourth_amb" data-toggle="tab" href="#fourth" role="tab" aria-controls="fourth" aria-selected="false">
+                            <img id="amb_image1" class="img-fluid amb_image" src="images/Marco 004.jpg" alt="Marco" />
+                            <div class="middle">
+                                <div class="text">Marco</div>
+                            </div>
+                        </a>
+                    </li>
+                
+                    <li class="nav-item col amb_row">
+                        <a id="fifth_amb" data-toggle="tab" href="#fifth" role="tab" aria-controls="fifth" aria-selected="false">
+                            <img id="amb_image1" class="img-fluid amb_image" src="images/Silas 003.jpg" alt="Silas" />
+                            <div class="middle">
+                                <div class="text">Silas</div>
+                            </div>
+                        </a>
+                    </li>
+                
+            </ul>
+            <!-- Ambassadors' info-->
+                <div class="tab-content jumbotron jumbotron-fluid" id="myTabContent">
+                    <div class="tab-pane fade show active container" id="fisrt" role="tabpanel" aria-labelledby="fisrt-tab">
+                        <h2>Catherine</h2>
+                        <div class="row">
+                            <div class="col-3">
+                                Name:
+                            </div>
+                            <div class="col-9">
+                                Catherrine Methven
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                Age:
+                            </div>
+                            <div class="col-9">
+                                25
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                GD School:
+                            </div>
+                            <div class="col-9">
+                                GB Steveston
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                How long do you train?
+                            </div>
+                            <div class="col-9">
+                                1 year and a half
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                As GB Discovered:
+                            </div>
+                            <div class="col-9">
+                                I tries a class and fell in love with the creativity and complexity of BJJ
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                What is GB for you?
+                            </div>
+                            <div class="col-9">
+                                A team that helps students achieve their goals
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                Why did you join the Ambassadors Program?
+                            </div>
+                            <div class="col-9">
+                                I want to compete with the best in world and improve my BJJ
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                Future plans in GB?
+                            </div>
+                            <div class="col-9">
+                                Keep training till I'm 99!
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col amb_row" id="amb_row1">
-                    <img id="amb_image1" class="img-fluid amb_image" src="images/Chad 003.jpg" alt="Chad" />
-                    <div class="middle">
-                        <div class="text">Chad</div>
+                    <!-- Chad -->
+                    <div class="tab-pane fade container" id="second" role="tabpanel" aria-labelledby="second-tab">
+                            <h2>Chad</h2>
+                            <div class="row">
+                                <div class="col-3">
+                                    Name:
+                                </div>
+                                <div class="col-9">
+                                    Chad Shaule
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    Age:
+                                </div>
+                                <div class="col-9">
+                                    29
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    GD School:
+                                </div>
+                                <div class="col-9">
+                                    GB Burnaby
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    How long do you train?
+                                </div>
+                                <div class="col-9">
+                                    10 years
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    As GB Discovered:
+                                </div>
+                                <div class="col-9">
+                                    I was looking for a benegicial extra-curricular activity to do as a university student and found jio-jitsu.
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    What is GB for you?
+                                </div>
+                                <div class="col-9">
+                                    A team and a family.
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    Why did you join the Ambassadors Program?
+                                </div>
+                                <div class="col-9">
+                                    To lead by example and inspire my students.
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    Future plans in GB?
+                                </div>
+                                <div class="col-9">
+                                    Help others the way my role models helped guide me.
+                                </div>
+                            </div>
                     </div>
-                </div>
-                <div class="col amb_row" id="amb_row1">
-                    <img id="amb_image1" class="img-fluid amb_image" src="images/Luis 004.jpg" alt="Luis" />
-                    <div class="middle">
-                        <div class="text">Luis</div>
+                    <!-- Luis -->
+                    <div class="tab-pane fade container" id="third" role="tabpanel" aria-labelledby="third-tab">
+                            <h2>Luis</h2>
+                            <div class="row">
+                                <div class="col-3">
+                                    Name:
+                                </div>
+                                <div class="col-9">
+                                    Luis Marfori
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    Age:
+                                </div>
+                                <div class="col-9">
+                                    36
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    GD School:
+                                </div>
+                                <div class="col-9">
+                                    GB White Rock
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    How long do you train?
+                                </div>
+                                <div class="col-9">
+                                    11 years
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    As GB Discovered:
+                                </div>
+                                <div class="col-9">
+                                    I moved to White Rock and teh gym was near my house
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    What is GB for you?
+                                </div>
+                                <div class="col-9">
+                                    A team that I can call my family
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    Why did you join the Ambassadors Program?
+                                </div>
+                                <div class="col-9">
+                                    I want to represent GB through tournaments with winning results
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    Future plans in GB?
+                                </div>
+                                <div class="col-9">
+                                    Get my black belt and have fun
+                                </div>
+                            </div>
                     </div>
-                </div>
-                <div class="col amb_row" id="amb_row1">
-                    <img id="amb_image1" class="img-fluid amb_image" src="images/Marco 004.jpg" alt="Marco" />
-                    <div class="middle">
-                        <div class="text">Marko</div>
+                    <!-- Marco -->
+                    <div class="tab-pane fade container" id="fourth" role="tabpanel" aria-labelledby="fourth-tab">
+                        <h2>Marco...</h2>
                     </div>
-                </div>
-                <div class="col amb_row" id="amb_row1">
-                    <img id="amb_image1" class="img-fluid amb_image" src="images/Silas 003.jpg" alt="Silas" />
-                    <div class="middle">
-                        <div class="text">Silas</div>
-                    </div>
-                </div>
-            </div>
-            <!--
-                We can make the quotes dynamic and dispaly only one at time depending on what image a user will click. Or we can simply 
-                put the whole text in the jumbotron. 
-            -->
-            <div class="jumbotron jumbotron-fluid">
-                    <div class="container">
-                        <h2 id="jumbotronhead">Some Text</h1>
-                        <blockquote class="blockquote mb-0">
-                            <p>Some Text as a quote from Catherine.</p>
-                            <footer class="blockquote-footer">Catherine <cite title="Source Title">2019</cite></footer>
-                        </blockquote>
-                        <blockquote class="blockquote mb-0">
-                            <p>Some Text as a quote from Chad.</p>
-                            <footer class="blockquote-footer">Chad <cite title="Source Title">2019</cite></footer>
-                        </blockquote>
+                    <!-- Silas -->
+                    <div class="tab-pane fade container" id="fifth" role="tabpanel" aria-labelledby="fifth-tab">
+                            <h2>Silas</h2>
+                            <div class="row">
+                                <div class="col-3">
+                                    Name:
+                                </div>
+                                <div class="col-9">
+                                    Silas Dubelaar
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    Age:
+                                </div>
+                                <div class="col-9">
+                                    27
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    GD School:
+                                </div>
+                                <div class="col-9">
+                                    GB Vancouver
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    How long do you train?
+                                </div>
+                                <div class="col-9">
+                                    1.5 years
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    As GB Discovered:
+                                </div>
+                                <div class="col-9">
+                                    Word of mouth
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    What is GB for you?
+                                </div>
+                                <div class="col-9">
+                                    A supportive and positive team
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    Why did you join the Ambassadors Program?
+                                </div>
+                                <div class="col-9">
+                                    The opportunity to compete at a higher leve and test myself against more opponents
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    Future plans in GB?
+                                </div>
+                                <div class="col-9">
+                                    Train myself and support other atheletes in any way I can
+                                </div>
+                            </div>
                     </div>
                 </div>
 
@@ -277,12 +477,6 @@
                 <div class="space" data-my="60px" style="margin-top: 60px;"></div>
             </div>
         </div>
-
-        <div class="container">
-            
-        </div>
-
-
 
         <!-- Footer at the end of the page-->
         <footer class="footer mt-auto center" id="footer">
@@ -294,5 +488,5 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-   </body>
+    </body>
 </html>
