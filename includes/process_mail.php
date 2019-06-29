@@ -77,7 +77,7 @@
                 }
             }     
             
-            /* It works but I don't know if it's suitable */
+            /* Crashes on kid's form
             // Validate date of birth
             if (!preg_match("/^((19[0-9][0-9]|200[0-2])(-)(((0)[0-9])|((1)[0-2]))(-)([0-2][0-9]|(3)[0-1]))|((((0)[0-9])|((1)[0-2]))(\/)([0-2][0-9]|(3)[0-1])(\/)(19[0-9][0-9]|200[0-2]))|(\s*(3[01]|[12][0-9]|0?[1-9])\.(1[012]|0?[1-9])\.(19[0-9][0-9]|200[0-2])\s)$/", $_POST['dateOfBirth'])) {
                 $missing[] = $required[2];
@@ -86,6 +86,7 @@
             if (!preg_match("/^(1 )*\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})|(\d){3}(-)*(\d){4}$/", $_POST['phoneNumber'])) {
                 $missing[] = $required[6];
             }
+            */
 
             // Validate user's email
             if (!$missing && !empty($_POST['email'])) {
