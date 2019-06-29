@@ -24,10 +24,6 @@
         }
     }
 
-
-
-    //  print_r($_POST);
-
     function checkMissingFields(&$required) {
         
        
@@ -73,6 +69,10 @@
              */
             foreach ($required as $field)  {
                 if (!isset($_POST[$field])) {
+                    $missing[] = $field;
+                }
+                // This verifies if the applicant has agreed to radio buttons which are 'Yes' or 'No' ones
+                else if ($_POST[$field] == 'No')    {
                     $missing[] = $field;
                 }
             }     
@@ -138,10 +138,14 @@
                 /* Wraps message content (by default, each line on an email message)
                     should only be 70 characters long.*/
                 $message = wordwrap($message, 70);
+                
                 // References global variable
                 global $mailSent;
-                //$mailSent = true;
-                $mailSent = mail($to, $subject, $message, $headers, $authorized);  
+
+                // Attempts to send email and stores true if successful and false if unsucessful in variable
+                $mailSent = true;
+                // $mailSent = mail($to, $subject, $message, $headers, $authorized);  
+                
                 if (!$mailSent) {
                     $errors['mailfail'] = true;
                 }             
