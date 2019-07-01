@@ -69,14 +69,23 @@
     <!-- Required meta tags -->
     <meta charset = "utf-8">
     <meta name = "viewport" content = "width=device-width, initial-scale=1, shrink-to-fit=No">
+    
     <!-- Bootstrap CSS -->
     <link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity = "sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin = "aNonymous">
     
+<!-- Font Awesome Icons-->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
     <!-- Customized css -->
     <link rel = "stylesheet" href= "css/application.css">
 
-    <!-- Form validation-->
-    <!--<script" src = "js/formvalidation.js"></script>-->
+    <!-- Adults Form Championship Generation Script-->
+    <script type="text/javascript" src="js/application.js"></script>
+
+    <!-- Kids Form Championship Generation Script-->
+    <script type="text/javascript" src="js/kidsapplication.js"></script>
+
+
 
     <title>GB Ambassadors Program Pacific Northwest</title>
     </head>
@@ -131,7 +140,7 @@
                 <div class = "tab-pane fade show active" id = "adults" role = "tabpanel" aria-labelledby = "home-tab">
                     <div class = "container no-padding">
                         <!-- Beggining of the form-->                        
-                        <form class = "padding-sides padding-bottom" method = "POST" action = "<?= $_SERVER['PHP_SELF']; ?>">
+                        <form class = "padding-sides padding-bottom" id = "adultsForm" method = "POST" action = "<?= $_SERVER['PHP_SELF']; ?>">
                         <!-- Checks if there is any suspicious data in the form -->
                         <?php  if ($_POST && ($suspect || isset($errors['mailfail']))) : ?>
                             <div class = "form-row">
@@ -456,31 +465,46 @@
                             </div>
                             <hr class = "divider">
                             <!-- Eigth row-->
+                            <div class = "form-row">                                    
+                                <label for = "results"> Our criteria to elect the athletes that will be granted support from the GB Ambassadors Pacific Northwest is based on the info collected on this form and the results in competitions throughout the Season. Are you willing to make the commitment to send the results you get in competitions to the GB Ambassadors Pacific Northwest Staff?</label>
+                                <?php if ($missing && in_array('results', $missing)) :
+                                    displayError('results_area');
+                                endif; ?>
+                                <div id="results_area">
+                                <input  type = "radio" name = "results" id = "resultsYes" value = "Yes" />Yes
+                                    <?php
+                                        if ($errors || $missing)    {
+                                            maintainSubmittedRadioData('results', 'resultsYes');
+                                        } 
+                                    ?>
+                                <input type = "radio" name = "results" id = "resultsNo" value = "No" />No
+                                    <?php
+                                        if ($errors || $missing)    {
+                                            maintainSubmittedRadioData('results', 'resultsNo');
+                                        } 
+                                    ?>
+                                </div>        
+                            </div>
+                            <!-- Ninth row -->
                             <div class = "form-row">
-                                    <div class = "form-group col-md-6">
-                                        <label for = "results"> Our criteria to elect the athletes that will be granted support from the GB Ambassadors Pacific Northwest is based on the info collected on this form and the results in competitions throughout the Season. Are you willing to make the commitment to send the results you get in competitions to the GB Ambassadors Pacific Northwest Staff?</label>
-                                        <?php if ($missing && in_array('results', $missing)) :
-                                            displayError('results_area');
-                                        endif; ?>
-                                        <div id="results_area">
-                                        <input  type = "radio" name = "results" id = "resultsYes" value = "Yes" />Yes
-                                            <?php
-                                                if ($errors || $missing)    {
-                                                    maintainSubmittedRadioData('results', 'resultsYes');
-                                                } 
-                                            ?>
-                                        <input type = "radio" name = "results" id = "resultsNo" value = "No" />No
-                                            <?php
-                                                if ($errors || $missing)    {
-                                                    maintainSubmittedRadioData('results', 'resultsNo');
-                                                } 
-                                            ?>
-                                        </div>
-                                    </div>
-                                    <div class = "form-group col-md-6">
-                                        <label for = "titles">Please list below your last titles since the IBJJF Worlds 2017:</label>                                        
-                                        <textarea id = "titles" rows = "4" cols = "50" placeholder = "Please separate your titles with the comma ','"></textarea>
-                                    </div>
+                                <table class = "center" style = "width: 100%;">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="6"><h3>Tournament History</h3></th>
+                                        </tr>
+                                        <tr>
+                                            <th>Championships</th>
+                                            <th>Seasons</th>
+                                            <th>1st place</th>
+                                            <th>2nd place</th>
+                                            <th>3rd place</th>
+                                            <td><!--ICONS--></td>
+                                        </tr>
+                                    </thead>
+                                    <tbody id = "adultsTable">
+
+                                    </tbody>
+                                </table>
                             </div>
                             <div class = "form-row" id = "submitbutton">
                                 <!-- <input type = "button" id = "validate" class = "btn btn-danger" value = "Validate" onclick = "validateForm();"/> -->
@@ -495,7 +519,7 @@
             <div class = "tab-pane fade" id = "kids" role = "tabpanel" aria-labelledby = "profile-tab">
                     <div class = "container no-padding">
                             <!-- Beggining of the form-->
-                            <form class = "padding-sides padding-bottom" method = "POST" action = "<?= $_SERVER['PHP_SELF']; ?>">
+                            <form class = "padding-sides padding-bottom" id = "kidsForm" method = "POST" action = "<?= $_SERVER['PHP_SELF']; ?>">
                                 <!-- Checks if there is any suspicious data in the form -->
                                 <?php  if ($_POST && $suspect) : ?>
                                     <div class = "form-row">
@@ -833,30 +857,45 @@
                                 <hr class = "divider">
                                 <!-- Eigth row-->
                                 <div class = "form-row">
-                                    <div class = "form-group col-md-6">
-                                        <label for = "chResults"> Our criteria to elect the athletes that will be granted support from the GB Ambassadors Pacific Northwest is based on the info collected on this form and the results in competitions throughout the Season. Are you willing to make the commitment to send the results you get in competitions to the GB Ambassadors Pacific Northwest Staff?</label>
-                                        <?php if ($missing && in_array('chResults', $missing)) : 
-                                            displayError('chResults_area');
-                                        endif; ?>
-                                        <div id="chResults_area">
-                                        <input type = "radio" name = "chResults" id = "chResultsYes" value = "Yes" />Yes
-                                            <?php
-                                                if ($errors || $missing)    {
-                                                    maintainSubmittedRadioData('chResults', 'chResultsYes');
-                                                } 
-                                            ?>
-                                        <input type = "radio" name = "chResults" id = "chResultsNo" value = "No" />No
-                                            <?php
-                                                if ($errors || $missing)    {
-                                                    maintainSubmittedRadioData('chResults', 'chResultsNo');
-                                                } 
-                                            ?>
-                                        </div>
+                                    <label for = "chResults"> Our criteria to elect the athletes that will be granted support from the GB Ambassadors Pacific Northwest is based on the info collected on this form and the results in competitions throughout the Season. Are you willing to make the commitment to send the results you get in competitions to the GB Ambassadors Pacific Northwest Staff?</label>
+                                    <?php if ($missing && in_array('chResults', $missing)) : 
+                                        displayError('chResults_area');
+                                    endif; ?>
+                                    <div id="chResults_area">
+                                    <input type = "radio" name = "chResults" id = "chResultsYes" value = "Yes" />Yes
+                                        <?php
+                                            if ($errors || $missing)    {
+                                                maintainSubmittedRadioData('chResults', 'chResultsYes');
+                                            } 
+                                        ?>
+                                    <input type = "radio" name = "chResults" id = "chResultsNo" value = "No" />No
+                                        <?php
+                                            if ($errors || $missing)    {
+                                                maintainSubmittedRadioData('chResults', 'chResultsNo');
+                                            } 
+                                        ?>
                                     </div>
-                                    <div class = "form-group col-md-6">
-                                        <label for = "titles">Please list below your last titles since the IBJJF Worlds 2017:</label>
-                                        <textarea id = "titles" rows = "4" cols = "50"></textarea>
-                                    </div>
+                                </div>
+                                <!-- Ninth row -->
+                                <div class = "form-row">
+                                    <table class = "center" style = "width: 100%;">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="6"><h3>Tournament History</h3></th>
+                                            </tr>
+                                            <tr>
+                                                <th>Championships</th>
+                                                <th>Seasons</th>
+                                                <th>1st place</th>
+                                                <th>2nd place</th>
+                                                <th>3rd place</th>
+                                                <td><!--ICONS--></td>
+                                            </tr>
+                                        </thead>
+                                        <tbody id = "kidsTable">
+
+                                        </tbody>
+                                    </table>
                                 </div>
                                 <div class = "form-row" id = "chSubmitbutton">
                                     <!-- <input type = "button" id = "chValidate" class = "btn btn-danger" value = "Validate" onclick = "chValidateForm();"/> -->

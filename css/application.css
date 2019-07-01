@@ -126,3 +126,9 @@ img.gblogo  {
 span.warning    {
     color: red;
 }
+
+.tournament-table  {
+    table-layout: fixed;
+    width: 100%;
+}
+

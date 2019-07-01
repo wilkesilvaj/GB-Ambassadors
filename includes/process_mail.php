@@ -8,6 +8,7 @@
     // Assume that initially the input contains nothing suspect
     $suspect = false;
 
+    print_r($_POST);
     /** Recurssive function that checks for suspect phrases
      *  $suspect is passed by reference
      */
