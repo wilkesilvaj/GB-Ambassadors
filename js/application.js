@@ -8,7 +8,7 @@ var adultsTable; // TBODY used in the Adults Form
 var medalWeight = [
     "1st place",
     "2nd place",
-    "3rd"
+    "3rd place"
 ];
 
 var championshipList = [
@@ -33,24 +33,17 @@ var seasonList = [
 
 // Variables used to assign dynamic ids to <select> controllers
 var championshipIndex = 0; 
-var championshipID = "championships"; 
+var championshipID = "championship"; 
 var seasonID = "season";
 
 
 function initializeComponents()  {
     
-    // Initializes the calculator form
+    // Initializes the application form for adults
     adultsForm = document.getElementById("adultsForm");       
 
-    // Initializes the calculator form
-    //kidsForm = document.getElementById("kidsForm"); 
-
-
-    // Initializes the calculator tbody element
+    // Initializes the tbody element within the adults application form
     adultsTable = document.getElementById("adultsTable");
-
-    // Initializes the calculator tbody element
-    //kidsTable = document.getElementById("kidsTable");
    
     addChampionship();
 }
@@ -173,7 +166,7 @@ function createRadioButtons(currentFormRow)   {
 
         var radioButton = document.createElement("input");
         radioButton.type = "radio";
-        radioButton.name = "titles" + championshipIndex;
+        radioButton.name = "title" + championshipIndex;
         radioButton.value = medalWeight[x];
         if (x == 0) {
             radioButton.checked = true;

@@ -11,7 +11,7 @@
     $subject = 'GB Pacific Northwest Ambassadors Program Application';    
     $headers = [];
     $headers[] = 'From: wilke.joao.test@gmail.com';
-    $headers[] = 'Cc: ';
+    $headers[] = 'Cc: empty7empty@gmail.com';
     $headers[] = 'Content-type: text/plain; charset=utf-8';
     // $authorized = null;
     $authorized = '-fwilke.joao.test@gmail.com';

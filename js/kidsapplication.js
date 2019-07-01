@@ -8,7 +8,7 @@ var kidsTable; // TBODY used in the kids Form
 var medalWeight = [
     "1st place",
     "2nd place",
-    "3rd"
+    "3rd place"
 ];
 
 var championshipList = [
@@ -33,7 +33,7 @@ var seasonList = [
 
 // Variables used to assign dynamic ids to <select> controllers
 var chChampionshipIndex = 0; 
-var chChampionshipID = "chChampionships"; 
+var chChampionshipID = "chChampionship"; 
 var chSeasonID = "chSeason";
 
 
@@ -173,7 +173,7 @@ function chCreateRadioButtons(currentFormRow)   {
 
         var radioButton = document.createElement("input");
         radioButton.type = "radio";
-        radioButton.name = "chTitles" + chChampionshipIndex;
+        radioButton.name = "chTitle" + chChampionshipIndex;
         radioButton.value = medalWeight[x];
         if (x == 0) {
             radioButton.checked = true;
@@ -284,10 +284,7 @@ function chDeleteCurrentChampionship(removeChampionshipIcon)    {
     }
     else{
         alert("You cannot delete all championships from the calculator.");
-    }
-
-    
-    
+    }    
 }
 
 

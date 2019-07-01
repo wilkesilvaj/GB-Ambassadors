@@ -27,7 +27,6 @@
 
     function checkMissingFields(&$required) {
         
-       
         global $suspect;
         global $errors;
         global $headers;
@@ -35,6 +34,9 @@
         global $to;
         global $subject;
         global $authorized;
+
+        print_r($required);
+        print_r($expected);
         
         // Regular expression to search for suspect phrases
         $pattern = '/Content-type:|Bcc:|Cc:/i';
@@ -52,8 +54,20 @@
              *  BELOW THE FOREACH WE MUST VALIDATE IF ALL THE REQUIRED FIELDS HAVE BEEN SET OR NOT
              *  */
             foreach($_POST as $key => $value)   {
+                
                 // Verifies if the value is an array. If it isn't its value is trimmed to ignore whitespaces
                 $value = is_array($value) ? $value : trim($value);
+
+                /** IF the current input is referring to championships, it dynamically adds it to the $required and
+                 *  $expected arrays to ensure they will be added to the message.
+                 */ 
+                if (strpos($key, 'championship') !== false || strpos($key, 'Championship') !== false
+                || strpos($key, 'season') !== false || strpos($key, 'Season') !== false 
+                || strpos($key, 'title') !== false || strpos($key, 'Title') !== false)   {
+
+                    $required[] = $key;
+                    $expected[] = $key;
+                }
 
                 // Verifies if $value is empty and if it is a required field. If both are true, it adds that key to the $missing array
                 if (empty($value) && in_array($key, $required)) {
@@ -64,6 +78,9 @@
                     $$key = $value;
                 }                     
             }
+
+            print_r($required);
+            print_r($expected);
 
             /** Loops through the required fields and checks if data has been submitted for each
              *  required field
@@ -89,7 +106,7 @@
             }
             */
 
-            // Validate user's email
+            // Validate email (ADULTS' FORM)
             if (!$missing && !empty($_POST['email'])) {
                 $validemail = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
                 if ($validemail)    {
@@ -99,6 +116,7 @@
                     $errors['email'] = true;
                 }
             }
+            // Validate email (KIDS' FORM)
             else if (!$missing && !empty($_POST['chEmail'])) {
                 $validemail = filter_input(INPUT_POST, 'chEmail', FILTER_VALIDATE_EMAIL);
                 if ($validemail)    {
@@ -113,12 +131,13 @@
                 $headers = implode("\r\n", $headers);
                 // Initializing message (reference the global variable)
                 global $message;
+
+                print_r($expected);
                 foreach ($expected as $field)   :
                     if (isset($$field) && !empty($$field))  {
                         $val = $$field;
                     }
-                    else{
-                        var_dump($$field);
+                    else{                        
                         $val = 'Not selected';
                     }
                   
@@ -133,9 +152,27 @@
                     // IF structuring data from a child's form, replaces ch with Child in the message body
                     if (strpos($field, 'ch') !== false)                 {
                         $field = str_replace('ch ','Child ', $field);                        
-                    }            
-                    
-                    $message .= ucfirst($field). ":". $val . "\r\n\r\n";
+                    } 
+                                     
+                    // Just before the tournaments history, setup that section
+                    if (strpos($key, 'results') !== false || strpos($key, 'Results') !== false)   {
+                        $message .= ucfirst($field). ":". $val . "\r\n\r\nCompetition history: \r\n\r\n";
+                    }
+                    // For CHAMPIONSHIPS and SEASONS, just structure keep one line per championship
+                    else if(strpos($key, 'championship') !== false || strpos($key, 'Championship') !== false) {
+                        $message .= $val . " ";
+                    }
+                    else if (strpos($key, 'season') !== false || strpos($key, 'Season') !== false)    {
+                        $message .= "(".$val.") ";
+                    }
+                    else if(strpos($key, 'title') !== false || strpos($key, 'Title') !== false) {
+                        $message .= $val . "\r\n\r\n";
+                    }
+                    else    {
+                        $message .= ucfirst($field). ":". $val . "\r\n\r\n";
+                    }
+
+
                 endforeach;  
                 /* Wraps message content (by default, each line on an email message)
                     should only be 70 characters long.*/
@@ -145,8 +182,8 @@
                 global $mailSent;
 
                 // Attempts to send email and stores true if successful and false if unsucessful in variable
-                // $mailSent = true;
-                $mailSent = mail($to, $subject, $message, $headers, $authorized);  
+                $mailSent = true;
+                // $mailSent = mail($to, $subject, $message, $headers, $authorized);  
                 
                 if (!$mailSent) {
                     $errors['mailfail'] = true;
