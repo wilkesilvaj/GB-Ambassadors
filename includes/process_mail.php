@@ -8,7 +8,7 @@
     // Assume that initially the input contains nothing suspect
     $suspect = false;
 
-    print_r($_POST);
+    
     /** Recurssive function that checks for suspect phrases
      *  $suspect is passed by reference
      */
@@ -118,6 +118,7 @@
                         $val = $$field;
                     }
                     else{
+                        var_dump($$field);
                         $val = 'Not selected';
                     }
                   
@@ -144,8 +145,8 @@
                 global $mailSent;
 
                 // Attempts to send email and stores true if successful and false if unsucessful in variable
-                $mailSent = true;
-                // $mailSent = mail($to, $subject, $message, $headers, $authorized);  
+                // $mailSent = true;
+                $mailSent = mail($to, $subject, $message, $headers, $authorized);  
                 
                 if (!$mailSent) {
                     $errors['mailfail'] = true;

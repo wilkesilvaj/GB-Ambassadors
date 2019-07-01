@@ -3,13 +3,15 @@
     $errors = [];
     $missing = [];   
     
-
+    // Alina's email
+    // empty7empty@gmail.com 
+    
     /*Mail variables */
     $to = 'João Wilke <wilke.joao@gmail.com>';
     $subject = 'GB Pacific Northwest Ambassadors Program Application';    
     $headers = [];
     $headers[] = 'From: wilke.joao.test@gmail.com';
-    $headers[] = 'Cc: empty7empty@gmail.com';
+    $headers[] = 'Cc: ';
     $headers[] = 'Content-type: text/plain; charset=utf-8';
     // $authorized = null;
     $authorized = '-fwilke.joao.test@gmail.com';
@@ -506,7 +508,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class = "form-row" id = "submitbutton">
+                            <div class = "form-row padding-top" id = "submitbutton">
                                 <!-- <input type = "button" id = "validate" class = "btn btn-danger" value = "Validate" onclick = "validateForm();"/> -->
                                 <input type = "submit" name = "submit" id = "submit"  class = "btn btn-danger" value = "Submit"/>
                                
@@ -897,7 +899,7 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <div class = "form-row" id = "chSubmitbutton">
+                                <div class = "form-row padding-top" id = "chSubmitbutton">
                                     <!-- <input type = "button" id = "chValidate" class = "btn btn-danger" value = "Validate" onclick = "chValidateForm();"/> -->
                                     <input type = "submit" name = "chSubmit" id = "chSubmit"  class = "btn btn-danger" value = "Submit"/>
                                 </div>            
