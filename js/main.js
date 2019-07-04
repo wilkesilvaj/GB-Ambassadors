@@ -27,7 +27,7 @@ function initializeControllers()    {
 }
 
 function redirectToApplication()    {
-    location.replace("application.html");
+    location.replace("application.php");
 }
 
 
