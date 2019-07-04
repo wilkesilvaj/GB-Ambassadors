@@ -92,8 +92,8 @@ body    {
 }
 
 img.gblogo  {  
-    height:  10%;
-    width:  10%;
+    height:  15%;
+    width:  15%;
 }
 
 .center   {
@@ -132,3 +132,36 @@ span.warning    {
     width: 100%;
 }
 
+.margin-left    {
+    margin-left: 1rem;
+}
+
+input[type=radio]   {
+    margin-right: 0.3em;
+}
+
+tbody tr td > *   {
+    margin-top: 0.1rem;
+    margin-bottom: 0.1rem;
+}
+
+@media (max-width: 850px) {
+    /* CSS that should be displayed if width is equal to or less than 800px goes here */
+   
+    select  	{
+        font-size: 0.8em;
+    }
+
+    th  {
+        font-size: 0.9em;
+    }
+
+    th h3   {
+        font-size: 1.4em;
+    }
+
+    img.gblogo  {  
+        height:  35%;
+        width:  35%;
+    }
+  }

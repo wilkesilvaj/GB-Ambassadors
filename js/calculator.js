@@ -143,11 +143,10 @@ function createAddButton()   {
     button = document.createElement("button");
     button.name = "btnAddChampionship";
     button.id = "btnAddChampionship";
-    button.className = "margin-top margin-bottom";
+    button.className = "margin-top margin-bottom btn btn-danger";
     button.type = "button";
     button.innerHTML = "Add another championship";
     
-
     // Adds button to <TD>
     formCol.appendChild(button);
 

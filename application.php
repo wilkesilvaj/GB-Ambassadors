@@ -75,8 +75,8 @@
     <!-- Bootstrap CSS -->
     <link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity = "sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin = "aNonymous">
     
-<!-- Font Awesome Icons-->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <!-- Font Awesome Icons-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
     <!-- Customized css -->
     <link rel = "stylesheet" href= "css/application.css">
@@ -392,7 +392,7 @@
                                                     maintainSubmittedRadioData('icp6', 'icp6Yes');
                                                 } 
                                             ?> 
-                                        <input type = "radio" name = "icp6" id = "icp6No" value = "No" />No
+                                        <input type = "radio" class = "margin-left" name = "icp6" id = "icp6No" value = "No" />No
                                             <?php
                                                 if ($errors || $missing)    {
                                                     maintainSubmittedRadioData('icp6', 'icp6No');
@@ -412,7 +412,7 @@
                                                     maintainSubmittedRadioData('icpUpToDate', 'icpUpToDateYes');
                                                 } 
                                             ?> 
-                                        <input type = "radio" name = "icpUpToDate" id = "icpUpToDateNo" value = "No" />No
+                                        <input type = "radio" class = "margin-left" name = "icpUpToDate" id = "icpUpToDateNo" value = "No" />No
                                             <?php
                                                 if ($errors || $missing)    {
                                                     maintainSubmittedRadioData('icpUpToDate', 'icpUpToDateNo');
@@ -436,7 +436,7 @@
                                                     maintainSubmittedRadioData('uniform', 'uniformYes');
                                                 } 
                                             ?> 
-                                        <input  type = "radio" name = "uniform" id = "uniformNo" value = "No" />No
+                                        <input  type = "radio" class = "margin-left" name = "uniform" id = "uniformNo" value = "No" />No
                                             <?php
                                                 if ($errors || $missing)    {
                                                     maintainSubmittedRadioData('uniform', 'uniformNo');
@@ -456,7 +456,7 @@
                                                     maintainSubmittedRadioData('attendance', 'attendanceYes');
                                                 } 
                                             ?> 
-                                        <input type = "radio" name = "attendance" id = "attendanceNo" value = "No" />No
+                                        <input type = "radio" class = "margin-left" name = "attendance" id = "attendanceNo" value = "No" />No
                                             <?php
                                                 if ($errors || $missing)    {
                                                     maintainSubmittedRadioData('attendance', 'attendanceNo');
@@ -479,7 +479,7 @@
                                             maintainSubmittedRadioData('results', 'resultsYes');
                                         } 
                                     ?>
-                                <input type = "radio" name = "results" id = "resultsNo" value = "No" />No
+                                <input type = "radio" class = "margin-left" name = "results" id = "resultsNo" value = "No" />No
                                     <?php
                                         if ($errors || $missing)    {
                                             maintainSubmittedRadioData('results', 'resultsNo');
@@ -783,7 +783,7 @@
                                                     maintainSubmittedRadioData('chIcp6', 'chIcp6Yes');
                                                 } 
                                             ?>
-                                        <input type = "radio" name = "chIcp6" id = "chIcp6No" value = "No" />No
+                                        <input type = "radio" class = "margin-left" name = "chIcp6" id = "chIcp6No" value = "No" />No
                                             <?php
                                                 if ($errors || $missing)    {
                                                     maintainSubmittedRadioData('chIcp6', 'chIcp6No');
@@ -803,7 +803,7 @@
                                                     maintainSubmittedRadioData('chIcpUpToDate', 'chIcpUpToDateYes');
                                                 } 
                                             ?>
-                                        <input type = "radio" name = "chIcpUpToDate" id = "chIcpUpToDateNo" value = "No" />No
+                                        <input type = "radio" class = "margin-left" name = "chIcpUpToDate" id = "chIcpUpToDateNo" value = "No" />No
                                             <?php
                                                 if ($errors || $missing)    {
                                                     maintainSubmittedRadioData('chIcpUpToDate', 'chIcpUpToDateNo');
@@ -827,7 +827,7 @@
                                                     maintainSubmittedRadioData('chUniform', 'chUniformYes');
                                                 } 
                                             ?>
-                                        <input type = "radio" name = "chUniform" id = "chUniformNo" value = "No" />No
+                                        <input type = "radio" class = "margin-left" name = "chUniform" id = "chUniformNo" value = "No" />No
                                             <?php
                                                 if ($errors || $missing)    {
                                                     maintainSubmittedRadioData('chUniform', 'chUniformNo');
@@ -847,7 +847,7 @@
                                                     maintainSubmittedRadioData('chAttendance', 'chAttendanceYes');
                                                 } 
                                             ?>
-                                        <input type = "radio" name = "chAttendance" id = "chAttendanceNo" value = "No" />No
+                                        <input type = "radio" class = "margin-left" name = "chAttendance" id = "chAttendanceNo" value = "No" />No
                                             <?php
                                                 if ($errors || $missing)    {
                                                     maintainSubmittedRadioData('chAttendance', 'chAttendanceNo');
@@ -870,7 +870,7 @@
                                                 maintainSubmittedRadioData('chResults', 'chResultsYes');
                                             } 
                                         ?>
-                                    <input type = "radio" name = "chResults" id = "chResultsNo" value = "No" />No
+                                    <input type = "radio" class = "margin-left" name = "chResults" id = "chResultsNo" value = "No" />No
                                         <?php
                                             if ($errors || $missing)    {
                                                 maintainSubmittedRadioData('chResults', 'chResultsNo');
@@ -920,15 +920,6 @@
     <script src = "https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity = "sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin = "aNonymous"></script>
     <script src = "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity = "sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin = "aNonymous"></script>
     <script src = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity = "sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin = "aNonymous"></script>  
-   <pre>
-   <?php
-        if ($_POST && $mailSent)    {
-            echo htmlentities($message);
-            echo htmlentities($headers);
-
-        }
-         
-   ?>
-   </pre>
+   
 </body>
 </html>
