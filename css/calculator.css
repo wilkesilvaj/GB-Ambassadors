@@ -69,7 +69,10 @@ h2 {
 
 form{
     background-color: white;
-    padding: unset;
+    padding-top: unset;
+    padding-bottom: unset;
+    padding-right:  1rem;
+    padding-left:  1rem;
 }
 
 body    {
@@ -189,4 +192,34 @@ i.red{
 
 button:hover, i:hover{
     cursor: pointer;
+}
+
+@media (max-width: 850px) {
+    /* CSS that should be displayed if width is equal to or less than 800px goes here */
+   
+    select  	{
+        font-size: 0.8em;
+    }
+
+    th  {
+        font-size: 0.7em;
+    }
+
+    table   {
+        width: 100%;
+    }
+
+    form    {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    img.gblogo  {  
+        height:  35%;
+        width:  35%;
+    }
+
+    th.small    {
+        width: 10%;
+    }
 }
