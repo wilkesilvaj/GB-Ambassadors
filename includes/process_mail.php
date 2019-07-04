@@ -13,12 +13,14 @@
      *  $suspect is passed by reference
      */
     function isSuspect($value, $pattern, &$suspect) {
+        // If value is an arraym break it into variables and call isSuspect again for each value of that array($value)
         if (is_array($value))   {
             foreach ($value as $item)   {
                 isSuspect($item, $pattern, $suspect);
             }
-        }   else{     
-           
+        }   
+        // If $value isn't an array, try to match its content with the $pattern string, if it matches, it is suspect
+        else{                
             if (preg_match($pattern, $value))   {
                 $suspect = true;
             }           
@@ -35,9 +37,7 @@
         global $subject;
         global $authorized;
 
-        print_r($required);
-        print_r($expected);
-        
+               
         // Regular expression to search for suspect phrases
         $pattern = '/Content-type:|Bcc:|Cc:/i';
         
@@ -78,9 +78,7 @@
                     $$key = $value;
                 }                     
             }
-
-            print_r($required);
-            print_r($expected);
+     
 
             /** Loops through the required fields and checks if data has been submitted for each
              *  required field
@@ -132,7 +130,7 @@
                 // Initializing message (reference the global variable)
                 global $message;
 
-                print_r($expected);
+                
                 foreach ($expected as $field)   :
                     if (isset($$field) && !empty($$field))  {
                         $val = $$field;
@@ -155,21 +153,21 @@
                     } 
                                      
                     // Just before the tournaments history, setup that section
-                    if (strpos($key, 'results') !== false || strpos($key, 'Results') !== false)   {
-                        $message .= ucfirst($field). ":". $val . "\r\n\r\nCompetition history: \r\n\r\n";
+                    if (strpos($field, 'results') !== false || strpos($field, 'Results') !== false)   {
+                        $message .= ucfirst($field). ":". $val . "\r\n\r\nCompetition history: \r\n\r\n";                          
                     }
                     // For CHAMPIONSHIPS and SEASONS, just structure keep one line per championship
-                    else if(strpos($key, 'championship') !== false || strpos($key, 'Championship') !== false) {
+                    else if(strpos($field, 'championship') !== false || strpos($field, 'Championship') !== false) {
                         $message .= $val . " ";
                     }
-                    else if (strpos($key, 'season') !== false || strpos($key, 'Season') !== false)    {
-                        $message .= "(".$val.") ";
+                    else if (strpos($field, 'season') !== false || strpos($field, 'Season') !== false)    {
+                        $message .= "(".$val.") ";                       
                     }
-                    else if(strpos($key, 'title') !== false || strpos($key, 'Title') !== false) {
-                        $message .= $val . "\r\n\r\n";
+                    else if(strpos($field, 'title') !== false || strpos($field, 'Title') !== false) {
+                        $message .= $val . "\r\n\r\n";                        
                     }
                     else    {
-                        $message .= ucfirst($field). ":". $val . "\r\n\r\n";
+                        $message .= ucfirst($field). " : ". $val . "\r\n\r\n";
                     }
 
 
@@ -182,8 +180,8 @@
                 global $mailSent;
 
                 // Attempts to send email and stores true if successful and false if unsucessful in variable
-                $mailSent = true;
-                // $mailSent = mail($to, $subject, $message, $headers, $authorized);  
+                // $mailSent = true;
+                $mailSent = mail($to, $subject, $message, $headers, $authorized);  
                 
                 if (!$mailSent) {
                     $errors['mailfail'] = true;

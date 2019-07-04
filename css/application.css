@@ -33,7 +33,6 @@ a:hover {
    
 }
 
-
 h2 {
     color: white;
     margin: auto;
@@ -71,6 +70,7 @@ h2 {
 form{
     background-color: white;
     padding: unset;
+    margin-bottom: unset;
 }
 
 body    {
