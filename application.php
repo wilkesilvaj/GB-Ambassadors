@@ -911,7 +911,7 @@
 
     <!-- Footer at the end of the page-->
     <footer class = "footer mt-auto center">
-        <img class = "gblogo" src = "images/gblogoNoback.png">
+        <img class = "gblogo" alt="Gracie Barra Ambassadors logo" src = "images/gblogoNoback.png">
         <p class = "text-center">GB Ambassadors Program Pacific Northwest</p>
     </footer>
 
