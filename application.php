@@ -81,13 +81,16 @@
     <!-- Customized css -->
     <link rel = "stylesheet" href= "css/application.css">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
     <!-- Adults Form Championship Generation Script-->
     <script type="text/javascript" src="js/application.js"></script>
 
     <!-- Kids Form Championship Generation Script-->
     <script type="text/javascript" src="js/kidsapplication.js"></script>
 
-
+    <!-- Script to keep the active tab -->
+    <script type="text/javascript" src="js/tabs.js"></script>
 
     <title>GB Ambassadors Program Pacific Northwest</title>
     </head>
@@ -136,7 +139,7 @@
                 <li class = "nav-item">
                     <a class = "nav-link" id = "profile-tab" data-toggle = "tab" href = "#kids" role = "tab" aria-controls = "kids" aria-selected = "false">Kids Form</a>
                 </li>
-            </ul>            
+            </ul>          
            
             <div class = "tab-content" id = "myTabContent">
                 <div class = "tab-pane fade show active" id = "adults" role = "tabpanel" aria-labelledby = "home-tab">
@@ -521,7 +524,7 @@
             <div class = "tab-pane fade" id = "kids" role = "tabpanel" aria-labelledby = "profile-tab">
                     <div class = "container no-padding">
                             <!-- Beggining of the form-->
-                            <form class = "padding-sides padding-bottom" id = "kidsForm" method = "POST" action = "<?= $_SERVER['PHP_SELF']; ?>">
+                            <form class = "padding-sides padding-bottom" id = "kidsForm" method = "POST" action = "<?= $_SERVER['PHP_SELF'] ?>">
                                 <!-- Checks if there is any suspicious data in the form -->
                                 <?php  if ($_POST && $suspect) : ?>
                                     <div class = "form-row">
