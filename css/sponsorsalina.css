@@ -26,14 +26,14 @@ a:hover {
 }
 
 .headimg {
-    background-image: url(../images/gb_ambassadors_sponsors.jpg);
+    background-image: url(../images/temporaryhead.jpg);
     background-color:  black;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: 0% 65%;
+    background-position: 0% 50%;
     position: relative;    
-    min-height: 33em;    
+    min-height: 30em;    
 }
 
 .box {
