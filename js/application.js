@@ -21,7 +21,8 @@ var championshipList = [
     "IBJJF International Open",
     "UAE World Pro",
     "UAE Grand Slam",
-    "GB COMPNET"    
+    "GB COMPNET",
+    "Copa Katana"    
 ];
 
 

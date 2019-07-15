@@ -12,16 +12,17 @@ var medalWeight = [
 ];
 
 var championshipList = [
-    "IBJJF Worlds 2018",
+    "IBJJF Worlds",
     "IBJJF Pans",
-    "IBJJF European 2019",
+    "IBJJF European",
     "IBJJF Brazilian Nationals",
     "IBJJF American Nationals",
     "IBJJF Pro",
     "IBJJF International Open",
     "UAE World Pro",
     "UAE Grand Slam",
-    "GB COMPNET"    
+    "GB COMPNET",
+    "Copa Katana"    
 ];
 
 var resultList  =   [
@@ -338,6 +339,9 @@ function assignChampionshipValue(championship)  {
     }
     else if (championship.includes("IBJJF International Open"))  {
         value = 4;
+    }
+    else if (championship.includes("Copa Katana"))  {
+        value = 3;
     }
     return value;
 }
