@@ -84,12 +84,18 @@
              *  required field
              */
             foreach ($required as $field)  {
+                // Checks if data has been sent for each required field by matching the names of the inputs fields with the data in the $_POST array
                 if (!isset($_POST[$field])) {
                     $missing[] = $field;
                 }
                 // This verifies if the applicant has agreed to radio buttons which are 'Yes' or 'No' ones
                 else if ($_POST[$field] == 'No')    {
+                    if (strpos($field, 'icp6') !== false || strpos($field, 'chIcp6') !== false )  {
+                        // SINCE APPLICANTS ARE NOT REQUIRED TO HAVE COMPLETED THEIR ICP6, if they answered no to this question, DO NOT display an error                    
+                    }
+                    else    {                
                     $missing[] = $field;
+                    }
                 }
             }     
             
@@ -194,8 +200,7 @@
 
     function maintainSubmittedData($fieldName)    {
         // Checks if any data has been submitted for a particular field
-        if (isset($_POST[$fieldName]))  {
-            
+        if (isset($_POST[$fieldName]))  {            
             echo 'value="' . htmlentities($_POST[$fieldName]) . '"';
         }         
     }
