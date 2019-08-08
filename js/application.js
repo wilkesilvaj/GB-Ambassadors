@@ -12,9 +12,9 @@ var medalWeight = [
 ];
 
 var championshipList = [
-    "IBJJF Worlds 2018",
+    "IBJJF Worlds",
     "IBJJF Pans",
-    "IBJJF European 2019",
+    "IBJJF European",
     "IBJJF Brazilian Nationals",
     "IBJJF American Nationals",
     "IBJJF Pro",
@@ -98,8 +98,6 @@ function createRemoveChampionshipButton(currentFormRow)  {
     // Adds event handler to create more championships by clicking the icon
     icon.addEventListener("click", deleteCurrentChampionship, false);
 }
-
-
 
 /**
  * Function to create the Calculate button
