@@ -31,7 +31,6 @@
 
     // Gets all the missing fields based on its fields
     $missing = checkMissingFields($required);
-
    
     }
     // If the user has clicked on the submit button of the "Kids Form"
@@ -499,7 +498,8 @@
                                         </tr>
                                         <tr>
                                             <th>Championships</th>
-                                            <th>Seasons</th>
+                                            <th>Edition / Location</th>
+                                            <th>Year</th>
                                             <th>1st place</th>
                                             <th>2nd place</th>
                                             <th>3rd place</th>
@@ -890,7 +890,8 @@
                                             </tr>
                                             <tr>
                                                 <th>Championships</th>
-                                                <th>Seasons</th>
+                                                <th>Edition / Location</th>
+                                                <th>Year</th>
                                                 <th>1st place</th>
                                                 <th>2nd place</th>
                                                 <th>3rd place</th>

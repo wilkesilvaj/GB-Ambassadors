@@ -21,21 +21,20 @@ var championshipList = [
     "IBJJF International Open",
     "UAE World Pro",
     "UAE Grand Slam",
-    "GB COMPNET",
+    "GB Compnet",
     "Copa Katana"    
 ];
 
 
-var seasonList = [
-    "I",
-    "II",
-    "III"
+var yearList = [
+    "2018",
+    "2019"    
 ];
 
 // Variables used to assign dynamic ids to <select> controllers
 var championshipIndex = 0; 
 var championshipID = "championship"; 
-var seasonID = "season";
+var yearID = "year";
 
 
 function initializeComponents()  {
@@ -57,8 +56,11 @@ function addChampionship()  {
     // Creates Championships <select>
     createChampionshipSelect(formRow);
 
-    // Creates Seasons <select>
-    createSeasonsSelect(formRow);
+    // Creates dynamic Edition / Location controllers
+    createEditionField(formRow);
+
+    // Creates Year <select>
+    createYearSelect(formRow);
     
     // Creates radio buttons
     createRadioButtons(formRow);
@@ -180,14 +182,14 @@ function createRadioButtons(currentFormRow)   {
  * Function to dynamically create each SEASONS <select> for each new competition added to the calculator
  * @param {*} currentFormRow - the <div> which represents the current row of the calculator form
  */
-function createSeasonsSelect(currentFormRow)  {
+function createYearSelect(currentFormRow)  {
 
     // Creates the new <SELECT> for SEASONS and assigns an ID to it
     var seasonComboBox = document.createElement("select");
     // Assigns dynamic id to new combo box
-    seasonComboBox.id = seasonID + championshipIndex;
+    seasonComboBox.id = yearID + championshipIndex;
     // Assigns dynamic name to new combo box
-    seasonComboBox.name = seasonID + championshipIndex;
+    seasonComboBox.name = yearID + championshipIndex;
 
     // Resets the formCol <DIV> to insert SEASON SELECT
     formCol = document.createElement("td");
@@ -199,14 +201,69 @@ function createSeasonsSelect(currentFormRow)  {
     formCol.appendChild(seasonComboBox);
 
     // Populates the new <SELECT> with the championships from the array
-    for (var i = 0; i < seasonList.length; i++)   {    
+    for (var i = 0; i < yearList.length; i++)   {    
         // Creates new options
         var option = document.createElement("option");        
-        option.text = "Season " + seasonList[i];
-        option.value = assignSeasonValue(seasonList[i]);
+        option.text = yearList[i];
+        option.value = assignSeasonValue(yearList[i]);
         seasonComboBox.appendChild(option);
+    }   
+}
+
+function updateEditionPlaceHolder()    {
+    var selectedChampionship = this;
+
+    // Gets the selected championship index
+    var selectedChampionshipIndex = this.id.substring(this.id.length - 1,this.id.length);
+
+    // Gets the edition text field in the same row as the championship selected
+    var editionTextField = document.getElementById("edition"+selectedChampionshipIndex);
+
+    
+    // IBJJF Worlds - Adult or Master
+    if (selectedChampionship.value =="IBJJF Worlds")  {
+        editionTextField.placeholder = "Adults or Master";
+    }
+    // Compnet and Copa Katana - Edition names. e.g: Mitsuyo Maeda
+    else if (selectedChampionship.value == "GB Compnet")    {
+        editionTextField.placeholder = "E.g: Mistuyo Maeda I";
+    }
+    else if (selectedChampionship.value == "Copa Katana")   {
+        editionTextField.placeholder = "E.g: Ohana III";
     } 
-  
+    // Gi or NoGi
+    else if(selectedChampionship.value == "IBJJF Brazilian Nationals")  {
+        editionTextField.placeholder = "Gi or NoGi";
+    }
+    // IBJJF International Open - Location (City) and Gi or NoGi
+    else if(selectedChampionship.value == "IBJJF International Open")  {
+        editionTextField.placeholder = "Los Angeles - Gi or NoGi";
+    }
+    // Pro - Location (City)
+    else if(selectedChampionship.value == "IBJJF Pro") {
+        editionTextField.placeholder = "Atlanta or another location";
+    }
+}
+
+function createEditionField(currentFormRow)   {
+    // Creates the new <INPUT>
+    var editionTextField = document.createElement("input");
+    
+    // Sets controller to a text field
+    editionTextField.type = "text";
+    // Assigns dynamic id to new text field
+    editionTextField.id = "edition" + championshipIndex;
+    // Assigns dynamic id to new text field
+    editionTextField.name = "edition" + championshipIndex;
+    // Assigns default placeholder
+    editionTextField.placeholder = "Adults or Master";
+
+    // Resets the formCol <DIV> to insert new Edition text field
+    formCol = document.createElement("td");    
+    // Adds SECOND COLUMN to ROW (Edition)
+    currentFormRow.appendChild(formCol); 
+    // Adds SEASON SELECT to the page
+    formCol.appendChild(editionTextField);
 }
 
 /**
@@ -229,6 +286,9 @@ function createChampionshipSelect(currentFormRow) {
     // Assigns dynamic name to new combo box
     championshipsComboBox.name = championshipID + championshipIndex;
     
+    // Adds event to update "Edition" text placeholder / hint
+    championshipsComboBox.addEventListener("change", updateEditionPlaceHolder,false);
+
     // Adds FIRST COLUMN to ROW
     currentFormRow.appendChild(formCol);
 

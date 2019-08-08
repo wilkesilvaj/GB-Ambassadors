@@ -43,7 +43,7 @@ var seasonList = [
 // Variables used to assign dynamic ids to <select> controllers
 var championshipIndex = 0; 
 var championshipID = "championships"; 
-var seasonID = "season";
+var yearID = "season";
 
 
 function initializeComponents()  {
@@ -199,7 +199,7 @@ function createSeasonsSelect(currentFormRow)  {
 
     // Creates the new <SELECT> for SEASONS and assigns an ID to it
     var seasonComboBox = document.createElement("select");
-    seasonComboBox.id = seasonID + championshipIndex;
+    seasonComboBox.id = yearID + championshipIndex;
 
     // Resets the formCol <DIV> to insert SEASON SELECT
     formCol = document.createElement("td");

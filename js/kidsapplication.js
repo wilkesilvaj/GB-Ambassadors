@@ -12,9 +12,9 @@ var medalWeight = [
 ];
 
 var championshipList = [
-    "IBJJF Worlds 2018",
+    "IBJJF Worlds",
     "IBJJF Pans",
-    "IBJJF European 2019",
+    "IBJJF European",
     "IBJJF Brazilian Nationals",
     "IBJJF American Nationals",
     "IBJJF Pro",
@@ -35,7 +35,7 @@ var seasonList = [
 // Variables used to assign dynamic ids to <select> controllers
 var chChampionshipIndex = 0; 
 var chChampionshipID = "chChampionship"; 
-var chSeasonID = "chSeason";
+var chyearID = "chSeason";
 
 
 function chInitializeComponents()  {
@@ -43,16 +43,10 @@ function chInitializeComponents()  {
     // Initializes the calculator form
     kidsForm = document.getElementById("kidsForm");       
 
-    // Initializes the calculator form
-    //kidsForm = document.getElementById("kidsForm"); 
-
-
     // Initializes the calculator tbody element
-    kidsTable = document.getElementById("kidsTable");
-
-    // Initializes the calculator tbody element
-    //kidsTable = document.getElementById("kidsTable");
+    kidsTable = document.getElementById("kidsTable");    
    
+    // Adds the first (default) championship to the form
     chAddChampionship();
 }
 
@@ -194,9 +188,9 @@ function chCreateSeasonsSelect(currentFormRow)  {
     // Creates the new <SELECT> for SEASONS and assigns an ID to it
     var seasonComboBox = document.createElement("select");
     // Assigns dynamic id to new combo box
-    seasonComboBox.id = chSeasonID + chChampionshipIndex;
+    seasonComboBox.id = chyearID + chChampionshipIndex;
     // Assigns dynamic name to new combo box
-    seasonComboBox.name = chSeasonID + chChampionshipIndex;
+    seasonComboBox.name = chyearID + chChampionshipIndex;
 
     // Resets the formCol <DIV> to insert SEASON SELECT
     formCol = document.createElement("td");
