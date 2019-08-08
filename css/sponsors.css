@@ -33,7 +33,8 @@ a:hover {
     background-size: cover;
     background-position: 0% 65%;
     position: relative;    
-    min-height: 33em;    
+    min-height: 36em;   
+    min-width: 100%;  
 }
 
 .box {
@@ -81,3 +82,37 @@ h2 {
     margin: unset;
 }
 
+
+/*CSS TO BE DISPLAYED BY SCREENS OF AT LEAST 1200 pixels of width*/
+@media (min-width: 1200px) {
+    .headimg {
+        background-image: url(../images/gb_ambassadors_sponsors.jpg);
+        background-color:  black;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 0% 70%;
+        position: relative;    
+        min-height: 38em;    
+    }
+}
+
+/*CSS TO BE DISPLAYED BY SCREENS OF AT MOST 850 pixels of width*/
+@media (max-width: 850px) {
+    .headimg {
+        background-image: url(../images/gb_ambassadors_sponsors.jpg);
+        background-color:  black;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 50% 40%;
+        position: relative;    
+        min-height: 16em;  
+        min-width: 100%;  
+    }
+
+    #centerimg  {
+        width:100%;
+    }
+
+}
