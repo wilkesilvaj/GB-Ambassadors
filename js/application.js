@@ -226,6 +226,7 @@ function updateEditionPlaceHolder()    {
     var editionTextField = document.getElementById("edition"+selectedChampionshipIndex);
 
     editionTextField.disabled = false;
+    editionTextField.value = "";
     
     // IBJJF Worlds - Adult or Master
     if (selectedChampionship.value =="IBJJF Worlds")  {
@@ -251,7 +252,7 @@ function updateEditionPlaceHolder()    {
         editionTextField.placeholder = "Atlanta or another location";
     }
     else    {
-        editionTextField.placeholder = "Not required";
+        editionTextField.value = "Not required";
         editionTextField.disabled = true;
     }
 }

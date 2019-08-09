@@ -1,6 +1,6 @@
 <?php   
 
-    
+    print_r($_POST);
     // Assume that initially the email message hasn't been sent
     $mailSent = false;
 
@@ -64,9 +64,9 @@
                  *  $expected arrays to ensure they will be added to the message.
                  */ 
                 if (strpos($key, 'championship') !== false || strpos($key, 'Championship') !== false
-                || strpos($key, 'season') !== false || strpos($key, 'Season') !== false 
+                || strpos($key, 'edition') !== false || strpos($key, 'Edition') !== false 
+                || strpos($key, 'year') !== false || strpos($key, 'Year') !== false 
                 || strpos($key, 'title') !== false || strpos($key, 'Title') !== false)   {
-
                     $required[] = $key;
                     $expected[] = $key;
                 }
@@ -153,11 +153,14 @@
                     if (strpos($field, 'results') !== false || strpos($field, 'Results') !== false)   {
                         $message .= ucfirst($field). ":". $val . "\r\n\r\nCompetition history: \r\n\r\n";                          
                     }
-                    // For CHAMPIONSHIPS and SEASONS, just structure keep one line per championship
+                    // For CHAMPIONSHIPS and YEARS, just structure keep one line per championship
                     else if(strpos($field, 'championship') !== false || strpos($field, 'Championship') !== false) {
                         $message .= $val . " ";
                     }
-                    else if (strpos($field, 'season') !== false || strpos($field, 'Season') !== false)    {
+                    else if(strpos($field, 'edition') !== false || strpos($field, 'Edition') !== false) {
+                        $message .= $val . " ";
+                    }
+                    else if (strpos($field, 'year') !== false || strpos($field, 'Year') !== false)    {
                         $message .= "(".$val.") ";                       
                     }
                     else if(strpos($field, 'title') !== false || strpos($field, 'Title') !== false) {
