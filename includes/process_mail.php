@@ -1,4 +1,6 @@
 <?php   
+
+    
     // Assume that initially the email message hasn't been sent
     $mailSent = false;
 
@@ -176,8 +178,8 @@
 
                 // Attempts to send email and stores true if successful and false if unsucessful in variable
                 $mailSent = true;
-                //$mailSent = mail($to, $subject, $message, $headers, $authorized);  
-                print_r($_POST);
+                $mailSent = mail($to, $subject, $message, $headers, $authorized);  
+                
                 if (!$mailSent) {
                     $errors['mailfail'] = true;
                 }
@@ -200,7 +202,7 @@
         if (isset($_POST[$fieldName]))  {
                          
             // Verifies if the input value matches the current fieldId, if it does, makes that radio button checked.
-            if (strpos($fieldId,$_POST[$fieldName]))   {    
+            if (strpos($fieldId,$_POST[$fieldName]))   {        
                            
                 echo "<script type='text/javascript'> 
                 var radioButton = document.getElementById('".$fieldId."');
@@ -208,6 +210,18 @@
                 </script>";     
             }              
         }         
+    }
+
+    function maintainSubmittedSelectData($fieldName, $value)  {
+        echo "<script type='text/javascript'> 
+        var select = document.getElementById('".$fieldName."');
+        var options = select.options;
+        for (var j = 0; j < select.length; j++) {
+            if (options[j] == $value)   {
+            select.selectedIndex = j;
+            }
+        }
+        </script>";
     }
 
 

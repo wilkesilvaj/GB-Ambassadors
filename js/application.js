@@ -77,7 +77,6 @@ function addChampionship()  {
     createAddButton();
 }
 
-
 /**
  * Function which adds the "Add another championship" and "remove current championship" icons / buttons
  * @param {*} currentFormRow - the <div> which represents the current row of the calculator form
@@ -124,7 +123,7 @@ function createAddButton()   {
     
     // Creates new <TD> element
     var formCol = document.createElement("td");
-    formCol.colSpan = 6;    
+    formCol.colSpan = 7;    
 
     // Creates new <button>
     button = document.createElement("button");
@@ -171,6 +170,13 @@ function createRadioButtons(currentFormRow)   {
         radioButton.value = medalWeight[x];
         if (x == 0) {
             radioButton.checked = true;
+            radioButton.id = "gold" +championshipIndex;
+        }
+        else if (x == 1)    {
+            radioButton.id = "silver" +championshipIndex;
+        }
+        else    {
+            radioButton.id = "bronze" +championshipIndex;
         }
 
         // Adds current CHECKBOX to current COLUMN
