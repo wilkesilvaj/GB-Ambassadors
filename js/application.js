@@ -205,7 +205,7 @@ function createYearSelect(currentFormRow)  {
         // Creates new options
         var option = document.createElement("option");        
         option.text = yearList[i];
-        option.value = assignSeasonValue(yearList[i]);
+        option.value = yearList[i];
         seasonComboBox.appendChild(option);
     }   
 }
@@ -219,6 +219,7 @@ function updateEditionPlaceHolder()    {
     // Gets the edition text field in the same row as the championship selected
     var editionTextField = document.getElementById("edition"+selectedChampionshipIndex);
 
+    editionTextField.disabled = false;
     
     // IBJJF Worlds - Adult or Master
     if (selectedChampionship.value =="IBJJF Worlds")  {
@@ -242,6 +243,10 @@ function updateEditionPlaceHolder()    {
     // Pro - Location (City)
     else if(selectedChampionship.value == "IBJJF Pro") {
         editionTextField.placeholder = "Atlanta or another location";
+    }
+    else    {
+        editionTextField.placeholder = "Not required";
+        editionTextField.disabled = true;
     }
 }
 
@@ -305,21 +310,6 @@ function createChampionshipSelect(currentFormRow) {
         championshipsComboBox.appendChild(option);
     }    
 
-}
-
-function assignSeasonValue(season)  {
-
-    var value = 0;
-    if (season == "I")    {
-        value = "Season I";
-    }
-    else if (season == "II") {
-        value = "Season II";
-    }
-    else if (season == "III")    {
-        value = "Season III";
-    }
-    return value;
 }
 
 function deleteCurrentChampionship(removeChampionshipIcon)    {

@@ -97,19 +97,8 @@
                     $missing[] = $field;
                     }
                 }
-            }     
-            
-            /* Crashes on kid's form
-            // Validate date of birth
-            if (!preg_match("/^((19[0-9][0-9]|200[0-2])(-)(((0)[0-9])|((1)[0-2]))(-)([0-2][0-9]|(3)[0-1]))|((((0)[0-9])|((1)[0-2]))(\/)([0-2][0-9]|(3)[0-1])(\/)(19[0-9][0-9]|200[0-2]))|(\s*(3[01]|[12][0-9]|0?[1-9])\.(1[012]|0?[1-9])\.(19[0-9][0-9]|200[0-2])\s)$/", $_POST['dateOfBirth'])) {
-                $missing[] = $required[2];
-            }
-            // Validate phone number
-            if (!preg_match("/^(1 )*\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})|(\d){3}(-)*(\d){4}$/", $_POST['phoneNumber'])) {
-                $missing[] = $required[6];
-            }
-            */
-
+            }             
+       
             // Validate email (ADULTS' FORM)
             if (!$missing && !empty($_POST['email'])) {
                 $validemail = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
@@ -186,12 +175,13 @@
                 global $mailSent;
 
                 // Attempts to send email and stores true if successful and false if unsucessful in variable
-                // $mailSent = true;
-                $mailSent = mail($to, $subject, $message, $headers, $authorized);  
-                
+                $mailSent = true;
+                //$mailSent = mail($to, $subject, $message, $headers, $authorized);  
+                print_r($_POST);
                 if (!$mailSent) {
                     $errors['mailfail'] = true;
-                }             
+                }
+                             
             endif;
         endif;        
            
