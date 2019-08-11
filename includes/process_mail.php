@@ -1,6 +1,5 @@
 <?php   
 
-    print_r($_POST);
     // Assume that initially the email message hasn't been sent
     $mailSent = false;
 
@@ -181,7 +180,7 @@
 
                 // Attempts to send email and stores true if successful and false if unsucessful in variable
                 $mailSent = true;
-                //$mailSent = mail($to, $subject, $message, $headers, $authorized);  
+                $mailSent = mail($to, $subject, $message, $headers, $authorized);  
                 
                 if (!$mailSent) {
                     $errors['mailfail'] = true;
