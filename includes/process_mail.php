@@ -181,7 +181,7 @@
 
                 // Attempts to send email and stores true if successful and false if unsucessful in variable
                 $mailSent = true;
-                $mailSent = mail($to, $subject, $message, $headers, $authorized);  
+                //$mailSent = mail($to, $subject, $message, $headers, $authorized);  
                 
                 if (!$mailSent) {
                     $errors['mailfail'] = true;

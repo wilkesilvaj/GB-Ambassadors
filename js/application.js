@@ -191,11 +191,11 @@ function createRadioButtons(currentFormRow)   {
 function createYearSelect(currentFormRow)  {
 
     // Creates the new <SELECT> for SEASONS and assigns an ID to it
-    var seasonComboBox = document.createElement("select");
+    var yearComboBox = document.createElement("select");
     // Assigns dynamic id to new combo box
-    seasonComboBox.id = yearID + championshipIndex;
+    yearComboBox.id = yearID + championshipIndex;
     // Assigns dynamic name to new combo box
-    seasonComboBox.name = yearID + championshipIndex;
+    yearComboBox.name = yearID + championshipIndex;
 
     // Resets the formCol <DIV> to insert SEASON SELECT
     formCol = document.createElement("td");
@@ -204,7 +204,7 @@ function createYearSelect(currentFormRow)  {
     currentFormRow.appendChild(formCol);
 
     // Adds SEASON SELECT to the page
-    formCol.appendChild(seasonComboBox);
+    formCol.appendChild(yearComboBox);
 
     // Populates the new <SELECT> with the championships from the array
     for (var i = 0; i < yearList.length; i++)   {    
@@ -212,7 +212,7 @@ function createYearSelect(currentFormRow)  {
         var option = document.createElement("option");        
         option.text = yearList[i];
         option.value = yearList[i];
-        seasonComboBox.appendChild(option);
+        yearComboBox.appendChild(option);
     }   
 }
 
