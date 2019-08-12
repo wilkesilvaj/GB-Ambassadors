@@ -8,11 +8,12 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         
         <!-- Customized css -->
-    
+        <link rel = "stylesheet" href= "css/thankyou.css">
+
         <title>GB Ambassadors Program Pacific Northwest</title>
     </head> 
     <body>
-        
+        <!-- Alert message
         <div class="container">
             <div class="alert alert-danger" role="alert">
                 <h4 id="titleText" class="alert-heading">Thank you for your application!</h4>
@@ -20,9 +21,27 @@
                 <p id="text" class="mb-0"></p>
             </div>
         </div>
+        -->
+        <div class="container">
+            <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                <div class="row">
+                    <div class="col-4">
+                        <img src="images/gblogocrop.jpeg" alt = "Gracie Barra Ambassadors logo"  class="d-inline-block align-top">
+                    </div>
+                    <div class="col-8">
+                        <h1>Thank you for your application!</h1>
+                    </div>
+                </div>
+                <br />
+                <div class="col-12">
+                    <p id="text" class="lead"></p>
+                </div>
+                </div>
+            </div>
+        </div>
 
         <script type="text/javascript">
-            var titleMsg = document.getElementById("titleText");
             var textMsg = document.getElementById("text");
             var count = 5;
             setInterval(function() {
@@ -30,7 +49,6 @@
                     window.location.href = "index.html";
                 }
                 
-                //titleMsg.innerHTML = "Thank you for your application!";
                 textMsg.innerHTML = "You will be redirected to the main page in " + count + " seconds";
                 count--;                
             }, 1000);
