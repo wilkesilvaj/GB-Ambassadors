@@ -11,7 +11,7 @@
     $subject = 'GB Pacific Northwest Ambassadors Program Application';    
     $headers = [];
     $headers[] = 'From: wilke.joao.test@gmail.com';
-    $headers[] = 'Cc: empty7empty@gmail.com';
+    $headers[] = 'Cc: ';
     $headers[] = 'Content-type: text/plain; charset=utf-8';
     // $authorized = null;
     $authorized = '-fwilke.joao.test@gmail.com';
@@ -491,70 +491,72 @@
                             </div>
                             <!-- Ninth row -->
                             <div class = "form-row">
-                                <table class = "center" style = "width: 100%;">
-                                    <thead>
-                                        <tr>
-                                            <th colspan="6"><h3>Tournament History</h3></th>
-                                        </tr>
-                                        <tr>
-                                            <th>Championships</th>
-                                            <th>Edition / Location</th>
-                                            <th>Year</th>
-                                            <th>1st place</th>
-                                            <th>2nd place</th>
-                                            <th>3rd place</th>
-                                            <td><!--ICONS--></td>
-                                        </tr>
-                                    </thead>
-                                    <tbody id = "adultsTable">
+                                <div class = "table-responsive">
+                                    <table class = "center" style = "width: 100%;">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="6"><h3>Tournament History</h3></th>
+                                            </tr>
+                                            <tr>
+                                                <th>Championships</th>
+                                                <th>Edition / Location</th>
+                                                <th>Year</th>
+                                                <th>1st place</th>
+                                                <th>2nd place</th>
+                                                <th>3rd place</th>
+                                                <td><!--ICONS--></td>
+                                            </tr>
+                                        </thead>
+                                        <tbody id = "adultsTable">
 
-                                    <?php   
-                                        // Attempt to preserve data from the tournaments
-                                        /*                                    
-                                        if ($errors || $missing)    {
-                                        
-                                            // Sets pointer to the end of the array
-                                            end($_POST);                           
-                                            // Stores the value of the last element  
-                                            $lastElement = prev($_POST);
-                                        
+                                        <?php   
+                                            // Attempt to preserve data from the tournaments
+                                            /*                                    
+                                            if ($errors || $missing)    {
+                                            
+                                                // Sets pointer to the end of the array
+                                                end($_POST);                           
+                                                // Stores the value of the last element  
+                                                $lastElement = prev($_POST);
+                                            
 
-                                            // Resets points of the array
-                                            reset($_POST);
+                                                // Resets points of the array
+                                                reset($_POST);
 
-                                            // Gets last key in the form (apart from the submit button)
-                                            foreach ($_POST as $key => $val)    {
-                                                if ($val != "Submit")   {
-                                                    $lastElement = $key;
+                                                // Gets last key in the form (apart from the submit button)
+                                                foreach ($_POST as $key => $val)    {
+                                                    if ($val != "Submit")   {
+                                                        $lastElement = $key;
+                                                    }
+                                                }                                        
+                                                // Gets the number of championships sent on the last attempt
+                                                $numberOfChampionships = substr($lastElement, -1);
+                                                
+                                                
+                                                // echo "alert('".$numberOfChampionships."')";
+                                            
+                                                
+                                                if ($numberOfChampionships > 0) {
+                                                    // Generates the same amount of tournaments as the failed attempt to submit
+                                                    for ($i = 1;$i <= $numberOfChampionships; $i++)  {                                                
+                                                        echo "<script type = 'text/javascript'>";
+                                                        echo "addChampionship();";
+                                                        echo "</script>";
+                                                        // Maintains the submitted data
+                                                        // maintainSubmittedSelectData("championship"+$i, $_POST['championship'+$i]);
+                                                        // maintainSubmittedData("edition"+$i);
+                                                        // maintainSubmittedSelectData("year"+$i, $_POST['year'+$i]);
+                                                        // maintainSubmittedRadioData("title"+$i, "gold"+$i);
+                                                        // maintainSubmittedRadioData("title"+$i, "silver"+$i);
+                                                        // maintainSubmittedRadioData("title"+$i, "bronze"+$i);
+                                                    }
                                                 }
-                                            }                                        
-                                            // Gets the number of championships sent on the last attempt
-                                            $numberOfChampionships = substr($lastElement, -1);
-                                            
-                                            
-                                            // echo "alert('".$numberOfChampionships."')";
-                                        
-                                            
-                                            if ($numberOfChampionships > 0) {
-                                                // Generates the same amount of tournaments as the failed attempt to submit
-                                                for ($i = 1;$i <= $numberOfChampionships; $i++)  {                                                
-                                                    echo "<script type = 'text/javascript'>";
-                                                    echo "addChampionship();";
-                                                    echo "</script>";
-                                                    // Maintains the submitted data
-                                                    // maintainSubmittedSelectData("championship"+$i, $_POST['championship'+$i]);
-                                                    // maintainSubmittedData("edition"+$i);
-                                                    // maintainSubmittedSelectData("year"+$i, $_POST['year'+$i]);
-                                                    // maintainSubmittedRadioData("title"+$i, "gold"+$i);
-                                                    // maintainSubmittedRadioData("title"+$i, "silver"+$i);
-                                                    // maintainSubmittedRadioData("title"+$i, "bronze"+$i);
-                                                }
-                                            }
-                                        } */                           
-                                    ?>
+                                            } */                           
+                                        ?>
 
-                                    </tbody>
-                                </table>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                             <div class = "form-row padding-top" id = "submitbutton">
                                 <!-- <input type = "button" id = "validate" class = "btn btn-danger" value = "Validate" onclick = "validateForm();"/> -->
@@ -928,25 +930,27 @@
                                 </div>
                                 <!-- Ninth row -->
                                 <div class = "form-row">
-                                    <table class = "center" style = "width: 100%;">
-                                        <thead>
-                                            <tr>
-                                                <th colspan="6"><h3>Tournament History</h3></th>
-                                            </tr>
-                                            <tr>
-                                                <th>Championships</th>
-                                                <th>Edition / Location</th>
-                                                <th>Year</th>
-                                                <th>1st place</th>
-                                                <th>2nd place</th>
-                                                <th>3rd place</th>
-                                                <td><!--ICONS--></td>
-                                            </tr>
-                                        </thead>
-                                        <tbody id = "kidsTable">
+                                    <div class = "table-responsive">
+                                        <table class = "center" style = "width: 100%;">
+                                            <thead>
+                                                <tr>
+                                                    <th colspan="6"><h3>Tournament History</h3></th>
+                                                </tr>
+                                                <tr>
+                                                    <th>Championships</th>
+                                                    <th>Edition / Location</th>
+                                                    <th>Year</th>
+                                                    <th>1st place</th>
+                                                    <th>2nd place</th>
+                                                    <th>3rd place</th>
+                                                    <td><!--ICONS--></td>
+                                                </tr>
+                                            </thead>
+                                            <tbody id = "kidsTable">
 
-                                        </tbody>
-                                    </table>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                                 <div class = "form-row padding-top" id = "chSubmitbutton">
                                     <!-- <input type = "button" id = "chValidate" class = "btn btn-danger" value = "Validate" onclick = "chValidateForm();"/> -->

@@ -125,8 +125,7 @@
                 $headers = implode("\r\n", $headers);
                 // Initializing message (reference the global variable)
                 global $message;
-
-                
+            
                 foreach ($expected as $field)   :
                     if (isset($$field) && !empty($$field))  {
                         $val = $$field;
