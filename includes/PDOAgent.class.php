@@ -71,7 +71,6 @@ class PDOAgent {
         } catch (Exception $ex) {
             echo "Error Disconnect: ".$ex->getMessage();
         }
-    }
-        
+    }        
 }
 ?>
