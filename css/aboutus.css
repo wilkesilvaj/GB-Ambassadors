@@ -11,6 +11,10 @@ nav {
     background: black;
 }
 
+.navbar {
+    justify-content: unset;
+}
+
 ul {
     float:left;
     width: 100%;    
@@ -128,15 +132,6 @@ p  {
     -ms-transform: translate(-50%, -50%);
     text-align: center;
 }
-/*
-.amb_row:hover .amb_image {
-    opacity: 0.3;
-}
-
-.amb_row:hover .middle {
-    opacity: 1;
-}
-*/
 
 .nav-tabs > li > a:active,
 .nav-tabs > li > a.active .amb_image {
@@ -163,6 +158,10 @@ p  {
 img.gblogo  {  
     height:  10%;
     width:  10%;
+}
+
+#nav    {
+    justify-content: unset;
 }
 
 

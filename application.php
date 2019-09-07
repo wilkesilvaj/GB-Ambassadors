@@ -2,19 +2,16 @@
 
     $errors = [];
     $missing = [];   
-    
-    // Alina's email
-    // empty7empty@gmail.com 
-    
+        
     /*Mail variables */
-    $to = 'João Wilke <wilke.joao@gmail.com>';
+    $to = 'GB Ambassadors Pacific Northwest <ambassador@graciebarra.ca >';
     $subject = 'GB Pacific Northwest Ambassadors Program Application';    
     $headers = [];
-    $headers[] = 'From: wilke.joao.test@gmail.com';
+    $headers[] = 'From: ambassador@graciebarra.ca ';
     $headers[] = 'Cc: ';
     $headers[] = 'Content-type: text/plain; charset=utf-8';
     // $authorized = null;
-    $authorized = '-fwilke.joao.test@gmail.com';
+    $authorized = '-fambassador@graciebarra.ca ';
 
     // Includes other files
     require("./includes/process_mail.php");
@@ -95,8 +92,8 @@
     </head>
     <body>
         <!-- Nav Bar with the logo-->
-        <nav class = "navbar navbar-expand-lg ">
-            <a class = "navbar-brand No-margin"  href = "index.html">
+        <nav id = "nav" class = "navbar navbar-expand-lg ">
+            <a class = "navbar-brand no-margin"  href = "index.html">
                 <img src = "images/gblogocrop.jpeg" alt = "Gracie Barra Ambassadors logo"  class = "d-inline-block align-top">                 
             </a>
             <!-- Inserted a canadian flag, as per Rodrigo's request-->
@@ -964,7 +961,7 @@
 
     <!-- Footer at the end of the page-->
     <footer class = "footer mt-auto center">
-        <img class = "gblogo" alt="Gracie Barra Ambassadors logo" src = "images/gblogoNoback.png">
+        <img class = "gblogo" alt="Gracie Barra Ambassadors logo" src = "images/gblogonoback.png">
         <p class = "text-center">GB Ambassadors Program Pacific Northwest</p>
     </footer>
 

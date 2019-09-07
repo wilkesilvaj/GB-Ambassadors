@@ -82,6 +82,10 @@ h2 {
     margin: unset;
 }
 
+#nav    {
+    justify-content: unset;
+}
+
 
 /*CSS TO BE DISPLAYED BY SCREENS OF AT LEAST 1200 pixels of width*/
 @media (min-width: 1200px) {

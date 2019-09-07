@@ -145,6 +145,10 @@ tbody tr td > *   {
     margin-bottom: 0.1rem;
 }
 
+#nav    {
+    justify-content: unset;
+}
+
 @media (max-width: 850px) {
     /* CSS that should be displayed if width is equal to or less than 800px goes here */
    
