@@ -5,13 +5,13 @@ var kidsTable; // TBODY used in the kids Form
 
 
 // List of Championships
-var medalWeight = [
+var kidsMedalWeight = [
     "1st place",
     "2nd place",
     "3rd place"
 ];
 
-var championshipList = [
+var kidsChampionshipList = [
     "IBJJF Worlds",
     "IBJJF Pans",
     "IBJJF European",
@@ -25,11 +25,12 @@ var championshipList = [
     "Copa Katana"    
 ];
 
-
-var yearList = [
+var kidsYearList = [
     "2018",
-    "2019" 
+    "2019", 
+    "2020"    
 ];
+
 
 // Variables used to assign dynamic ids to <select> controllers
 var chChampionshipIndex = 0; 
@@ -127,7 +128,7 @@ function chCreateAddButton()   {
     
     // Creates new <TD> element
     var formCol = document.createElement("td");
-    formCol.colSpan = 6;    
+    formCol.colSpan = 7;    
 
     // Creates new <button>
     button = document.createElement("button");
@@ -158,7 +159,7 @@ function chCreateAddButton()   {
  */
 function chCreateRadioButtons(currentFormRow)   {
     
-    for (var x = 0; x < medalWeight.length; x++)    {
+    for (var x = 0; x < kidsMedalWeight.length; x++)    {
        
         // Resets the formCol <DIV> to insert new columns
         formCol = document.createElement("td");
@@ -171,7 +172,7 @@ function chCreateRadioButtons(currentFormRow)   {
         var radioButton = document.createElement("input");
         radioButton.type = "radio";
         radioButton.name = "chTitle" + chChampionshipIndex;
-        radioButton.value = medalWeight[x];
+        radioButton.value = kidsMedalWeight[x];
         if (x == 0) {
             radioButton.checked = true;
         }
@@ -272,11 +273,11 @@ function chCreateYearsSelect(currentFormRow)  {
     formCol.appendChild(yearComboBox);
 
     // Populates the new <SELECT> with the championships from the array
-    for (var i = 0; i < yearList.length; i++)   {    
+    for (var i = 0; i < kidsYearList.length; i++)   {    
         // Creates new options
         var option = document.createElement("option");        
-        option.text = yearList[i];
-        option.value = yearList[i];
+        option.text = kidsYearList[i];
+        option.value = kidsYearList[i];
         yearComboBox.appendChild(option);
     } 
   
@@ -312,12 +313,12 @@ function chCreateChampionshipSelect(currentFormRow) {
     formCol.appendChild(championshipsComboBox);
     
     // Populates the new <SELECT> with the championships from the array
-    for (var i = 0; i < championshipList.length; i++)   {
+    for (var i = 0; i < kidsChampionshipList.length; i++)   {
         // Creates new options
         var option = document.createElement("option");
-        //option.value = championshipList[i];
-        option.value = championshipList[i];
-        option.text = championshipList[i];
+        //option.value = kidsChampionshipList[i];
+        option.value = kidsChampionshipList[i];
+        option.text = kidsChampionshipList[i];
         championshipsComboBox.appendChild(option);
     }    
 

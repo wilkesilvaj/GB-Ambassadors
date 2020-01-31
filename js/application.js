@@ -28,7 +28,8 @@ var championshipList = [
 
 var yearList = [
     "2018",
-    "2019"    
+    "2019", 
+    "2020"    
 ];
 
 // Variables used to assign dynamic ids to <select> controllers
@@ -209,6 +210,7 @@ function createYearSelect(currentFormRow)  {
     // Populates the new <SELECT> with the championships from the array
     for (var i = 0; i < yearList.length; i++)   {    
         // Creates new options
+        
         var option = document.createElement("option");        
         option.text = yearList[i];
         option.value = yearList[i];
