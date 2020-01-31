@@ -4,8 +4,8 @@
   min-height: 240px;
   background-image: url("../images/gbconference.jpg");
   background-repeat: no-repeat;
-  background-size: cover;
-  background-color: 0,0,0,0.4;
+  background-size: 100% 100%;
+  
 }
   
   .close:hover,
