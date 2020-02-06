@@ -148,7 +148,7 @@
                     } 
                                      
                     // Just before the tournaments history, setup that section
-                    if (strpos($field, 'results') !== false || strpos($field, 'Results') !== false)   {
+                    if (strpos($field, 'participation') !== false || strpos($field, 'Participation') !== false)   {
                         $message .= ucfirst($field). ":". $val . "\r\n\r\nCompetition history: \r\n\r\n";                          
                     }
                     // For CHAMPIONSHIPS and YEARS, just structure keep one line per championship
