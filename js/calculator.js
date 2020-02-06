@@ -22,7 +22,9 @@ var championshipList = [
     "UAE World Pro",
     "UAE Grand Slam",
     "GB COMPNET",
-    "Copa Katana"    
+    "IBJJF South American",
+    "Copa Katana",
+    "Revolution"    
 ];
 
 var resultList  =   [
@@ -284,7 +286,7 @@ function createChampionshipSelect(currentFormRow) {
     }
  }
 
-// NOT FULLY OPERATIONAL
+
 function calculatePoints()  {
     
     // Initializes candidate's points
@@ -334,13 +336,13 @@ function assignChampionshipValue(championship)  {
         value = 6;       
     }
     else if (championship.includes("UAE Grand Slam")|| championship.includes("GB COMPNET")
-    || championship.includes("IBJJF American Nationals") || championship.includes("IBJJF Pro"))     {
+    || championship.includes("IBJJF American Nationals") || championship.includes("IBJJF Pro") || championship.includes("IBJJF South American"))     {
         value = 5;
     }
     else if (championship.includes("IBJJF International Open"))  {
         value = 4;
     }
-    else if (championship.includes("Copa Katana"))  {
+    else if (championship.includes("Copa Katana") || (championship.includes("Revolution")))  {
         value = 3;
     }
     return value;

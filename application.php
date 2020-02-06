@@ -4,14 +4,14 @@
     $missing = [];   
         
     /*Mail variables */
-    $to = 'GB Ambassadors Pacific Northwest <ambassador@graciebarra.ca >';
+    $to = 'wilke.joao.test@gmail.com';
     $subject = 'GB Pacific Northwest Ambassadors Program Application';    
     $headers = [];
-    $headers[] = 'From: ambassador@graciebarra.ca ';
-    $headers[] = 'Cc: ';
+    $headers[] = 'From: wilke.joao.test@gmail.com';
+    $headers[] = 'Cc: wilke.joao@gmail.com';
     $headers[] = 'Content-type: text/plain; charset=utf-8';
     // $authorized = null;
-    $authorized = '-fambassador@graciebarra.ca ';
+    $authorized = '-fwilke.joao.test@gmail.com';
 
     // Includes other files
     require("./includes/process_mail.php");
@@ -444,7 +444,7 @@
                                         </div>
                                     </div>
                                     <div class = "form-group col-md-6">
-                                        <label for = "attendance">In order to be a GB Ambassadors Pacific Northwest, it is required your attendance in at least 80% of our 3 times per week competition training, hosted at GB Vancouver (Mon, Wed, Fri 12pm). Are you willing to make that commitment?</label>
+                                        <label for = "attendance">In order to be a GB Pacific Northwest Ambassador, it is required that you attend at least 80% of our pre-scheduled Ambassadors Training Days and the fundraising Seminars that will be hosted at GB Vancouver throughout the Season. Are you willing to make that commitment?</label>
                                         <?php if ($missing && in_array('attendance', $missing)) : 
                                             displayError('attendance_area');
                                         endif; ?>
@@ -883,7 +883,7 @@
                                         </div>
                                     </div>
                                     <div class = "form-group col-md-6">
-                                        <label for = "chAttendance">In order to be a GB Ambassadors Pacific Northwest, it is required your attendance in at least 80% of our 3 times per week competition training, hosted at GB Vancouver (Mon, Wed, Fri 12pm). Are you willing to make that commitment?</label>
+                                        <label for = "chAttendance">In order to be a GB Pacific Northwest Ambassador, it is required that you attend at least 80% of our pre-scheduled Ambassadors Training Days and the fundraising Seminars that will be hosted at GB Vancouver throughout the Season. Are you willing to make that commitment?</label>
                                         <?php if ($missing && in_array('chAttendance', $missing)) :
                                             displayError('chAttendance_area');
                                         endif; ?>

@@ -170,17 +170,24 @@
 
 
                 endforeach;  
-                /* Wraps message content (by default, each line on an email message)
-                    should only be 70 characters long.*/
+                /* Wraps message content (by default, each line on an email message
+                    should only be 70 characters long)*/
                 $message = wordwrap($message, 70);
                 
                 // References global variable
                 global $mailSent;
+                print_r($to);
+                print_r($subject);
+                print_r($message);
+                print_r($headers);
+                print_r($authorized);
 
-                // Attempts to send email and stores true if successful and false if unsucessful in variable
-                $mailSent = true;
-                $mailSent = mail($to, $subject, $message, $headers, $authorized);  
                 
+                
+                // Attempts to send email and stores true if successful and false if unsucessful in variable
+                $mailSent = true;                
+                $mailSent = mail($to, $subject, $message, $headers, $authorized);  
+               
                 if (!$mailSent) {
                     $errors['mailfail'] = true;
                 }
