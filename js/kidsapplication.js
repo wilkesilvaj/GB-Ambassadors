@@ -22,7 +22,9 @@ var kidsChampionshipList = [
     "UAE World Pro",
     "UAE Grand Slam",
     "GB Compnet",
-    "Copa Katana"    
+    "IBJJF South American",
+    "Copa Katana",
+    "Revolution"    
 ];
 
 var kidsYearList = [
