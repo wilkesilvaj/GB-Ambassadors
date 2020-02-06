@@ -20,11 +20,11 @@
     if (isset($_POST['submit']))    {
         $expected = ['firstName','lastName', 'dateOfBirth', 
         'gender', 'belt', 'dateOfGraduation', 'phoneNumber', 'email', 'address', 'homeSchool', 'homeSchoolAddress',
-        'icp6', 'icpUpToDate', 'uniform', 'attendance', 'results'  ]; 
+        'icp6', 'icpUpToDate', 'uniform', 'attendance', 'results', 'participation'  ]; 
 
     $required = ['firstName','lastName', 'dateOfBirth', 
     'gender', 'belt', 'dateOfGraduation', 'phoneNumber', 'email', 'address', 'homeSchool', 'homeSchoolAddress',
-    'icp6', 'icpUpToDate', 'uniform', 'attendance', 'results'  ]; 
+    'icp6', 'icpUpToDate', 'uniform', 'attendance', 'results', 'participation'  ]; 
 
     // Gets all the missing fields based on its fields
     $missing = checkMissingFields($required);
@@ -34,11 +34,11 @@
     else if (isset($_POST['chSubmit'])) {
         $expected = ['chFirstName','chLastName', 'chParentName', 'chDateOfBirth',
         'chGender', 'chBelt', 'chDateOfGraduation', 'chPhoneNumber', 'chEmail', 'chAddress', 'chHomeSchool', 'chHomeSchoolAddress',
-        'chIcp6', 'chIcpUpToDate', 'chUniform', 'chAttendance', 'chResults'  ];
+        'chIcp6', 'chIcpUpToDate', 'chUniform', 'chAttendance', 'chResults', 'chParticipation'  ];
 
         $required = ['chFirstName','chLastName', 'chParentName', 'chDateOfBirth',
         'chGender', 'chBelt', 'chDateOfGraduation', 'chPhoneNumber', 'chEmail', 'chAddress', 'chHomeSchool', 'chHomeSchoolAddress',
-        'chIcp6', 'chIcpUpToDate', 'chUniform', 'chAttendance', 'chResults'  ];
+        'chIcp6', 'chIcpUpToDate', 'chUniform', 'chAttendance', 'chResults', 'chParticipation'  ];
  
     // Gets all the missing fields based on its fields
     $missing = checkMissingFields($required); 
@@ -144,13 +144,9 @@
                         <form class = "padding-sides padding-bottom" id = "adultsForm" method = "POST" action = "<?= $_SERVER['PHP_SELF']; ?>">
                         <!-- Checks if there is any suspicious data in the form -->
                         <?php  if ($_POST && ($suspect || isset($errors['mailfail']))) : ?>
-                            
                             <script>                            
-                                alert('Mail was sent!');                            
+                                alert('Sorry, your mail couldnt be sent!');                            
                             </script>
-                            <!-- <div class = "form-row">
-                                <p class = "warning">Sorry, your mail couldn't be sent!</p>
-                            </div> -->
                         <?php endif; ?>   
                         
                         <!-- Not sure if we need this, but that's an alert message -->
@@ -161,7 +157,7 @@
                         || in_array('icpUpToDate', $missing) || in_array('uniform', $missing) || in_array('attendance', $missing)
                         || in_array('results', $missing) || in_array('belt', $missing))): ?>
                             <p class="alert alert-danger" role="alert" aria-live="assertive">
-                                <span class="center">Please fix the errors</span>
+                                <span class="center">Please fix the following errors</span>
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -427,46 +423,46 @@
                             <hr class = "divider">
                             <!-- Seventh row-->
                             <div class = "form-row">
-                                    <div class = "form-group col-md-6">
-                                        <label for = "uniform">Wearing the Full Gracie Barra Uniform and wearing the latest Gracie Barra Red Competition Shirt is mandatory to apply for the GB Pacific Northwest Ambassadors Program. Are you willing to make that commitment?</label>
-                                        <?php if ($missing && in_array('uniform', $missing)) :
-                                            displayError('uniform_area');
-                                        endif; ?>
-                                        <div id="uniform_area">
-                                        <input  type = "radio" name = "uniform" id = "uniformYes" value = "Yes" />Yes
-                                            <?php
-                                                if ($errors || $missing)    {
-                                                    maintainSubmittedRadioData('uniform', 'uniformYes');
-                                                } 
-                                            ?> 
-                                        <input  type = "radio" class = "margin-left" name = "uniform" id = "uniformNo" value = "No" />No
-                                            <?php
-                                                if ($errors || $missing)    {
-                                                    maintainSubmittedRadioData('uniform', 'uniformNo');
-                                                } 
-                                            ?> 
-                                        </div>
+                                <div class = "form-group col-md-6">
+                                    <label for = "uniform">Wearing the Full Gracie Barra Uniform and wearing the latest Gracie Barra Red Competition Shirt is mandatory to apply for the GB Pacific Northwest Ambassadors Program. Are you willing to make that commitment?</label>
+                                    <?php if ($missing && in_array('uniform', $missing)) :
+                                        displayError('uniform_area');
+                                    endif; ?>
+                                    <div id="uniform_area">
+                                    <input  type = "radio" name = "uniform" id = "uniformYes" value = "Yes" />Yes
+                                        <?php
+                                            if ($errors || $missing)    {
+                                                maintainSubmittedRadioData('uniform', 'uniformYes');
+                                            } 
+                                        ?> 
+                                    <input  type = "radio" class = "margin-left" name = "uniform" id = "uniformNo" value = "No" />No
+                                        <?php
+                                            if ($errors || $missing)    {
+                                                maintainSubmittedRadioData('uniform', 'uniformNo');
+                                            } 
+                                        ?> 
                                     </div>
-                                    <div class = "form-group col-md-6">
-                                        <label for = "attendance">In order to be a GB Pacific Northwest Ambassador, it is required that you attend at least 80% of our pre-scheduled Ambassadors Training Days and the fundraising Seminars that will be hosted at GB Vancouver throughout the Season. Are you willing to make that commitment?</label>
-                                        <?php if ($missing && in_array('attendance', $missing)) : 
-                                            displayError('attendance_area');
-                                        endif; ?>
-                                        <div id="attendance_area">
-                                        <input type = "radio" name = "attendance" id = "attendanceYes" value = "Yes" />Yes
-                                            <?php
-                                                if ($errors || $missing)    {
-                                                    maintainSubmittedRadioData('attendance', 'attendanceYes');
-                                                } 
-                                            ?> 
-                                        <input type = "radio" class = "margin-left" name = "attendance" id = "attendanceNo" value = "No" />No
-                                            <?php
-                                                if ($errors || $missing)    {
-                                                    maintainSubmittedRadioData('attendance', 'attendanceNo');
-                                                } 
-                                            ?> 
-                                        </div>
+                                </div>
+                                <div class = "form-group col-md-6">
+                                    <label for = "attendance">In order to be a GB Pacific Northwest Ambassador, it is required that you attend at least 80% of our pre-scheduled Ambassadors Training Days and the fundraising Seminars that will be hosted at GB Vancouver throughout the Season. Are you willing to make that commitment?</label>
+                                    <?php if ($missing && in_array('attendance', $missing)) : 
+                                        displayError('attendance_area');
+                                    endif; ?>
+                                    <div id="attendance_area">
+                                    <input type = "radio" name = "attendance" id = "attendanceYes" value = "Yes" />Yes
+                                        <?php
+                                            if ($errors || $missing)    {
+                                                maintainSubmittedRadioData('attendance', 'attendanceYes');
+                                            } 
+                                        ?> 
+                                    <input type = "radio" class = "margin-left" name = "attendance" id = "attendanceNo" value = "No" />No
+                                        <?php
+                                            if ($errors || $missing)    {
+                                                maintainSubmittedRadioData('attendance', 'attendanceNo');
+                                            } 
+                                        ?> 
                                     </div>
+                                </div>
                             </div>
                             <hr class = "divider">
                             <!-- Eigth row-->
@@ -490,7 +486,29 @@
                                     ?>
                                 </div>        
                             </div>
-                            <!-- Ninth row -->
+                            <hr class = "divider">
+                            <!-- Ninth row-->
+                            <div class = "form-row">                                    
+                                <label for = "participation">In order to be a GB Pacific Northwest Ambassador, it is required that you participate in 100% of the planned competitions for the Season, exceptions only for injuries and health issues.It is also required that you share the group results on your own social media after every tournament,  to help advertise the program. Are you willing to make that commitment?</label>
+                                <?php if ($missing && in_array('results', $missing)) :
+                                    displayError('participation_area');
+                                endif; ?>
+                                <div id="participation_area">
+                                <input  type = "radio" name = "participation" id = "participationYes" value = "Yes" />Yes
+                                    <?php
+                                        if ($errors || $missing)    {
+                                            maintainSubmittedRadioData('participation', 'participationYes');
+                                        } 
+                                    ?>
+                                <input type = "radio" class = "margin-left" name = "participation" id = "participationNo" value = "No" />No
+                                    <?php
+                                        if ($errors || $missing)    {
+                                            maintainSubmittedRadioData('participation', 'participationNo');
+                                        } 
+                                    ?>
+                                </div>        
+                            </div>
+                            <!-- Tenth row -->
                             <div class = "form-row">
                                 <div class = "table-responsive">
                                     <table class = "center" style = "width: 100%;">
@@ -588,7 +606,7 @@
                                 || in_array('chIcp6', $missing) || in_array('chIcpUpToDate', $missing) || in_array('chUniform', $missing)
                                 || in_array('chAttendance', $missing) || in_array('chResults', $missing))): ?>
                                     <p class="alert alert-danger" role="alert" aria-live="assertive">
-                                        <span class="center">Please fix the errors</span>
+                                        <span class="center">Please fix the following errors</span>
                                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -929,7 +947,29 @@
                                         ?>
                                     </div>
                                 </div>
-                                <!-- Ninth row -->
+                                <hr class = "divider">
+                                <!-- Ninth row-->
+                                <div class = "form-row">                                    
+                                    <label for = "chParticipation">In order to be a GB Pacific Northwest Ambassador, it is required that you participate in 100% of the planned competitions for the Season, exceptions only for injuries and health issues.It is also required that you share the group results on your own social media after every tournament,  to help advertise the program. Are you willing to make that commitment?</label>
+                                    <?php if ($missing && in_array('chParticipation', $missing)) :
+                                        displayError('chParticipation_area');
+                                    endif; ?>
+                                    <div id="chParticipation_area">
+                                    <input  type = "radio" name = "chParticipation" id = "chParticipationYes" value = "Yes" />Yes
+                                        <?php
+                                            if ($errors || $missing)    {
+                                                maintainSubmittedRadioData('chParticipation', 'chParticipationYes');
+                                            } 
+                                        ?>
+                                    <input type = "radio" class = "margin-left" name = "chParticipation" id = "chParticipationNo" value = "No" />No
+                                        <?php
+                                            if ($errors || $missing)    {
+                                                maintainSubmittedRadioData('chParticipation', 'chParticipationNo');
+                                            } 
+                                        ?>
+                                    </div>        
+                                </div>
+                                <!-- Tenth row -->
                                 <div class = "form-row">
                                     <div class = "table-responsive">
                                         <table class = "center" style = "width: 100%;">
