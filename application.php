@@ -4,14 +4,14 @@
     $missing = [];   
         
     /*Mail variables */
-    $to = 'wilke.joao.test@gmail.com';
+    $to = 'wilke.joao@gmail.com';
     $subject = 'GB Pacific Northwest Ambassadors Program Application';    
     $headers = [];
-    $headers[] = 'From: wilke.joao.test@gmail.com';
-    $headers[] = 'Cc: wilke.joao@gmail.com';
+    $headers[] = 'From: _mainaccount@gbambassador.com';
+    $headers[] = 'Cc: ';
     $headers[] = 'Content-type: text/plain; charset=utf-8';
     // $authorized = null;
-    $authorized = '-fwilke.joao.test@gmail.com';
+    $authorized = '-f_mainaccount@gbambassador.com';
 
     // Includes other files
     require("./includes/process_mail.php");
@@ -144,9 +144,13 @@
                         <form class = "padding-sides padding-bottom" id = "adultsForm" method = "POST" action = "<?= $_SERVER['PHP_SELF']; ?>">
                         <!-- Checks if there is any suspicious data in the form -->
                         <?php  if ($_POST && ($suspect || isset($errors['mailfail']))) : ?>
-                            <div class = "form-row">
+                            
+                            <script>                            
+                                alert('Mail was sent!');                            
+                            </script>
+                            <!-- <div class = "form-row">
                                 <p class = "warning">Sorry, your mail couldn't be sent!</p>
-                            </div>
+                            </div> -->
                         <?php endif; ?>   
                         
                         <!-- Not sure if we need this, but that's an alert message -->
