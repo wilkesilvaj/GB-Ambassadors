@@ -132,7 +132,7 @@
                 <li class = "nav-item">
                     <a class = "nav-link active" id = "home-tab" data-toggle = "tab" href = "#adults" role = "tab" aria-controls = "adults" aria-selected = "true">Adults Form</a>
                 </li>
-                <li class = "nav-item">
+                <li class = "nav-item d-none">
                     <a class = "nav-link" id = "profile-tab" data-toggle = "tab" href = "#kids" role = "tab" aria-controls = "kids" aria-selected = "false">Kids Form</a>
                 </li>
             </ul>          
@@ -527,51 +527,6 @@
                                             </tr>
                                         </thead>
                                         <tbody id = "adultsTable">
-
-                                        <?php   
-                                            // Attempt to preserve data from the tournaments
-                                            /*                                    
-                                            if ($errors || $missing)    {
-                                            
-                                                // Sets pointer to the end of the array
-                                                end($_POST);                           
-                                                // Stores the value of the last element  
-                                                $lastElement = prev($_POST);
-                                            
-
-                                                // Resets points of the array
-                                                reset($_POST);
-
-                                                // Gets last key in the form (apart from the submit button)
-                                                foreach ($_POST as $key => $val)    {
-                                                    if ($val != "Submit")   {
-                                                        $lastElement = $key;
-                                                    }
-                                                }                                        
-                                                // Gets the number of championships sent on the last attempt
-                                                $numberOfChampionships = substr($lastElement, -1);
-                                                
-                                                
-                                                // echo "alert('".$numberOfChampionships."')";
-                                            
-                                                
-                                                if ($numberOfChampionships > 0) {
-                                                    // Generates the same amount of tournaments as the failed attempt to submit
-                                                    for ($i = 1;$i <= $numberOfChampionships; $i++)  {                                                
-                                                        echo "<script type = 'text/javascript'>";
-                                                        echo "addChampionship();";
-                                                        echo "</script>";
-                                                        // Maintains the submitted data
-                                                        // maintainSubmittedSelectData("championship"+$i, $_POST['championship'+$i]);
-                                                        // maintainSubmittedData("edition"+$i);
-                                                        // maintainSubmittedSelectData("year"+$i, $_POST['year'+$i]);
-                                                        // maintainSubmittedRadioData("title"+$i, "gold"+$i);
-                                                        // maintainSubmittedRadioData("title"+$i, "silver"+$i);
-                                                        // maintainSubmittedRadioData("title"+$i, "bronze"+$i);
-                                                    }
-                                                }
-                                            } */                           
-                                        ?>
 
                                         </tbody>
                                     </table>
