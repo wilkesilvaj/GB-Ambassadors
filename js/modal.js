@@ -24,7 +24,11 @@ window.onclick = function(event) {
   }
 }
 
-// When the user clicks on the "GET TICKETS" button, he/she is redirected to the event's eventbrite page
-button.onclick = function() {    
-    window.location = "https://www.eventbrite.ca/e/gracie-barra-bc-conference-tickets-90716809419";
+if (button != null) {
+    // When the user clicks on the "GET TICKETS" button, he/she is redirected to the event's eventbrite page
+    button.onclick = function() {    
+      window.location = "https://www.eventbrite.ca/e/gracie-barra-bc-conference-tickets-90716809419";
+  }
 }
+
+
