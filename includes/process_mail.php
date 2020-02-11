@@ -176,13 +176,7 @@
                 
                 // References global variable
                 global $mailSent;
-                print_r($to);
-                print_r($subject);
-                print_r($message);
-                print_r($headers);
-                print_r($authorized);
-
-                
+                         
                 
                 // Attempts to send email and stores true if successful and false if unsucessful in variable
                 $mailSent = true;                
