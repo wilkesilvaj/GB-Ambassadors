@@ -315,7 +315,6 @@ function createChampionshipSelect(currentFormRow) {
     for (var i = 0; i < championshipList.length; i++)   {
         // Creates new options
         var option = document.createElement("option");
-        //option.value = championshipList[i];
         option.value = championshipList[i];
         option.text = championshipList[i];
         championshipsComboBox.appendChild(option);
@@ -338,8 +337,6 @@ function deleteCurrentChampionship(removeChampionshipIcon)    {
     else{
         alert("You cannot delete all championships from the calculator.");
     }
-
-    
     
 }
 

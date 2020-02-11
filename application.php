@@ -7,11 +7,10 @@
     $to = 'wilke.joao@gmail.com';
     $subject = 'GB Pacific Northwest Ambassadors Program Application';    
     $headers = [];
-    $headers[] = 'From: _mainaccount@gbambassador.com';
-    $headers[] = 'Cc: ';
+    $headers[] = 'From: applications@gbambassador.com';
+    $headers[] = 'Cc: applications@gbambassador.com';
     $headers[] = 'Content-type: text/plain; charset=utf-8';
-    // $authorized = null;
-    $authorized = '-f_mainaccount@gbambassador.com';
+    $authorized = '-fapplications@gbambassador.com';
 
     // Includes other files
     require("./includes/process_mail.php");
@@ -143,13 +142,13 @@
                         <!-- Beggining of the form-->                        
                         <form class = "padding-sides padding-bottom" id = "adultsForm" method = "POST" action = "<?= $_SERVER['PHP_SELF']; ?>">
                         <!-- Checks if there is any suspicious data in the form -->
-                        <?php  if ($_POST && ($suspect || isset($errors['mailfail']))) : ?>
+                        <?php  if ($_POST && $suspect || isset($errors['mailfail'])) : ?>
                             <script>                            
                                 alert('Sorry, your mail couldnt be sent!');                            
                             </script>
                         <?php endif; ?>   
                         
-                        <!-- Not sure if we need this, but that's an alert message -->
+                        <!-- Verifies if any of fields are missing / empty, and if so, displays an error message to the user -->
                         <?php if ($missing && (in_array('firstName', $missing) || in_array('lastName', $missing)
                         || in_array('dateOfBirth', $missing) || in_array('gender', $missing) || in_array('dateOfGraduation', $missing)
                         || in_array('phoneNumber', $missing) || in_array('email', $missing) || in_array('address', $missing)
