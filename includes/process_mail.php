@@ -28,6 +28,7 @@
         }
     }
 
+    // This function checks for missing fields, validates forms and sends the email
     function checkMissingFields(&$required) {
         
         global $suspect;
@@ -192,6 +193,7 @@
             return $missing;
     }
 
+    // This function maintains form data from <input type = text> fields in case of errors
     function maintainSubmittedData($fieldName)    {
         // Checks if any data has been submitted for a particular field
         if (isset($_POST[$fieldName]))  {            
@@ -199,6 +201,7 @@
         }         
     }
 
+    // This function maintains form data from <radio> fields in case of errors
     function maintainSubmittedRadioData($fieldName, $fieldId)    {
         // Checks if any data has been submitted for a particular field
         if (isset($_POST[$fieldName]))  {
@@ -214,6 +217,7 @@
         }         
     }
 
+    // This function maintains form data from <select> fields in case of errors
     function maintainSubmittedSelectData($fieldName, $value)  {
         echo "<script type='text/javascript'> 
         var select = document.getElementById('".$fieldName."');
