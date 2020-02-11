@@ -1,7 +1,5 @@
 <?php   
 
-    print_r($_POST);
-
     // Assume that initially the email message hasn't been sent
     $mailSent = false;
 
