@@ -8,7 +8,7 @@
     $subject = 'GB Pacific Northwest Ambassadors Program Application';    
     $headers = [];
     $headers[] = 'From: applications@gbambassador.com';
-    $headers[] = 'Cc: applications@gbambassador.com';
+    $headers[] = 'Cc: ambassador@graciebarra.ca';
     $headers[] = 'Content-type: text/plain; charset=utf-8';
     $authorized = '-fapplications@gbambassador.com';
 
@@ -557,9 +557,12 @@
                                 <input type = "submit" name = "submit" id = "submit"  class = "btn btn-danger" value = "Submit"/>
                                
                             </div>
-        
+                            <div class = "form-row padding-top">
+                                <p><span class = "ambassador">DISCLAIMER:</span> Gracie Barra school owners <u class = "ambassador">are not eligible</u> to become
+                                Gracie Barra Ambassadors, and thus their applications <u class = "ambassador">will not be considered</u>.
+                            </div>
                         </form>
-            </div> 
+                </div> 
             </div>
             <!-- KIDS FORM-->
             <div class = "tab-pane fade" id = "kids" role = "tabpanel" aria-labelledby = "profile-tab">
@@ -971,7 +974,11 @@
                                 <div class = "form-row padding-top" id = "chSubmitbutton">
                                     <!-- <input type = "button" id = "chValidate" class = "btn btn-danger" value = "Validate" onclick = "chValidateForm();"/> -->
                                     <input type = "submit" name = "chSubmit" id = "chSubmit"  class = "btn btn-danger" value = "Submit"/>
-                                </div>            
+                                </div>      
+                                <div class = "form-row padding-top">
+                                    <p><span class = "ambassador">DISCLAIMER:</span> Gracie Barra school owners <u class = "ambassador">are not eligible</u> to become
+                                    Gracie Barra Ambassadors, and thus their applications <u class = "ambassador">will not be considered</u>.
+                                </div>      
                             </form>
                     </div>
                 </div>
